@@ -9,55 +9,303 @@
       color-scheme: dark;
       --bg: #020617;
       --panel: #0f172a;
+      --panel-2: #111827;
       --text: #e5e7eb;
       --muted: #94a3b8;
       --border: #334155;
       --accent: #38bdf8;
+      --positive: #22c55e;
+      --negative: #ef4444;
+    }
+    * {
+      box-sizing: border-box;
     }
     body {
       margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #172554 0, var(--bg) 40rem);
+      background: radial-gradient(circle at top, #172554 0, var(--bg) 42rem);
       color: var(--text);
       line-height: 1.6;
     }
+    header {
+      padding: 4rem 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
     main {
-      width: min(900px, calc(100% - 2rem));
-      background: rgba(15, 23, 42, 0.86);
-      border: 1px solid var(--border);
-      border-radius: 1.25rem;
-      padding: 2rem;
-      box-shadow: 0 20px 80px rgba(0,0,0,0.35);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
     }
     h1 {
-      margin: 0 0 0.75rem;
+      margin: 0 0 0.5rem;
       font-size: clamp(2rem, 5vw, 4rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
     }
+    h2 {
+      margin-top: 2.5rem;
+      font-size: 1.5rem;
+    }
     p {
       color: var(--muted);
-      font-size: 1.05rem;
+    }
+    .tagline {
+      max-width: 780px;
+      font-size: 1.1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.86);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.24);
+    }
+    .metric {
+      font-size: 2rem;
+      font-weight: 750;
+      color: var(--text);
+    }
+    .label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .note {
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      background: rgba(56, 189, 248, 0.08);
+      border-radius: 0.75rem;
+    }
+    .scores-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      font-size: 0.92rem;
+    }
+    .scores-table th,
+    .scores-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    .scores-table th {
+      background: #1e293b;
+      color: var(--text);
+      position: sticky;
+      top: 0;
+    }
+    .scores-table td {
+      color: #cbd5e1;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      background: var(--panel);
+    }
+    footer {
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
     code {
       color: #bae6fd;
     }
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
+  <header>
+    <div class="hero">
+      <h1>Vector Space and Theological Meaning</h1>
+      <p class="tagline">
+        A pilot audit of secular semantic priors in large language model embeddings,
+        comparing Catholic-magisterial descriptors with secular/common-language contrast descriptors.
+      </p>
+    </div>
+  </header>
+
   <main>
-    <h1>Vector Space and Theological Meaning</h1>
-    <p>
-      This placeholder page will be replaced by the generated Plotly dashboard after running
-      <code>scripts/audit_azure_embeddings.py</code>.
-    </p>
-    <p>
-      The project audits whether general-purpose embedding models encode secular semantic priors
-      that diverge from Catholic-magisterial usage.
-    </p>
+    <section class="grid" aria-label="summary metrics">
+      <div class="card">
+        <div class="metric">0.1037</div>
+        <div class="label">Mean Catholic Alignment Score</div>
+      </div>
+      <div class="card">
+        <div class="metric">0.0556</div>
+        <div class="label">Mean CAS: neutral queries</div>
+      </div>
+      <div class="card">
+        <div class="metric">0.1518</div>
+        <div class="label">Mean CAS: theological queries</div>
+      </div>
+    </section>
+
+    <section class="note">
+      <strong>Methodological note:</strong>
+      Positive CAS means the query is closer to Catholic-magisterial descriptors.
+      Negative CAS means the query is closer to secular/common-language descriptors.
+      UMAP is illustrative only; substantive interpretation should rely on the high-dimensional cosine and rank-order scores.
+    </section>
+
+    <section>
+      <h2>Alignment Scores</h2>
+      <div>                        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.18.2.min.js"></script>                <div id="06dfd34b-660d-4ec0-86d7-920e084b0684" class="plotly-graph-div" style="height:520px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("06dfd34b-660d-4ec0-86d7-920e084b0684")) {                    Plotly.newPlot(                        "06dfd34b-660d-4ec0-86d7-920e084b0684",                        [{"customdata":[["Sin Grace and Redemption","The concept of sin.",0.3534761532621494,0.21791040399058606,"need for repentance and grace","catholic"],["Sin Grace and Redemption","The concept of sin in Catholic theology.",0.3068343216930572,0.1618918990724243,"need for repentance and grace","catholic"],["Love Communion and Sacramentality","The experience of love.",0.2792891463144288,0.32999534743673753,"romantic attraction","secular"],["Love Communion and Sacramentality","The meaning of love in Catholic theology.",0.3680856660675793,0.17488816349737632,"communion in divine love","catholic"],["Human Dignity and Theological Anthropology","The concept of the human person.",0.3768060088350865,0.1933619327758191,"intrinsic human dignity","catholic"],["Human Dignity and Theological Anthropology","The human person in Catholic anthropology.",0.3630446440548611,0.21144865181076106,"unity of body and soul","catholic"],["Freedom Truth and Moral Teleology","The definition of freedom.",0.2985589727053074,0.3445132020310756,"freedom for truth","catholic"],["Freedom Truth and Moral Teleology","Freedom in Catholic moral theology.",0.44077980714635123,0.32316177787851513,"liberation from sin","catholic"]],"hovertemplate":"<b>%{x}</b><br>Locus: %{customdata[0]}<br>Query: %{customdata[1]}<br>Catholic score: %{customdata[2]:.4f}<br>Secular score: %{customdata[3]:.4f}<br>CAS: %{y:.4f}<br>Top descriptor: %{customdata[4]} (%{customdata[5]})<extra></extra>","marker":{"color":["#16a34a","#16a34a","#dc2626","#16a34a","#16a34a","#16a34a","#dc2626","#16a34a"]},"x":["sin / neutral","sin / theological","love / neutral","love / theological","human person / neutral","human person / theological","freedom / neutral","freedom / theological"],"y":[0.1355657492715633,0.1449424226206329,-0.050706201122308725,0.193197502570203,0.18344407605926744,0.15159599224410003,-0.0459542293257682,0.1176180292678361],"type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"shapes":[{"line":{"color":"#e5e7eb","dash":"dash","width":1},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":0,"y1":0,"yref":"y"}],"margin":{"l":40,"r":20,"t":60,"b":120},"title":{"text":"Catholic Alignment Score by Query"},"height":520,"yaxis":{"title":{"text":"Catholic Alignment Score"}},"xaxis":{"title":{"text":"Concept / condition"},"tickangle":35}},                        {"responsive": true}                    )                };                            </script>        </div>
+    </section>
+
+    <section>
+      <h2>3D UMAP Semantic Map</h2>
+      <p>
+        This map projects high-dimensional embeddings into three dimensions for exploration.
+        Visual proximity can be distorted by dimensionality reduction.
+      </p>
+      <div>                            <div id="ffc15652-11f5-47ca-85e8-2421bd0d781f" class="plotly-graph-div" style="height:760px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("ffc15652-11f5-47ca-85e8-2421bd0d781f")) {                    Plotly.newPlot(                        "ffc15652-11f5-47ca-85e8-2421bd0d781f",                        [{"customdata":[["The concept of sin.","Sin Grace and Redemption","sin","neutral","query",0.1355657492715633],["The concept of sin in Catholic theology.","Sin Grace and Redemption","sin","theological","query",0.1449424226206329]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#ef4444","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":7,"symbol":"diamond"},"mode":"markers","name":"Sin Grace and Redemption / query","x":[7.8113227,7.584029],"y":[6.991029,6.862304],"z":[11.421671,11.127651],"type":"scatter3d"},{"customdata":[["rupture of communion with God","Sin Grace and Redemption","sin","neutral","catholic descriptor",null],["offense against divine love","Sin Grace and Redemption","sin","neutral","catholic descriptor",null],["turning away from God","Sin Grace and Redemption","sin","neutral","catholic descriptor",null],["loss of charity","Sin Grace and Redemption","sin","neutral","catholic descriptor",null],["need for repentance and grace","Sin Grace and Redemption","sin","neutral","catholic descriptor",null],["rupture of communion with God","Sin Grace and Redemption","sin","theological","catholic descriptor",null],["offense against divine love","Sin Grace and Redemption","sin","theological","catholic descriptor",null],["turning away from God","Sin Grace and Redemption","sin","theological","catholic descriptor",null],["loss of charity","Sin Grace and Redemption","sin","theological","catholic descriptor",null],["need for repentance and grace","Sin Grace and Redemption","sin","theological","catholic descriptor",null]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#ef4444","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":5,"symbol":"circle"},"mode":"markers","name":"Sin Grace and Redemption / catholic descriptor","x":[8.687026,9.149933,8.968202,9.237099,7.9067397,8.798638,8.932987,9.122165,9.421263,8.012511],"y":[5.223692,5.8372216,5.4611635,7.1893578,7.3175144,5.340381,5.7983723,5.529506,7.0771475,7.192941],"z":[10.21628,10.542588,10.802267,9.769885,12.290613,9.977345,10.843995,10.845613,9.7393055,12.197566],"type":"scatter3d"},{"customdata":[["legal crime","Sin Grace and Redemption","sin","neutral","secular descriptor",null],["social rule-breaking","Sin Grace and Redemption","sin","neutral","secular descriptor",null],["psychological guilt","Sin Grace and Redemption","sin","neutral","secular descriptor",null],["harmful behavior","Sin Grace and Redemption","sin","neutral","secular descriptor",null],["violation of civil law","Sin Grace and Redemption","sin","neutral","secular descriptor",null],["legal crime","Sin Grace and Redemption","sin","theological","secular descriptor",null],["social rule-breaking","Sin Grace and Redemption","sin","theological","secular descriptor",null],["psychological guilt","Sin Grace and Redemption","sin","theological","secular descriptor",null],["harmful behavior","Sin Grace and Redemption","sin","theological","secular descriptor",null],["violation of civil law","Sin Grace and Redemption","sin","theological","secular descriptor",null]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#ef4444","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":5,"symbol":"square"},"mode":"markers","name":"Sin Grace and Redemption / secular descriptor","x":[6.9141946,6.6591654,4.43679,6.5037723,6.7561564,6.689163,6.703886,4.582225,6.5685706,6.842564],"y":[3.2647312,2.6098688,2.314283,2.6132846,2.997083,3.0146115,2.779811,2.1624117,2.6499608,3.1158946],"z":[9.440132,9.562671,9.776663,9.762604,9.683627,9.50974,9.830108,9.72221,9.75124,9.657703],"type":"scatter3d"},{"customdata":[["The experience of love.","Love Communion and Sacramentality","love","neutral","query",-0.050706201122308725],["The meaning of love in Catholic theology.","Love Communion and Sacramentality","love","theological","query",0.193197502570203]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#3b82f6","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":7,"symbol":"diamond"},"mode":"markers","name":"Love Communion and Sacramentality / query","x":[4.2831707,7.8155746],"y":[3.1081378,6.683124],"z":[9.702438,10.923084],"type":"scatter3d"},{"customdata":[["self-giving charity","Love Communion and Sacramentality","love","neutral","catholic descriptor",null],["love of God and neighbor","Love Communion and Sacramentality","love","neutral","catholic descriptor",null],["sacrificial caritas","Love Communion and Sacramentality","love","neutral","catholic descriptor",null],["communion in divine love","Love Communion and Sacramentality","love","neutral","catholic descriptor",null],["gift of self","Love Communion and Sacramentality","love","neutral","catholic descriptor",null],["self-giving charity","Love Communion and Sacramentality","love","theological","catholic descriptor",null],["love of God and neighbor","Love Communion and Sacramentality","love","theological","catholic descriptor",null],["sacrificial caritas","Love Communion and Sacramentality","love","theological","catholic descriptor",null],["communion in divine love","Love Communion and Sacramentality","love","theological","catholic descriptor",null],["gift of self","Love Communion and Sacramentality","love","theological","catholic descriptor",null]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#3b82f6","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":5,"symbol":"circle"},"mode":"markers","name":"Love Communion and Sacramentality / catholic descriptor","x":[9.077929,9.197585,9.333544,8.758001,8.680292,9.150171,9.1850395,9.274039,8.678354,8.794326],"y":[7.351421,6.239965,7.4208994,5.815203,7.1037397,7.028046,6.3946424,7.180037,5.636744,7.2360053],"z":[9.677949,10.557815,9.843778,10.378276,9.690007,9.955412,10.376456,10.069092,10.180153,9.830447],"type":"scatter3d"},{"customdata":[["romantic attraction","Love Communion and Sacramentality","love","neutral","secular descriptor",null],["emotional attachment","Love Communion and Sacramentality","love","neutral","secular descriptor",null],["sexual desire","Love Communion and Sacramentality","love","neutral","secular descriptor",null],["personal preference","Love Communion and Sacramentality","love","neutral","secular descriptor",null],["affectionate feeling","Love Communion and Sacramentality","love","neutral","secular descriptor",null],["romantic attraction","Love Communion and Sacramentality","love","theological","secular descriptor",null],["emotional attachment","Love Communion and Sacramentality","love","theological","secular descriptor",null],["sexual desire","Love Communion and Sacramentality","love","theological","secular descriptor",null],["personal preference","Love Communion and Sacramentality","love","theological","secular descriptor",null],["affectionate feeling","Love Communion and Sacramentality","love","theological","secular descriptor",null]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#3b82f6","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":5,"symbol":"square"},"mode":"markers","name":"Love Communion and Sacramentality / secular descriptor","x":[3.7419896,4.1758904,3.5315714,5.0528183,3.979952,3.6767979,4.054017,3.6441293,5.029226,4.00097],"y":[2.8110797,2.5022988,2.815963,7.0969357,2.6828973,2.73356,2.344884,2.6560724,6.8840623,2.6330738],"z":[9.908763,9.562901,10.193498,13.254809,9.399597,9.744268,9.648803,10.146954,13.253002,9.515619],"type":"scatter3d"},{"customdata":[["The concept of the human person.","Human Dignity and Theological Anthropology","human person","neutral","query",0.18344407605926744],["The human person in Catholic anthropology.","Human Dignity and Theological Anthropology","human person","theological","query",0.15159599224410003]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#22c55e","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":7,"symbol":"diamond"},"mode":"markers","name":"Human Dignity and Theological Anthropology / query","x":[7.1917057,7.1200166],"y":[6.6553607,6.7612104],"z":[10.506055,10.586095],"type":"scatter3d"},{"customdata":[["created in the image of God","Human Dignity and Theological Anthropology","human person","neutral","catholic descriptor",null],["unity of body and soul","Human Dignity and Theological Anthropology","human person","neutral","catholic descriptor",null],["intrinsic human dignity","Human Dignity and Theological Anthropology","human person","neutral","catholic descriptor",null],["called to communion with God","Human Dignity and Theological Anthropology","human person","neutral","catholic descriptor",null],["moral and spiritual subject","Human Dignity and Theological Anthropology","human person","neutral","catholic descriptor",null],["created in the image of God","Human Dignity and Theological Anthropology","human person","theological","catholic descriptor",null],["unity of body and soul","Human Dignity and Theological Anthropology","human person","theological","catholic descriptor",null],["intrinsic human dignity","Human Dignity and Theological Anthropology","human person","theological","catholic descriptor",null],["called to communion with God","Human Dignity and Theological Anthropology","human person","theological","catholic descriptor",null],["moral and spiritual subject","Human Dignity and Theological Anthropology","human person","theological","catholic descriptor",null]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#22c55e","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":5,"symbol":"circle"},"mode":"markers","name":"Human Dignity and Theological Anthropology / catholic descriptor","x":[7.912059,6.8908305,6.6281853,8.466964,5.912684,7.813232,6.964708,6.8280334,8.318337,6.02112],"y":[5.5666614,6.590794,6.9246984,5.338267,7.1430264,5.723707,6.6463985,6.7005677,5.6090646,6.888493],"z":[9.934097,10.1968155,10.488993,9.990088,11.096535,10.097495,10.255692,10.679752,10.061776,11.266872],"type":"scatter3d"},{"customdata":[["biological organism","Human Dignity and Theological Anthropology","human person","neutral","secular descriptor",null],["economic consumer","Human Dignity and Theological Anthropology","human person","neutral","secular descriptor",null],["autonomous individual","Human Dignity and Theological Anthropology","human person","neutral","secular descriptor",null],["evolved animal","Human Dignity and Theological Anthropology","human person","neutral","secular descriptor",null],["data-producing user","Human Dignity and Theological Anthropology","human person","neutral","secular descriptor",null],["biological organism","Human Dignity and Theological Anthropology","human person","theological","secular descriptor",null],["economic consumer","Human Dignity and Theological Anthropology","human person","theological","secular descriptor",null],["autonomous individual","Human Dignity and Theological Anthropology","human person","theological","secular descriptor",null],["evolved animal","Human Dignity and Theological Anthropology","human person","theological","secular descriptor",null],["data-producing user","Human Dignity and Theological Anthropology","human person","theological","secular descriptor",null]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#22c55e","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":5,"symbol":"square"},"mode":"markers","name":"Human Dignity and Theological Anthropology / secular descriptor","x":[5.2236147,4.158102,5.392103,5.2270217,4.151144,5.361868,4.3643703,5.209876,5.4434733,4.243418],"y":[5.4277496,6.1759295,6.582545,5.3774214,5.952205,5.549445,6.2164736,6.5824184,5.594757,6.0565696],"z":[11.152459,12.2459545,13.382976,11.04317,12.248067,11.223615,12.470405,13.484077,11.197685,12.336109],"type":"scatter3d"},{"customdata":[["The definition of freedom.","Freedom Truth and Moral Teleology","freedom","neutral","query",-0.0459542293257682],["Freedom in Catholic moral theology.","Freedom Truth and Moral Teleology","freedom","theological","query",0.1176180292678361]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#a855f7","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":7,"symbol":"diamond"},"mode":"markers","name":"Freedom Truth and Moral Teleology / query","x":[6.8343835,7.2044883],"y":[7.438043,7.1662817],"z":[12.370549,11.636308],"type":"scatter3d"},{"customdata":[["capacity to choose the good","Freedom Truth and Moral Teleology","freedom","neutral","catholic descriptor",null],["freedom for truth","Freedom Truth and Moral Teleology","freedom","neutral","catholic descriptor",null],["liberation from sin","Freedom Truth and Moral Teleology","freedom","neutral","catholic descriptor",null],["responsible moral agency","Freedom Truth and Moral Teleology","freedom","neutral","catholic descriptor",null],["obedience to moral truth","Freedom Truth and Moral Teleology","freedom","neutral","catholic descriptor",null],["capacity to choose the good","Freedom Truth and Moral Teleology","freedom","theological","catholic descriptor",null],["freedom for truth","Freedom Truth and Moral Teleology","freedom","theological","catholic descriptor",null],["liberation from sin","Freedom Truth and Moral Teleology","freedom","theological","catholic descriptor",null],["responsible moral agency","Freedom Truth and Moral Teleology","freedom","theological","catholic descriptor",null],["obedience to moral truth","Freedom Truth and Moral Teleology","freedom","theological","catholic descriptor",null]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#a855f7","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":5,"symbol":"circle"},"mode":"markers","name":"Freedom Truth and Moral Teleology / catholic descriptor","x":[5.1060085,6.610606,7.645807,5.6472936,6.117014,5.215164,6.528252,7.529688,5.425461,5.86131],"y":[6.8832154,7.445336,7.376897,6.958392,7.21871,6.840244,7.3281875,7.319088,6.9206405,7.0226407],"z":[11.946124,12.2432575,12.436401,11.38342,11.441222,11.753614,12.338701,12.523407,11.54634,11.520504],"type":"scatter3d"},{"customdata":[["absence of constraint","Freedom Truth and Moral Teleology","freedom","neutral","secular descriptor",null],["personal autonomy","Freedom Truth and Moral Teleology","freedom","neutral","secular descriptor",null],["maximization of choice","Freedom Truth and Moral Teleology","freedom","neutral","secular descriptor",null],["self-expression","Freedom Truth and Moral Teleology","freedom","neutral","secular descriptor",null],["freedom from obligation","Freedom Truth and Moral Teleology","freedom","neutral","secular descriptor",null],["absence of constraint","Freedom Truth and Moral Teleology","freedom","theological","secular descriptor",null],["personal autonomy","Freedom Truth and Moral Teleology","freedom","theological","secular descriptor",null],["maximization of choice","Freedom Truth and Moral Teleology","freedom","theological","secular descriptor",null],["self-expression","Freedom Truth and Moral Teleology","freedom","theological","secular descriptor",null],["freedom from obligation","Freedom Truth and Moral Teleology","freedom","theological","secular descriptor",null]],"hovertemplate":"<b>%{customdata[0]}</b><br>Locus: %{customdata[1]}<br>Concept: %{customdata[2]}<br>Condition: %{customdata[3]}<br>Role: %{customdata[4]}<br>CAS: %{customdata[5]:.4f}<extra></extra>","marker":{"color":"#a855f7","line":{"color":"#ffffff","width":1},"opacity":0.86,"size":5,"symbol":"square"},"mode":"markers","name":"Freedom Truth and Moral Teleology / secular descriptor","x":[7.05803,5.3906116,4.9677444,5.577463,7.31737,7.0210238,5.486977,5.2014384,5.319029,7.1292677],"y":[7.2100363,6.8353863,6.921894,7.126488,7.231837,7.3924646,6.9604225,6.730573,7.180615,7.4332175],"z":[13.112605,13.314275,12.152206,13.287695,12.852455,12.950956,13.526454,12.188693,13.184328,12.765613],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"margin":{"l":0,"r":0,"t":50,"b":0},"legend":{"orientation":"v","y":0.98,"x":0.01},"title":{"text":"3D UMAP Semantic Map"},"height":760,"scene":{"xaxis":{"title":{"text":"UMAP 1"}},"yaxis":{"title":{"text":"UMAP 2"}},"zaxis":{"title":{"text":"UMAP 3"}}}},                        {"responsive": true}                    )                };                            </script>        </div>
+    </section>
+
+    <section>
+      <h2>Result Table</h2>
+      <div class="table-wrap">
+        <table class="dataframe scores-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>locus</th>
+      <th>concept</th>
+      <th>query_condition</th>
+      <th>catholic_score</th>
+      <th>secular_score</th>
+      <th>catholic_alignment_score</th>
+      <th>top_descriptor</th>
+      <th>top_descriptor_group</th>
+      <th>nearest_catholic_rank</th>
+      <th>nearest_secular_rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sin Grace and Redemption</td>
+      <td>sin</td>
+      <td>neutral</td>
+      <td>0.3535</td>
+      <td>0.2179</td>
+      <td>0.1356</td>
+      <td>need for repentance and grace</td>
+      <td>catholic</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Sin Grace and Redemption</td>
+      <td>sin</td>
+      <td>theological</td>
+      <td>0.3068</td>
+      <td>0.1619</td>
+      <td>0.1449</td>
+      <td>need for repentance and grace</td>
+      <td>catholic</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Love Communion and Sacramentality</td>
+      <td>love</td>
+      <td>neutral</td>
+      <td>0.2793</td>
+      <td>0.3300</td>
+      <td>-0.0507</td>
+      <td>romantic attraction</td>
+      <td>secular</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Love Communion and Sacramentality</td>
+      <td>love</td>
+      <td>theological</td>
+      <td>0.3681</td>
+      <td>0.1749</td>
+      <td>0.1932</td>
+      <td>communion in divine love</td>
+      <td>catholic</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Human Dignity and Theological Anthropology</td>
+      <td>human person</td>
+      <td>neutral</td>
+      <td>0.3768</td>
+      <td>0.1934</td>
+      <td>0.1834</td>
+      <td>intrinsic human dignity</td>
+      <td>catholic</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Human Dignity and Theological Anthropology</td>
+      <td>human person</td>
+      <td>theological</td>
+      <td>0.3630</td>
+      <td>0.2114</td>
+      <td>0.1516</td>
+      <td>unity of body and soul</td>
+      <td>catholic</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Freedom Truth and Moral Teleology</td>
+      <td>freedom</td>
+      <td>neutral</td>
+      <td>0.2986</td>
+      <td>0.3445</td>
+      <td>-0.0460</td>
+      <td>freedom for truth</td>
+      <td>catholic</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Freedom Truth and Moral Teleology</td>
+      <td>freedom</td>
+      <td>theological</td>
+      <td>0.4408</td>
+      <td>0.3232</td>
+      <td>0.1176</td>
+      <td>liberation from sin</td>
+      <td>catholic</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Generated: 2026-07-07T22:30:34+00:00<br>
+        Azure deployment: <code>text-embedding-3-large-prova1</code><br>
+        API version: <code>2024-02-01</code><br>
+        Benchmark: <code>/Users/Renlong/Projects/GitHub/YIN-Renlong/vector-space-theological-meaning/data/benchmarks/ctsb_pilot.csv</code>
+      </p>
+    </footer>
   </main>
 </body>
 </html>
