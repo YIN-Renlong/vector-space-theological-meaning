@@ -2828,17 +2828,17 @@
     <section>
       <h2>Advanced Raw Data Export</h2>
       <p>
-        These blocks are hidden by default. Open them to copy the raw CSV directly for external analysis,
-        peer review, or follow-up interpretation.
+        This section is hidden by default. Open it and click <strong>Copy all raw CSV export</strong>
+        to copy one combined text block containing the exact repository path, file name, and raw CSV content
+        for every current v2 result file.
       </p>
-      
       <details class="raw-block">
-        <summary>Statistical summary CSV</summary>
+        <summary>Combined raw CSV export: statistics, concept summary, condition summary, and query-level results</summary>
         <p>
-          <a href="outputs/results/ctsb_100_v2_statistical_summary.csv" download>Download CSV</a>
-          <button type="button" onclick="copyRawCsv('raw-stats-csv')">Copy CSV</button>
+          <button type="button" onclick="copyRawCsv('raw-all-csv')">Copy all raw CSV export</button>
         </p>
-        <textarea id="raw-stats-csv" readonly spellcheck="false">analysis,subset,metric,n,mean,sd,bootstrap_ci_low,bootstrap_ci_high,cohens_d,t_statistic,p_value,wilcoxon_p,positive_count,negative_count,zero_count,positive_rate,practical_effect,interpretation
+        <textarea id="raw-all-csv" readonly spellcheck="false">===== FILE: /vector-space-theological-meaning/outputs/results/ctsb_100_v2_statistical_summary.csv =====
+analysis,subset,metric,n,mean,sd,bootstrap_ci_low,bootstrap_ci_high,cohens_d,t_statistic,p_value,wilcoxon_p,positive_count,negative_count,zero_count,positive_rate,practical_effect,interpretation
 Overall bare CAS vs zero,all concepts,bare_cas,100,-0.020213090062141417,0.09486808128540321,-0.03896620372310281,-0.0022041652835905613,-0.21306523530640317,-2.130652353064032,0.035595171513471045,0.04765016745207912,43,57,0,0.43,small,negative Catholic alignment
 Overall ordinary CAS vs zero,all concepts,ordinary_cas,100,0.02337056691696247,0.07398745031507407,0.00856246687124173,0.03730813084517916,0.3158720406966233,3.1587204069662325,0.0021015618381326393,0.0022639049036187655,62,38,0,0.62,small,positive Catholic alignment
 Overall academic CAS vs zero,all concepts,academic_cas,100,0.052463763636847335,0.07446781985515619,0.037738334199724104,0.06672273502461612,0.7045159068560367,7.045159068560366,2.4948912549586196e-10,3.203882879938662e-09,77,23,0,0.77,meaningful,positive Catholic alignment
@@ -2883,17 +2883,9 @@ Concept-type ordinary to Catholic shift,sacramental,ordinary_to_catholic_shift,4
 Concept-type ordinary to Catholic shift,social_anthropological,ordinary_to_catholic_shift,3,0.169335006756915,0.03177601836379909,0.14344005808234214,0.2047947903474172,5.329019036250003,9.230131725286737,0.005767516185640602,0.125,3,0,0,1.0,strong,positive shift toward Catholic descriptors
 Concept-type ordinary to Catholic shift,social_doctrine,ordinary_to_catholic_shift,6,0.05353562302059597,0.04753527308861591,0.021693208979235757,0.08871299376090365,1.1262294195889886,2.7586874113038795,0.019948368088190612,0.015625,6,0,0,1.0,meaningful,positive shift toward Catholic descriptors
 Concept-type ordinary to Catholic shift,virtue,ordinary_to_catholic_shift,3,0.04051165729761125,0.02182302910874013,0.018090724945068325,0.0616830945014954,1.8563718673401906,3.215330391974722,0.042314582547822284,0.125,3,0,0,1.0,small,positive shift toward Catholic descriptors
-</textarea>
-      </details>
 
-
-      <details class="raw-block">
-        <summary>Concept-level summary CSV</summary>
-        <p>
-          <a href="outputs/results/ctsb_100_v2_concept_summary.csv" download>Download CSV</a>
-          <button type="button" onclick="copyRawCsv('raw-concept-csv')">Copy CSV</button>
-        </p>
-        <textarea id="raw-concept-csv" readonly spellcheck="false">locus,concept,concept_type,ambiguity_level,bare_cas,bare_top_catholic_rate,bare_query_count,ordinary_cas,ordinary_top_catholic_rate,ordinary_query_count,academic_cas,academic_top_catholic_rate,academic_query_count,catholic_cas,catholic_top_catholic_rate,catholic_query_count,bare_to_catholic_shift,ordinary_to_catholic_shift,academic_to_catholic_shift,default_cas,default_to_catholic_shift
+===== FILE: /vector-space-theological-meaning/outputs/results/ctsb_100_v2_concept_summary.csv =====
+locus,concept,concept_type,ambiguity_level,bare_cas,bare_top_catholic_rate,bare_query_count,ordinary_cas,ordinary_top_catholic_rate,ordinary_query_count,academic_cas,academic_top_catholic_rate,academic_query_count,catholic_cas,catholic_top_catholic_rate,catholic_query_count,bare_to_catholic_shift,ordinary_to_catholic_shift,academic_to_catholic_shift,default_cas,default_to_catholic_shift
 Freedom Truth and Moral Teleology,authority,moral_social,high,0.03502771258354187,1.0,1,0.02450956404209137,1.0,3,0.06891259849071502,1.0,3,0.11848936875661213,1.0,3,0.08346165617307026,0.09397980471452076,0.049576770265897116,0.02976863831281662,0.08872073044379551
 Freedom Truth and Moral Teleology,autonomy,moral_anthropological,high,-0.24658603668212892,0.0,1,-0.12594927450021107,0.0,3,-0.10933511058489483,0.3333333333333333,3,-0.011003784338633213,0.6666666666666666,3,0.2355822523434957,0.11494549016157786,0.09833132624626162,-0.18626765559116998,0.17526387125253676
 Freedom Truth and Moral Teleology,beatitude,eschatological_moral,low,0.01693127155303953,1.0,1,0.043288787206014,1.0,3,0.06145904858907064,1.0,3,0.10213588078816734,1.0,3,0.0852046092351278,0.058847093582153336,0.040676832199096694,0.030110029379526764,0.07202585140864057
@@ -2994,17 +2986,9 @@ Sin Grace and Redemption,sin,moral_doctrinal,medium,0.000865584611892678,1.0,1,0
 Sin Grace and Redemption,temptation,moral_spiritual,medium,-0.0023025989532470814,1.0,1,0.019927179813385005,1.0,3,0.04421046674251555,1.0,3,0.11808228641748426,1.0,3,0.12038488537073135,0.09815510660409926,0.07387181967496871,0.008812290430068962,0.1092699959874153
 Sin Grace and Redemption,transgression,moral_juridical,medium,0.02241256833076477,1.0,1,0.073250878850619,1.0,3,0.10528995593388878,1.0,3,0.1779976507027944,1.0,3,0.15558508237202964,0.10474677185217542,0.07270769476890564,0.047831723590691884,0.13016592711210254
 Sin Grace and Redemption,venial sin,doctrinal,low,-0.10461791753768918,0.0,1,-0.017503888905048375,0.3333333333333333,3,-0.007914431144793843,0.6666666666666666,3,-0.010271508495012923,0.6666666666666666,3,0.09434640904267626,0.007232380410035452,-0.0023570773502190803,-0.06106090322136878,0.05078939472635585
-</textarea>
-      </details>
 
-
-      <details class="raw-block">
-        <summary>Condition-level summary CSV</summary>
-        <p>
-          <a href="outputs/results/ctsb_100_v2_condition_summary.csv" download>Download CSV</a>
-          <button type="button" onclick="copyRawCsv('raw-condition-csv')">Copy CSV</button>
-        </p>
-        <textarea id="raw-condition-csv" readonly spellcheck="false">locus,concept,concept_type,ambiguity_level,query_condition,query_count,catholic_score,secular_score,catholic_alignment_score,top_catholic_rate,mean_nearest_catholic_rank,mean_nearest_secular_rank
+===== FILE: /vector-space-theological-meaning/outputs/results/ctsb_100_v2_condition_summary.csv =====
+locus,concept,concept_type,ambiguity_level,query_condition,query_count,catholic_score,secular_score,catholic_alignment_score,top_catholic_rate,mean_nearest_catholic_rank,mean_nearest_secular_rank
 Freedom Truth and Moral Teleology,authority,moral_social,high,academic,3,0.34739390512307483,0.27848130663235987,0.06891259849071502,1.0,1.0,2.6666666666666665
 Freedom Truth and Moral Teleology,authority,moral_social,high,bare,1,0.3910975158214569,0.35606980323791504,0.03502771258354187,1.0,1.0,3.0
 Freedom Truth and Moral Teleology,authority,moral_social,high,catholic,3,0.34877739946047465,0.2302880307038625,0.11848936875661213,1.0,1.0,5.0
@@ -3405,17 +3389,9 @@ Sin Grace and Redemption,venial sin,doctrinal,low,academic,3,0.2673638286689917,
 Sin Grace and Redemption,venial sin,doctrinal,low,bare,1,0.3502863168716431,0.45490423440933225,-0.10461791753768918,0.0,5.0,1.0
 Sin Grace and Redemption,venial sin,doctrinal,low,catholic,3,0.2658923889199893,0.2761638974150022,-0.010271508495012923,0.6666666666666666,1.3333333333333333,1.6666666666666667
 Sin Grace and Redemption,venial sin,doctrinal,low,ordinary,3,0.27976924131313957,0.29727313021818796,-0.017503888905048375,0.3333333333333333,1.6666666666666667,1.3333333333333333
-</textarea>
-      </details>
 
-
-      <details class="raw-block">
-        <summary>Raw query-level results CSV</summary>
-        <p>
-          <a href="outputs/results/ctsb_100_v2_results.csv" download>Download CSV</a>
-          <button type="button" onclick="copyRawCsv('raw-query-csv')">Copy CSV</button>
-        </p>
-        <textarea id="raw-query-csv" readonly spellcheck="false">locus,concept,concept_type,ambiguity_level,query_condition,query_template_id,query,catholic_score,secular_score,catholic_alignment_score,top_descriptor,top_descriptor_group,top_descriptor_similarity,top_is_catholic,nearest_catholic_descriptor,nearest_catholic_similarity,nearest_catholic_rank,nearest_secular_descriptor,nearest_secular_similarity,nearest_secular_rank
+===== FILE: /vector-space-theological-meaning/outputs/results/ctsb_100_v2_results.csv =====
+locus,concept,concept_type,ambiguity_level,query_condition,query_template_id,query,catholic_score,secular_score,catholic_alignment_score,top_descriptor,top_descriptor_group,top_descriptor_similarity,top_is_catholic,nearest_catholic_descriptor,nearest_catholic_similarity,nearest_catholic_rank,nearest_secular_descriptor,nearest_secular_similarity,nearest_secular_rank
 Sin Grace and Redemption,sin,moral_doctrinal,medium,bare,bare_1,sin,0.175369057059288,0.17450347244739534,0.000865584611892678,offense against divine love,catholic,0.22307522594928741,1,offense against divine love,0.22307522594928741,1,legal crime,0.21551546454429626,2
 Sin Grace and Redemption,sin,moral_doctrinal,medium,ordinary,ordinary_1,The everyday meaning of sin.,0.30806964039802553,0.23762816488742827,0.07044147551059726,need for repentance and grace,catholic,0.35130074620246887,1,need for repentance and grace,0.35130074620246887,1,social rule-breaking,0.26427754759788513,5
 Sin Grace and Redemption,sin,moral_doctrinal,medium,ordinary,ordinary_2,How people experience sin.,0.3513536095619202,0.22605642378330232,0.12529718577861787,need for repentance and grace,catholic,0.4297190308570862,1,need for repentance and grace,0.4297190308570862,1,psychological guilt,0.3550952970981598,4
@@ -4418,7 +4394,6 @@ Freedom Truth and Moral Teleology,license,moral_juridical,high,catholic,catholic
 Freedom Truth and Moral Teleology,license,moral_juridical,high,catholic,catholic_3,The meaning of license in Christian doctrine.,0.23016005456447602,0.28406873643398284,-0.053908681869506814,official permission,secular,0.3495791554450989,0,permission not equal to moral good,0.346579909324646,2,official permission,0.3495791554450989,1
 </textarea>
       </details>
-
     </section>
 
     <footer>

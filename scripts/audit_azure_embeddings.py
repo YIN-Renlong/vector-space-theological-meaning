@@ -879,17 +879,19 @@ def format_numeric_df(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-def raw_csv_block(title: str, element_id: str, csv_text: str, download_path: str) -> str:
-    escaped = html_lib.escape(csv_text)
-    safe_title = html_lib.escape(title)
+def combined_raw_csv_block(element_id: str, sections: List[tuple[str, str]]) -> str:
+    parts = []
+    for file_path, csv_text in sections:
+        parts.append(f"===== FILE: {file_path} =====\n{csv_text.strip()}\n")
+    combined_text = "\n".join(parts).strip() + "\n"
+    escaped = html_lib.escape(combined_text)
     safe_id = html_lib.escape(element_id)
-    safe_path = html_lib.escape(download_path)
+
     return f"""
       <details class="raw-block">
-        <summary>{safe_title}</summary>
+        <summary>Combined raw CSV export: statistics, concept summary, condition summary, and query-level results</summary>
         <p>
-          <a href="{safe_path}" download>Download CSV</a>
-          <button type="button" onclick="copyRawCsv('{safe_id}')">Copy CSV</button>
+          <button type="button" onclick="copyRawCsv('{safe_id}')">Copy all raw CSV export</button>
         </p>
         <textarea id="{safe_id}" readonly spellcheck="false">{escaped}</textarea>
       </details>
@@ -970,32 +972,15 @@ def write_dashboard(
     ordinary_top_rate = float(concept_df["ordinary_top_catholic_rate"].mean())
     catholic_top_rate = float(concept_df["catholic_top_catholic_rate"].mean())
 
-    raw_blocks = "\n".join([
-        raw_csv_block(
-            "Statistical summary CSV",
-            "raw-stats-csv",
-            stats_df.to_csv(index=False),
-            display_path(output_stats_csv).replace("/" + ROOT.name + "/", ""),
-        ),
-        raw_csv_block(
-            "Concept-level summary CSV",
-            "raw-concept-csv",
-            concept_df.to_csv(index=False),
-            display_path(output_concept_csv).replace("/" + ROOT.name + "/", ""),
-        ),
-        raw_csv_block(
-            "Condition-level summary CSV",
-            "raw-condition-csv",
-            condition_df.to_csv(index=False),
-            display_path(output_condition_csv).replace("/" + ROOT.name + "/", ""),
-        ),
-        raw_csv_block(
-            "Raw query-level results CSV",
-            "raw-query-csv",
-            results_df.to_csv(index=False),
-            display_path(output_csv).replace("/" + ROOT.name + "/", ""),
-        ),
-    ])
+    raw_blocks = combined_raw_csv_block(
+        "raw-all-csv",
+        [
+            (display_path(output_stats_csv), stats_df.to_csv(index=False)),
+            (display_path(output_concept_csv), concept_df.to_csv(index=False)),
+            (display_path(output_condition_csv), condition_df.to_csv(index=False)),
+            (display_path(output_csv), results_df.to_csv(index=False)),
+        ],
+    )
 
     generated = utc_now()
     safe_benchmark = display_path(benchmark_path)
@@ -1296,8 +1281,9 @@ def write_dashboard(
     <section>
       <h2>Advanced Raw Data Export</h2>
       <p>
-        These blocks are hidden by default. Open them to copy the raw CSV directly for external analysis,
-        peer review, or follow-up interpretation.
+        This section is hidden by default. Open it and click <strong>Copy all raw CSV export</strong>
+        to copy one combined text block containing the exact repository path, file name, and raw CSV content
+        for every current v2 result file.
       </p>
       {raw_blocks}
     </section>
