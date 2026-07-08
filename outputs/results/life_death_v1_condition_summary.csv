@@ -1,0 +1,97 @@
+locus,concept,concept_type,ambiguity_level,query_condition,query_count,catholic_score,secular_score,catholic_alignment_score,top_catholic_rate,mean_nearest_catholic_rank,mean_nearest_secular_rank
+Life and Death / Created Life,biological life,anthropological_natural,high,academic,3,0.3558871825536092,0.3990061024824778,-0.043118919928868626,0.0,2.6666666666666665,1.0
+Life and Death / Created Life,biological life,anthropological_natural,high,bare,1,0.45439066290855407,0.5498721957206726,-0.09548153281211852,0.0,3.0,1.0
+Life and Death / Created Life,biological life,anthropological_natural,high,catholic,3,0.41270206967989603,0.3080456912517548,0.10465637842814125,1.0,1.0,3.0
+Life and Death / Created Life,biological life,anthropological_natural,high,ordinary,3,0.34327142039934794,0.38108357787132263,-0.037812157471974694,0.0,3.0,1.0
+Life and Death / Created Life,breath of life,biblical_anthropological,medium,academic,3,0.44311811725298567,0.371418297290802,0.07169981996218362,1.0,1.0,3.3333333333333335
+Life and Death / Created Life,breath of life,biblical_anthropological,medium,bare,1,0.4839548349380493,0.4567051649093628,0.0272496700286865,1.0,1.0,3.0
+Life and Death / Created Life,breath of life,biblical_anthropological,medium,catholic,3,0.461899212996165,0.3096849491198858,0.15221426387627918,1.0,1.0,5.0
+Life and Death / Created Life,breath of life,biblical_anthropological,medium,ordinary,3,0.3724277585744858,0.34991199771563214,0.02251576085885365,1.0,1.0,3.0
+Life and Death / Created Life,created life,doctrinal_cosmological,medium,academic,3,0.4918486634890238,0.30293170710404715,0.18891695638497671,1.0,1.0,5.0
+Life and Death / Created Life,created life,doctrinal_cosmological,medium,bare,1,0.4863357961177826,0.4102678418159485,0.0760679543018341,1.0,1.0,3.0
+Life and Death / Created Life,created life,doctrinal_cosmological,medium,catholic,3,0.47940390706062314,0.24287445942560834,0.23652944763501485,1.0,1.0,6.0
+Life and Death / Created Life,created life,doctrinal_cosmological,medium,ordinary,3,0.42917072176933285,0.2902503659327825,0.1389203558365504,1.0,1.0,5.0
+Life and Death / Created Life,human life,anthropological_bioethical,high,academic,3,0.42351378202438356,0.38809815943241116,0.03541562259197236,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Life and Death / Created Life,human life,anthropological_bioethical,high,bare,1,0.5480761110782624,0.5657740890979767,-0.01769797801971429,0.0,2.0,1.0
+Life and Death / Created Life,human life,anthropological_bioethical,high,catholic,3,0.4457010785738627,0.2965162664651871,0.14918481210867562,1.0,1.0,4.666666666666667
+Life and Death / Created Life,human life,anthropological_bioethical,high,ordinary,3,0.3647528946399689,0.3599847714106242,0.004768123229344686,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Life and Death / Created Life,life,anthropological_metaphysical,high,academic,3,0.301567060748736,0.2906898736953735,0.01087718705336251,0.6666666666666666,1.3333333333333333,2.0
+Life and Death / Created Life,life,anthropological_metaphysical,high,bare,1,0.3208763599395752,0.38114999532699584,-0.06027363538742064,0.0,3.0,1.0
+Life and Death / Created Life,life,anthropological_metaphysical,high,catholic,3,0.3802995453278224,0.21881434321403503,0.16148520211378734,1.0,1.0,4.333333333333333
+Life and Death / Created Life,life,anthropological_metaphysical,high,ordinary,3,0.2457512180010478,0.2839280972878138,-0.038176879286766045,0.0,3.0,1.0
+Life and Death / Created Life,sacredness of life,bioethical_doctrinal,medium,academic,3,0.5111174046993255,0.4205675045649211,0.09054990013440446,0.6666666666666666,1.3333333333333333,2.0
+Life and Death / Created Life,sacredness of life,bioethical_doctrinal,medium,bare,1,0.5937792181968689,0.49627432227134705,0.0975048959255218,1.0,1.0,2.0
+Life and Death / Created Life,sacredness of life,bioethical_doctrinal,medium,catholic,3,0.503730070590973,0.3784150987863541,0.1253149718046188,1.0,1.0,3.3333333333333335
+Life and Death / Created Life,sacredness of life,bioethical_doctrinal,medium,ordinary,3,0.43346280058225,0.3726088017225266,0.0608539988597234,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Life and Death / Eschatology,eternal life,eschatological_doctrinal,low,academic,3,0.395734824736913,0.4230508327484131,-0.027316008011500064,0.6666666666666666,2.0,1.6666666666666667
+Life and Death / Eschatology,eternal life,eschatological_doctrinal,low,bare,1,0.5452325582504273,0.5572634696960449,-0.012030911445617631,0.0,2.0,1.0
+Life and Death / Eschatology,eternal life,eschatological_doctrinal,low,catholic,3,0.4283526023228963,0.3781130373477936,0.050239564975102756,1.0,1.0,4.0
+Life and Death / Eschatology,eternal life,eschatological_doctrinal,low,ordinary,3,0.3998894532521566,0.39114236632982885,0.008747086922327674,1.0,1.0,2.0
+Life and Death / Eschatology,heaven,eschatological_doctrinal,medium,academic,3,0.33734855254491175,0.30498011211554205,0.032368440429369615,0.0,2.0,1.0
+Life and Death / Eschatology,heaven,eschatological_doctrinal,medium,bare,1,0.4130200743675232,0.42221684455871583,-0.009196770191192638,0.0,3.0,1.0
+Life and Death / Eschatology,heaven,eschatological_doctrinal,medium,catholic,3,0.35613785982131957,0.25908315827449163,0.09705470154682794,1.0,1.0,2.3333333333333335
+Life and Death / Eschatology,heaven,eschatological_doctrinal,medium,ordinary,3,0.3168225208918254,0.2845087339480718,0.032313786943753565,0.0,2.0,1.0
+Life and Death / Eschatology,hell,eschatological_doctrinal,medium,academic,3,0.28614197274049125,0.3111002713441849,-0.024958298603693623,0.0,2.6666666666666665,1.0
+Life and Death / Eschatology,hell,eschatological_doctrinal,medium,bare,1,0.18918074071407318,0.24758669435977937,-0.05840595364570619,0.0,5.0,1.0
+Life and Death / Eschatology,hell,eschatological_doctrinal,medium,catholic,3,0.32140496869881946,0.28074167172114056,0.04066329697767895,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Life and Death / Eschatology,hell,eschatological_doctrinal,medium,ordinary,3,0.25692230264345806,0.2898820290962855,-0.03295972645282744,0.0,3.0,1.0
+Life and Death / Eschatology,judgment after death,eschatological_moral,medium,academic,3,0.46370166540145874,0.3898280034462611,0.07387366195519766,0.0,2.0,1.0
+Life and Death / Eschatology,judgment after death,eschatological_moral,medium,bare,1,0.5466444432735443,0.493159556388855,0.05348488688468933,0.0,2.0,1.0
+Life and Death / Eschatology,judgment after death,eschatological_moral,medium,catholic,3,0.4345610419909159,0.35836381117502847,0.07619723081588743,0.0,2.0,1.0
+Life and Death / Eschatology,judgment after death,eschatological_moral,medium,ordinary,3,0.4515927533308665,0.3647529770930608,0.08683977623780569,0.0,2.0,1.0
+Life and Death / Eschatology,purgatory,eschatological_doctrinal,low,academic,3,0.37632388075192774,0.3395675102869669,0.03675637046496072,0.6666666666666666,1.3333333333333333,2.0
+Life and Death / Eschatology,purgatory,eschatological_doctrinal,low,bare,1,0.46692524552345277,0.4401116371154785,0.026813608407974254,1.0,1.0,2.0
+Life and Death / Eschatology,purgatory,eschatological_doctrinal,low,catholic,3,0.35229093432426456,0.3336022108793259,0.01868872344493866,0.0,2.0,1.0
+Life and Death / Eschatology,purgatory,eschatological_doctrinal,low,ordinary,3,0.3483673950036367,0.32063230872154236,0.027735086282094312,0.6666666666666666,1.3333333333333333,1.6666666666666667
+Life and Death / Eschatology,resurrection,eschatological_doctrinal,low,academic,3,0.42587855656941737,0.29487004578113557,0.13100851078828174,1.0,1.0,3.0
+Life and Death / Eschatology,resurrection,eschatological_doctrinal,low,bare,1,0.5342490971088409,0.4122741103172302,0.12197498679161073,1.0,1.0,3.0
+Life and Death / Eschatology,resurrection,eschatological_doctrinal,low,catholic,3,0.3966947237650553,0.249822336435318,0.14687238732973737,1.0,1.0,4.333333333333333
+Life and Death / Eschatology,resurrection,eschatological_doctrinal,low,ordinary,3,0.4106739997863769,0.3202705929676692,0.09040340681870779,1.0,1.0,2.6666666666666665
+Life and Death / Mortality,death,anthropological_eschatological,high,academic,3,0.31232623954614,0.33403400878111517,-0.021707769234975194,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Life and Death / Mortality,death,anthropological_eschatological,high,bare,1,0.35735193490982053,0.4333616435527802,-0.07600970864295964,0.0,3.0,1.0
+Life and Death / Mortality,death,anthropological_eschatological,high,catholic,3,0.3558136900266011,0.26473690718412396,0.09107678284247715,1.0,1.0,2.6666666666666665
+Life and Death / Mortality,death,anthropological_eschatological,high,ordinary,3,0.2695448011159897,0.30866585771242777,-0.03912105659643811,0.0,2.0,1.0
+Life and Death / Mortality,dying,pastoral_anthropological,high,academic,3,0.3319816023111343,0.36144063770771023,-0.029459035396575944,0.0,2.3333333333333335,1.0
+Life and Death / Mortality,dying,pastoral_anthropological,high,bare,1,0.33689662516117097,0.44703189730644227,-0.1101352721452713,0.0,4.0,1.0
+Life and Death / Mortality,dying,pastoral_anthropological,high,catholic,3,0.40496469239393873,0.2932215710481008,0.11174312134583791,1.0,1.0,3.6666666666666665
+Life and Death / Mortality,dying,pastoral_anthropological,high,ordinary,3,0.2994082997242609,0.34128926595052084,-0.041880966226259884,0.0,2.3333333333333335,1.0
+Life and Death / Mortality,end of life,bioethical_pastoral,high,academic,3,0.44707677165667215,0.3804045935471853,0.0666721781094869,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Life and Death / Mortality,end of life,bioethical_pastoral,high,bare,1,0.5066746771335602,0.5166702449321747,-0.009995567798614546,0.0,2.0,1.0
+Life and Death / Mortality,end of life,bioethical_pastoral,high,catholic,3,0.4516332407792409,0.3017606849471728,0.14987255583206813,1.0,1.0,3.0
+Life and Death / Mortality,end of life,bioethical_pastoral,high,ordinary,3,0.41670012275377905,0.33576919535795846,0.08093092739582064,1.0,1.0,2.0
+Life and Death / Mortality,grief,pastoral_spiritual,high,academic,3,0.35244933366775516,0.47658302386601764,-0.12413369019826254,0.0,5.333333333333333,1.0
+Life and Death / Mortality,grief,pastoral_spiritual,high,bare,1,0.41873165369033816,0.5751603901386261,-0.15642873644828792,0.0,5.0,1.0
+Life and Death / Mortality,grief,pastoral_spiritual,high,catholic,3,0.40801567633946734,0.4095615108807882,-0.0015458345413207897,1.0,1.0,2.3333333333333335
+Life and Death / Mortality,grief,pastoral_spiritual,high,ordinary,3,0.3044777303934097,0.4445476333300273,-0.14006990293661753,0.0,6.0,1.0
+Life and Death / Mortality,mortality,anthropological_eschatological,high,academic,3,0.38128461241722106,0.3376378476619721,0.043646764755249014,1.0,1.0,2.0
+Life and Death / Mortality,mortality,anthropological_eschatological,high,bare,1,0.36495116353034973,0.40506558418273925,-0.040114420652389515,0.0,2.0,1.0
+Life and Death / Mortality,mortality,anthropological_eschatological,high,catholic,3,0.3716232677300771,0.23885004222393036,0.13277322550614676,1.0,1.0,3.6666666666666665
+Life and Death / Mortality,mortality,anthropological_eschatological,high,ordinary,3,0.34726214508215586,0.30730232993761697,0.03995981514453887,1.0,1.0,2.0
+Life and Death / Mortality,mourning,pastoral_liturgical,medium,academic,3,0.4025690774122874,0.47014994621276857,-0.0675808688004812,1.0,1.0,2.0
+Life and Death / Mortality,mourning,pastoral_liturgical,medium,bare,1,0.4618197649717331,0.6027910947799683,-0.14097132980823518,1.0,1.0,2.0
+Life and Death / Mortality,mourning,pastoral_liturgical,medium,catholic,3,0.4472105065981547,0.41229696075121564,0.0349135458469391,1.0,1.0,3.3333333333333335
+Life and Death / Mortality,mourning,pastoral_liturgical,medium,ordinary,3,0.3548865964015325,0.461970051129659,-0.10708345472812651,0.0,2.6666666666666665,1.0
+Life and Death / Pastoral Ethics,end-of-life care,bioethical_pastoral,high,academic,3,0.3936832547187805,0.44913909633954363,-0.05545584162076315,0.0,2.0,1.0
+Life and Death / Pastoral Ethics,end-of-life care,bioethical_pastoral,high,bare,1,0.4478464901447296,0.5986490190029145,-0.15080252885818485,0.0,4.0,1.0
+Life and Death / Pastoral Ethics,end-of-life care,bioethical_pastoral,high,catholic,3,0.4469608048597971,0.4034868150949478,0.04347398976484934,1.0,1.0,2.6666666666666665
+Life and Death / Pastoral Ethics,end-of-life care,bioethical_pastoral,high,ordinary,3,0.37413208186626434,0.42911324699719744,-0.05498116513093312,0.0,2.3333333333333335,1.0
+Life and Death / Pastoral Ethics,euthanasia,bioethical_moral,high,academic,3,0.3297241518894831,0.42267407576243077,-0.09294992387294766,0.0,4.666666666666667,1.0
+Life and Death / Pastoral Ethics,euthanasia,bioethical_moral,high,bare,1,0.38939085602760315,0.5796177983283997,-0.1902269423007965,0.0,6.0,1.0
+Life and Death / Pastoral Ethics,euthanasia,bioethical_moral,high,catholic,3,0.3524332871039708,0.3852117399374644,-0.032778452833493545,0.3333333333333333,2.3333333333333335,2.0
+Life and Death / Pastoral Ethics,euthanasia,bioethical_moral,high,ordinary,3,0.29731154441833496,0.3933911244074504,-0.09607957998911541,0.0,3.6666666666666665,1.0
+Life and Death / Pastoral Ethics,hope,theological_virtue,high,academic,3,0.37449410259723664,0.3197838375965754,0.05471026500066123,1.0,1.0,3.0
+Life and Death / Pastoral Ethics,hope,theological_virtue,high,bare,1,0.3769358694553375,0.38397828340530393,-0.0070424139499664085,1.0,1.0,2.0
+Life and Death / Pastoral Ethics,hope,theological_virtue,high,catholic,3,0.45001588265101117,0.24786689380804697,0.20214898884296417,1.0,1.0,5.333333333333333
+Life and Death / Pastoral Ethics,hope,theological_virtue,high,ordinary,3,0.33547586997350054,0.3162522514661153,0.01922361850738526,1.0,1.0,3.0
+Life and Death / Pastoral Ethics,martyrdom,moral_spiritual,medium,academic,3,0.37081653277079263,0.3752555429935455,-0.004439010222752893,0.6666666666666666,1.3333333333333333,1.6666666666666667
+Life and Death / Pastoral Ethics,martyrdom,moral_spiritual,medium,bare,1,0.46056394577026366,0.4793464422225952,-0.018782496452331543,1.0,1.0,2.0
+Life and Death / Pastoral Ethics,martyrdom,moral_spiritual,medium,catholic,3,0.36839273373285925,0.3012294332186381,0.06716330051422119,1.0,1.0,4.333333333333333
+Life and Death / Pastoral Ethics,martyrdom,moral_spiritual,medium,ordinary,3,0.3387441158294678,0.34623414278030396,-0.007490026950836189,0.6666666666666666,1.3333333333333333,1.6666666666666667
+Life and Death / Pastoral Ethics,suffering,pastoral_anthropological,high,academic,3,0.2834572325150172,0.25261658330758413,0.03084064920743307,1.0,1.0,2.3333333333333335
+Life and Death / Pastoral Ethics,suffering,pastoral_anthropological,high,bare,1,0.36993818879127505,0.43897159695625304,-0.069033408164978,0.0,2.0,1.0
+Life and Death / Pastoral Ethics,suffering,pastoral_anthropological,high,catholic,3,0.3121968269348145,0.1889097770055135,0.12328704992930095,1.0,1.0,6.0
+Life and Death / Pastoral Ethics,suffering,pastoral_anthropological,high,ordinary,3,0.2564211875200271,0.29557745754718784,-0.039156270027160635,0.0,2.0,1.0
+Life and Death / Pastoral Ethics,suicide,pastoral_moral,high,academic,3,0.23380766411622367,0.3610890914996465,-0.12728142738342285,0.0,3.6666666666666665,1.0
+Life and Death / Pastoral Ethics,suicide,pastoral_moral,high,bare,1,0.27411691248416903,0.5055633187294006,-0.2314464062452316,0.0,6.0,1.0
+Life and Death / Pastoral Ethics,suicide,pastoral_moral,high,catholic,3,0.2624384830395381,0.2889062315225601,-0.026467748483022042,0.0,3.0,1.0
+Life and Death / Pastoral Ethics,suicide,pastoral_moral,high,ordinary,3,0.18182303210099537,0.3259580691655477,-0.1441350370645523,0.0,4.666666666666667,1.0

@@ -191,6 +191,35 @@ Main tests:
 
 A statistically significant result should not be interpreted as proof of ontology. The appropriate conclusion is evidence of a systematic representational prior.
 
+## Life and Death Supplement
+
+A focused life/death benchmark has been added as a supplement because life and death are ultimate theological, existential, biological, and secular questions.
+
+Benchmark:
+
+    data/benchmarks/life_death_v1_draft.csv
+
+Descriptor source:
+
+    data/benchmarks/life_death_concepts_descriptors_v1_draft.csv
+
+Outputs:
+
+    outputs/results/life_death_v1_results.csv
+    outputs/results/life_death_v1_condition_summary.csv
+    outputs/results/life_death_v1_concept_summary.csv
+    outputs/results/life_death_v1_statistical_summary.csv
+
+Focused dashboard:
+
+    life_death.html
+
+Local run:
+
+    .venv/bin/python scripts/audit_life_death_embeddings.py --open
+
+The main dashboard also includes a hidden raw-data panel for the life/death supplement only, so that the supplemental data can be copied without copying the full CTSB-100 dataset.
+
 ## GitHub Pages
 
 This project is configured for GitHub Pages from:
