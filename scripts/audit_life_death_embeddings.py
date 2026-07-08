@@ -219,6 +219,213 @@ def raw_block(files: list[Path]) -> str:
     return html_lib.escape(combined)
 
 
+
+def image_export_section() -> str:
+    return """    <section id="dashboard-image-export">
+      <h2>Export Dashboard Images</h2>
+      <p>
+        Click once to download a ZIP file containing every Plotly chart on this page as PNG images.
+        The ZIP also includes <code>README_image_manifest.txt</code>, which identifies each image by
+        page, section title, Plotly title, filename, and source URL.
+      </p>
+      <p>
+        <button type="button" onclick="downloadAllPlotlyImagesZip()">Download all charts as PNG ZIP</button>
+      </p>
+      <p id="image-export-status" class="label">Ready to export dashboard images.</p>
+    </section>
+"""
+
+
+def image_export_script() -> str:
+    return r"""  <script>
+    function imageExportStatus(message) {
+      const el = document.getElementById("image-export-status");
+      if (el) el.textContent = message;
+      console.log("[image-export]", message);
+    }
+
+    function sanitizeImageFilename(value) {
+      return String(value || "chart")
+        .replace(/<[^>]*>/g, "")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "and")
+        .replace(/[^a-zA-Z0-9._-]+/g, "_")
+        .replace(/^_+|_+$/g, "")
+        .slice(0, 120) || "chart";
+    }
+
+    function nearestSectionTitle(node) {
+      const section = node.closest("section");
+      if (!section) return "";
+      const h2 = section.querySelector("h2");
+      return h2 ? h2.textContent.trim() : "";
+    }
+
+    function plotlyTitle(gd) {
+      try {
+        const title = gd.layout && gd.layout.title;
+        if (!title) return "";
+        if (typeof title === "string") return title;
+        if (title.text) return String(title.text).replace(/<[^>]*>/g, "").trim();
+      } catch (err) {}
+      return "";
+    }
+
+    function timestampForFilename() {
+      const d = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+      return (
+        d.getFullYear().toString() +
+        pad(d.getMonth() + 1) +
+        pad(d.getDate()) +
+        "_" +
+        pad(d.getHours()) +
+        pad(d.getMinutes()) +
+        pad(d.getSeconds())
+      );
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 3000);
+    }
+
+    function dataUrlToBlob(dataUrl) {
+      return fetch(dataUrl).then((res) => res.blob());
+    }
+
+    async function loadScriptOnce(src) {
+      return new Promise((resolve, reject) => {
+        const existing = Array.from(document.scripts).find((s) => s.src === src);
+        if (existing) {
+          existing.addEventListener("load", resolve, { once: true });
+          if (window.JSZip) resolve();
+          return;
+        }
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+
+    async function ensureJSZip() {
+      if (window.JSZip) return window.JSZip;
+      await loadScriptOnce("https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js");
+      if (!window.JSZip) throw new Error("JSZip failed to load.");
+      return window.JSZip;
+    }
+
+    async function downloadAllPlotlyImagesZip() {
+      if (!window.Plotly) {
+        alert("Plotly is not loaded yet. Please wait for the charts to finish loading.");
+        return;
+      }
+
+      const graphs = Array.from(document.querySelectorAll(".plotly-graph-div"));
+      if (!graphs.length) {
+        alert("No Plotly charts found on this page.");
+        return;
+      }
+
+      const pageTitle = document.title || "dashboard";
+      const pageSlug = sanitizeImageFilename(pageTitle);
+      const stamp = timestampForFilename();
+      const zipName = pageSlug + "_plotly_charts_" + stamp + ".zip";
+
+      imageExportStatus("Preparing " + graphs.length + " chart(s). This may take a few seconds...");
+
+      const files = [];
+      const manifest = [];
+      manifest.push("Dashboard image export");
+      manifest.push("Page title: " + pageTitle);
+      manifest.push("Source URL: " + window.location.href);
+      manifest.push("Generated: " + new Date().toISOString());
+      manifest.push("Chart count: " + graphs.length);
+      manifest.push("");
+
+      for (let i = 0; i < graphs.length; i++) {
+        const gd = graphs[i];
+        const index = String(i + 1).padStart(2, "0");
+        const sectionTitle = nearestSectionTitle(gd) || "Untitled section";
+        const plotTitle = plotlyTitle(gd) || sectionTitle || "Untitled chart";
+        const filename =
+          index +
+          "_" +
+          pageSlug +
+          "_" +
+          sanitizeImageFilename(sectionTitle || plotTitle) +
+          ".png";
+
+        imageExportStatus("Rendering chart " + (i + 1) + " of " + graphs.length + ": " + sectionTitle);
+
+        try {
+          await Plotly.relayout(gd, {
+            paper_bgcolor: "#111827",
+            plot_bgcolor: "#111827",
+            "scene.bgcolor": "#111827",
+            "scene.xaxis.backgroundcolor": "#111827",
+            "scene.yaxis.backgroundcolor": "#111827",
+            "scene.zaxis.backgroundcolor": "#111827"
+          }).catch(() => {});
+
+          const width = Math.max(1200, Math.round(gd.clientWidth || gd.offsetWidth || 1200));
+          const height = Math.max(700, Math.round(gd.clientHeight || gd.offsetHeight || 700));
+
+          const dataUrl = await Plotly.toImage(gd, {
+            format: "png",
+            width: width,
+            height: height,
+            scale: 2
+          });
+
+          const blob = await dataUrlToBlob(dataUrl);
+          files.push({ filename, blob });
+
+          manifest.push("FILE: " + filename);
+          manifest.push("  Section: " + sectionTitle);
+          manifest.push("  Plot title: " + plotTitle);
+          manifest.push("  Page: " + pageTitle);
+          manifest.push("  Source URL: " + window.location.href);
+          manifest.push("  Description: PNG export of the Plotly chart in the section '" + sectionTitle + "'.");
+          manifest.push("");
+        } catch (err) {
+          manifest.push("FAILED: chart " + index + " / " + sectionTitle);
+          manifest.push("  Error: " + (err && err.message ? err.message : String(err)));
+          manifest.push("");
+        }
+      }
+
+      const manifestText = manifest.join("\\n");
+
+      try {
+        const JSZip = await ensureJSZip();
+        const zip = new JSZip();
+        for (const file of files) {
+          zip.file(file.filename, file.blob);
+        }
+        zip.file("README_image_manifest.txt", manifestText);
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        downloadBlob(zipBlob, zipName);
+        imageExportStatus("Done. Downloaded " + files.length + " chart image(s) as " + zipName + ".");
+      } catch (err) {
+        imageExportStatus("ZIP failed; falling back to separate downloads.");
+        for (const file of files) {
+          downloadBlob(file.blob, file.filename);
+        }
+        downloadBlob(new Blob([manifestText], { type: "text/plain;charset=utf-8" }), "README_image_manifest_" + stamp + ".txt");
+      }
+    }
+  </script>
+"""
+
 def write_life_dashboard(
     output_html: Path,
     benchmark_path: Path,
@@ -432,6 +639,8 @@ def write_life_dashboard(
       created life, dignity, hope, judgment, and eternal communion with God.
     </section>
 
+{image_export_section()}
+
     <section><h2>Context Distribution</h2>{fig1}</section>
     <section><h2>Ordinary vs Catholic Quadrant Map</h2>{fig2}</section>
     <section><h2>Context Trajectories</h2>{fig3}</section>
@@ -485,6 +694,7 @@ def write_life_dashboard(
       }}
     }}
   </script>
+{image_export_script()}
 </body>
 </html>
 """
