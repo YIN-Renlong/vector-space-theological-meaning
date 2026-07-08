@@ -8,32 +8,6 @@ Public dashboard:
 
     https://yin-renlong.github.io/vector-space-theological-meaning/
 
-## Iteration History
-
-### CTSB-100 v1 draft
-
-Version 1 is archived at:
-
-    archive/ctsb_100_v1_draft/
-
-It was the first successful 100-concept benchmark run. It used two query conditions:
-
-1. neutral/academic wording;
-2. explicit theological/Catholic wording.
-
-It remains a valid methodological starting point because it demonstrated that the pipeline, Catholic Alignment Score, rank-order metrics, and concept-level statistical analysis work.
-
-### CTSB-100 v2 context draft
-
-Version 2 is now the active benchmark. It separates four query contexts:
-
-1. bare/minimal: `love`, `freedom`, `body`;
-2. ordinary lived usage: ordinary/everyday usage templates;
-3. neutral academic usage: concept/meaning/discussion templates;
-4. explicit Catholic/theological usage: Catholic theology/teaching/Christian doctrine templates.
-
-This makes the analysis more precise because it distinguishes ordinary-language secular priors from academic abstraction and explicit theological code-switching.
-
 ## Current Method
 
 The current pipeline uses Azure OpenAI embeddings and calculates a Catholic Alignment Score.
@@ -50,19 +24,11 @@ This is a semantic representational audit. It is not a claim that an embedding m
 
 ## Benchmark Files
 
-Main active draft benchmark:
+Main draft benchmark:
 
-    data/benchmarks/ctsb_100_v2_contexts_draft.csv
+    data/benchmarks/ctsb_100_v1_draft.csv
 
-Archived v1 benchmark:
-
-    archive/ctsb_100_v1_draft/
-
-Active compact descriptor source:
-
-    data/benchmarks/ctsb_100_concepts_descriptors_v2_draft.csv
-
-Archived compact descriptor source:
+Compact descriptor source:
 
     data/benchmarks/ctsb_100_concepts_descriptors_v1_draft.csv
 
@@ -70,17 +36,15 @@ Pilot benchmark:
 
     data/benchmarks/ctsb_pilot.csv
 
-The CTSB-100 v2 draft contains:
+The CTSB-100 draft contains:
 
 - 100 theological concepts
 - 4 theological loci
-- 1 bare/minimal query per concept
-- 3 ordinary lived-usage query templates per concept
-- 3 neutral academic query templates per concept
-- 3 explicit Catholic/theological query templates per concept
+- 3 neutral query templates per concept
+- 3 theological query templates per concept
 - 5 Catholic-magisterial descriptors per concept
 - 5 secular/common-language descriptors per concept
-- 1000 query rows total
+- 600 query rows total
 
 The four loci are:
 
@@ -120,13 +84,13 @@ Do not commit `.env`.
 
 ## Run the CTSB-100 Audit
 
-Default full v2 draft benchmark:
+Default full draft benchmark:
 
-    .venv/bin/python scripts/audit_azure_embeddings.py --open
+    python3 scripts/audit_azure_embeddings.py --open
 
 Faster run without UMAP:
 
-    .venv/bin/python scripts/audit_azure_embeddings.py --skip-umap --open
+    python3 scripts/audit_azure_embeddings.py --skip-umap --open
 
 Pilot benchmark:
 
@@ -140,12 +104,12 @@ Pilot benchmark:
 
 ## Generated Outputs
 
-The active v2 audit generates:
+The full audit generates:
 
-    outputs/results/ctsb_100_v2_results.csv
-    outputs/results/ctsb_100_v2_condition_summary.csv
-    outputs/results/ctsb_100_v2_concept_summary.csv
-    outputs/results/ctsb_100_v2_statistical_summary.csv
+    outputs/results/ctsb_100_results.csv
+    outputs/results/ctsb_100_condition_summary.csv
+    outputs/results/ctsb_100_concept_summary.csv
+    outputs/results/ctsb_100_statistical_summary.csv
     index.html
 
 The dashboard includes:
@@ -201,15 +165,3 @@ This project is configured for GitHub Pages from:
 Expected URL:
 
     https://yin-renlong.github.io/vector-space-theological-meaning/
-
-
-## Advanced Raw Data Export
-
-The generated dashboard includes a hidden-by-default raw data section. Open the details blocks to copy or download:
-
-- statistical summary CSV;
-- concept-level summary CSV;
-- condition-level summary CSV;
-- raw query-level result CSV.
-
-This is intended to make peer review and external analysis easier.

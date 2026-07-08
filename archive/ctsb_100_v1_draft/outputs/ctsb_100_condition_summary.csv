@@ -1,0 +1,201 @@
+locus,concept,concept_type,ambiguity_level,query_condition,query_count,catholic_score,secular_score,catholic_alignment_score,top_catholic_rate,mean_nearest_catholic_rank,mean_nearest_secular_rank
+Freedom Truth and Moral Teleology,authority,moral_social,high,neutral,3,0.34739390512307483,0.27848130663235987,0.06891259849071502,1.0,1.0,2.6666666666666665
+Freedom Truth and Moral Teleology,authority,moral_social,high,theological,3,0.34877739946047465,0.2302880307038625,0.11848936875661213,1.0,1.0,5.0
+Freedom Truth and Moral Teleology,autonomy,moral_anthropological,high,neutral,3,0.2603294948736827,0.3696646054585775,-0.10933511058489483,0.3333333333333333,3.6666666666666665,1.3333333333333333
+Freedom Truth and Moral Teleology,autonomy,moral_anthropological,high,theological,3,0.29951606194178265,0.31051984628041585,-0.011003784338633213,0.6666666666666666,1.3333333333333333,2.0
+Freedom Truth and Moral Teleology,beatitude,eschatological_moral,low,neutral,3,0.3774812291065852,0.3160221805175145,0.06145904858907064,1.0,1.0,2.6666666666666665
+Freedom Truth and Moral Teleology,beatitude,eschatological_moral,low,theological,3,0.3571325580279033,0.2549966772397359,0.10213588078816734,1.0,1.0,3.6666666666666665
+Freedom Truth and Moral Teleology,commandment,biblical_moral,medium,neutral,3,0.3557265331347783,0.2813496708869934,0.07437686224778495,1.0,1.0,3.3333333333333335
+Freedom Truth and Moral Teleology,commandment,biblical_moral,medium,theological,3,0.3352620671192805,0.2889479994773865,0.04631406764189402,1.0,1.0,3.0
+Freedom Truth and Moral Teleology,discernment,spiritual_moral,medium,neutral,3,0.38306136926015216,0.27141961057980857,0.11164175868034364,1.0,1.0,5.333333333333333
+Freedom Truth and Moral Teleology,discernment,spiritual_moral,medium,theological,3,0.3832538942495982,0.21006864209969836,0.1731852521498998,1.0,1.0,6.0
+Freedom Truth and Moral Teleology,divine law,moral_theology,low,neutral,3,0.38193297386169434,0.3661349872748057,0.015797986586888635,1.0,1.0,2.0
+Freedom Truth and Moral Teleology,divine law,moral_theology,low,theological,3,0.3522644956906637,0.355266617735227,-0.003002122044563275,1.0,1.0,2.0
+Freedom Truth and Moral Teleology,duties,social_moral,high,neutral,3,0.3354646513859431,0.28945666750272114,0.04600798388322195,0.6666666666666666,1.3333333333333333,2.0
+Freedom Truth and Moral Teleology,duties,social_moral,high,theological,3,0.3839707314968109,0.2597998688618342,0.12417086263497668,1.0,1.0,3.6666666666666665
+Freedom Truth and Moral Teleology,flourishing,teleological_social,high,neutral,3,0.3137275199095408,0.3571931540966034,-0.043465634187062584,0.0,3.3333333333333335,1.0
+Freedom Truth and Moral Teleology,flourishing,teleological_social,high,theological,3,0.35912570655345916,0.2607291996479035,0.09839650690555574,1.0,1.0,4.0
+Freedom Truth and Moral Teleology,fortitude,virtue,medium,neutral,3,0.41639481981595355,0.35652637084325156,0.05986844897270203,1.0,1.0,5.0
+Freedom Truth and Moral Teleology,fortitude,virtue,medium,theological,3,0.4013789892196655,0.2890447676181793,0.11233422160148625,1.0,1.0,5.333333333333333
+Freedom Truth and Moral Teleology,freedom,moral_anthropological,high,neutral,3,0.3258798122406006,0.32983177701632177,-0.003951964775721221,1.0,1.0,2.0
+Freedom Truth and Moral Teleology,freedom,moral_anthropological,high,theological,3,0.3601692726214727,0.2631371368964513,0.09703213572502135,1.0,1.0,3.3333333333333335
+Freedom Truth and Moral Teleology,happiness,teleological_anthropological,high,neutral,3,0.24971213738123577,0.3225651075442632,-0.07285297016302744,0.0,3.0,1.0
+Freedom Truth and Moral Teleology,happiness,teleological_anthropological,high,theological,3,0.343867164850235,0.25184526344140373,0.09202190140883126,1.0,1.0,5.0
+Freedom Truth and Moral Teleology,holiness,spiritual_moral,medium,neutral,3,0.3101747910181681,0.37295603950818385,-0.06278124849001569,0.3333333333333333,3.6666666666666665,1.3333333333333333
+Freedom Truth and Moral Teleology,holiness,spiritual_moral,medium,theological,3,0.3258754114309947,0.341891207297643,-0.016015795866648346,0.0,3.0,1.0
+Freedom Truth and Moral Teleology,justice,virtue_social,high,neutral,3,0.3252050538857778,0.31202544271945953,0.013179611166318236,0.3333333333333333,2.3333333333333335,1.3333333333333333
+Freedom Truth and Moral Teleology,justice,virtue_social,high,theological,3,0.32775780359903967,0.269283202290535,0.05847460130850474,1.0,1.0,2.6666666666666665
+Freedom Truth and Moral Teleology,liberation,moral_soteriological,high,neutral,3,0.35731320182482396,0.3685461620489756,-0.01123296022415162,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Freedom Truth and Moral Teleology,liberation,moral_soteriological,high,theological,3,0.38511630694071447,0.28464925587177276,0.10046705106894177,0.6666666666666666,1.3333333333333333,2.3333333333333335
+Freedom Truth and Moral Teleology,license,moral_juridical,high,neutral,3,0.23483491440614065,0.31507927079995474,-0.0802443563938141,0.3333333333333333,3.0,1.3333333333333333
+Freedom Truth and Moral Teleology,license,moral_juridical,high,theological,3,0.24520198603471122,0.29843690594037375,-0.05323491990566254,0.3333333333333333,2.0,1.3333333333333333
+Freedom Truth and Moral Teleology,moral law,moral_theology,medium,neutral,3,0.3243464966615041,0.3135666022698084,0.010779894391695669,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Freedom Truth and Moral Teleology,moral law,moral_theology,medium,theological,3,0.30394504368305203,0.2725602298974991,0.03138481378555297,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Freedom Truth and Moral Teleology,moral truth,moral_theology,high,neutral,3,0.3650887578725815,0.3254547198613485,0.03963403801123302,0.6666666666666666,1.3333333333333333,2.3333333333333335
+Freedom Truth and Moral Teleology,moral truth,moral_theology,high,theological,3,0.3577705293893814,0.29039355715115867,0.06737697223822277,1.0,1.0,2.6666666666666665
+Freedom Truth and Moral Teleology,natural law,moral_theology,medium,neutral,3,0.39450077414512635,0.32885057330131534,0.06565020084381103,1.0,1.0,2.6666666666666665
+Freedom Truth and Moral Teleology,natural law,moral_theology,medium,theological,3,0.35942295988400774,0.29748971660931905,0.06193324327468871,1.0,1.0,3.0
+Freedom Truth and Moral Teleology,obedience,moral_spiritual,high,neutral,3,0.31619100968043007,0.33442224512497587,-0.018231235444545746,0.0,3.3333333333333335,1.0
+Freedom Truth and Moral Teleology,obedience,moral_spiritual,high,theological,3,0.3511492113272349,0.29468082437912624,0.056468386948108684,0.0,2.3333333333333335,1.0
+Freedom Truth and Moral Teleology,prudence,virtue,medium,neutral,3,0.4063087522983551,0.309994579354922,0.0963141729434331,1.0,1.0,2.3333333333333335
+Freedom Truth and Moral Teleology,prudence,virtue,medium,theological,3,0.39163066148757936,0.2662625645597776,0.12536809692780176,1.0,1.0,2.6666666666666665
+Freedom Truth and Moral Teleology,responsibility,moral_anthropological,high,neutral,3,0.3346484651168187,0.33728705644607543,-0.0026385913292567196,0.0,2.0,1.0
+Freedom Truth and Moral Teleology,responsibility,moral_anthropological,high,theological,3,0.36814436316490173,0.2745405892531077,0.09360377391179403,1.0,1.0,2.6666666666666665
+Freedom Truth and Moral Teleology,rights,social_doctrine,high,neutral,3,0.3178812603155772,0.3456706096728643,-0.02778934935728709,0.3333333333333333,2.6666666666666665,1.3333333333333333
+Freedom Truth and Moral Teleology,rights,social_doctrine,high,theological,3,0.29878782331943515,0.2908519764741262,0.007935846845308958,1.0,1.0,2.3333333333333335
+Freedom Truth and Moral Teleology,temperance,virtue,medium,neutral,3,0.3685179442167282,0.3729549129803975,-0.004436968763669317,1.0,1.0,2.0
+Freedom Truth and Moral Teleology,temperance,virtue,medium,theological,3,0.34398764173189794,0.3241713474194209,0.019816294312477094,1.0,1.0,2.0
+Freedom Truth and Moral Teleology,truth,epistemological_moral,high,neutral,3,0.36403326789538065,0.2343631943066915,0.12967007358868918,1.0,1.0,4.0
+Freedom Truth and Moral Teleology,truth,epistemological_moral,high,theological,3,0.39161824186642963,0.20685863296190898,0.18475960890452062,1.0,1.0,5.333333333333333
+Freedom Truth and Moral Teleology,virtue,moral_theology,medium,neutral,3,0.30874093472957614,0.31902614931265516,-0.010285214583079036,0.3333333333333333,2.3333333333333335,1.3333333333333333
+Freedom Truth and Moral Teleology,virtue,moral_theology,medium,theological,3,0.3027172793944677,0.2743288924296697,0.02838838696479797,1.0,1.0,2.6666666666666665
+Human Dignity and Theological Anthropology,body,anthropological,high,neutral,3,0.36387190520763396,0.3713823040326436,-0.007510398825009664,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Human Dignity and Theological Anthropology,body,anthropological,high,theological,3,0.3851596216360728,0.2989328642686208,0.08622675736745199,1.0,1.0,2.0
+Human Dignity and Theological Anthropology,common good,social_doctrine,medium,neutral,3,0.40079570412635807,0.3150433997313182,0.08575230439503988,1.0,1.0,3.6666666666666665
+Human Dignity and Theological Anthropology,common good,social_doctrine,medium,theological,3,0.3626589715480804,0.2830874760945638,0.07957149545351665,1.0,1.0,3.0
+Human Dignity and Theological Anthropology,community,social_anthropological,high,neutral,3,0.33784290353457136,0.28417741556962334,0.05366548796494802,1.0,1.0,3.6666666666666665
+Human Dignity and Theological Anthropology,community,social_anthropological,high,theological,3,0.4046935160954794,0.23270377914110818,0.17198973695437114,1.0,1.0,6.0
+Human Dignity and Theological Anthropology,conscience,moral_anthropological,high,neutral,3,0.3108297367890676,0.27328780392805735,0.03754193286101024,1.0,1.0,2.6666666666666665
+Human Dignity and Theological Anthropology,conscience,moral_anthropological,high,theological,3,0.2856442560752233,0.2160750761628151,0.0695691799124082,1.0,1.0,2.6666666666666665
+Human Dignity and Theological Anthropology,creation,doctrinal_cosmological,high,neutral,3,0.40011628866195675,0.27597366720438005,0.12414262145757676,1.0,1.0,4.0
+Human Dignity and Theological Anthropology,creation,doctrinal_cosmological,high,theological,3,0.38673193156719204,0.2139697546760241,0.17276217689116793,1.0,1.0,4.0
+Human Dignity and Theological Anthropology,creatureliness,anthropological_doctrinal,low,neutral,3,0.3479982008536657,0.3056724886099497,0.04232571224371593,0.0,2.0,1.0
+Human Dignity and Theological Anthropology,creatureliness,anthropological_doctrinal,low,theological,3,0.3555500785509745,0.2638811270395915,0.09166895151138306,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Human Dignity and Theological Anthropology,death,anthropological_eschatological,high,neutral,3,0.2723827968041102,0.33403400878111517,-0.061651211977005016,0.0,4.0,1.0
+Human Dignity and Theological Anthropology,death,anthropological_eschatological,high,theological,3,0.3185209055741628,0.26473690718412396,0.053783998390038806,0.6666666666666666,1.3333333333333333,1.6666666666666667
+Human Dignity and Theological Anthropology,disability,anthropological_social,high,neutral,3,0.26784098049004873,0.33684965272744494,-0.06900867223739623,0.0,4.0,1.0
+Human Dignity and Theological Anthropology,disability,anthropological_social,high,theological,3,0.29795847137769066,0.2668957402308782,0.031062731146812444,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Human Dignity and Theological Anthropology,ecological responsibility,social_doctrine,medium,neutral,3,0.41524247725804647,0.3485824465751648,0.06666003068288166,1.0,1.0,3.3333333333333335
+Human Dignity and Theological Anthropology,ecological responsibility,social_doctrine,medium,theological,3,0.4508136550585429,0.2947251498699188,0.15608850518862408,1.0,1.0,6.0
+Human Dignity and Theological Anthropology,elderly life,anthropological_social,high,neutral,3,0.35891580482323965,0.3725177576144536,-0.013601952791213992,1.0,1.0,3.0
+Human Dignity and Theological Anthropology,elderly life,anthropological_social,high,theological,3,0.32609781523545583,0.2986109713713328,0.02748684386412305,1.0,1.0,3.0
+Human Dignity and Theological Anthropology,embodiment,anthropological,high,neutral,3,0.3953710416952769,0.3641445914904276,0.031226450204849265,0.6666666666666666,1.3333333333333333,2.0
+Human Dignity and Theological Anthropology,embodiment,anthropological,high,theological,3,0.43321936527887983,0.2914771576722463,0.1417422076066335,1.0,1.0,4.666666666666667
+Human Dignity and Theological Anthropology,free will,anthropological_moral,high,neutral,3,0.29827011028925576,0.30554770727952324,-0.007277596990267439,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Human Dignity and Theological Anthropology,free will,anthropological_moral,high,theological,3,0.2724428782860438,0.24146426916122435,0.03097860912481945,1.0,1.0,3.3333333333333335
+Human Dignity and Theological Anthropology,human dignity,anthropological_social,medium,neutral,3,0.46887781023979186,0.2946919798851013,0.1741858303546905,1.0,1.0,4.333333333333333
+Human Dignity and Theological Anthropology,human dignity,anthropological_social,medium,theological,3,0.46273275415102644,0.2393150826295217,0.22341767152150474,1.0,1.0,5.0
+Human Dignity and Theological Anthropology,human person,anthropological,medium,neutral,3,0.34568685789903003,0.24849470953146616,0.09719214836756389,1.0,1.0,4.0
+Human Dignity and Theological Anthropology,human person,anthropological,medium,theological,3,0.362896924217542,0.21509388089179993,0.1478030433257421,1.0,1.0,5.333333333333333
+Human Dignity and Theological Anthropology,imago Dei,anthropological_doctrinal,low,neutral,3,0.45265663067499795,0.3532844215631485,0.09937220911184946,1.0,1.0,4.0
+Human Dignity and Theological Anthropology,imago Dei,anthropological_doctrinal,low,theological,3,0.4364402194817861,0.32323814332485196,0.1132020761569341,1.0,1.0,4.0
+Human Dignity and Theological Anthropology,migration,social_doctrine,high,neutral,3,0.2934173087279002,0.3257471432288488,-0.03232983450094858,0.6666666666666666,1.3333333333333333,1.6666666666666667
+Human Dignity and Theological Anthropology,migration,social_doctrine,high,theological,3,0.2696840286254883,0.2548830062150955,0.014801022410392772,1.0,1.0,2.0
+Human Dignity and Theological Anthropology,personhood,anthropological_philosophical,high,neutral,3,0.30784138639767966,0.2695690462986628,0.03827234009901683,0.3333333333333333,1.6666666666666667,1.6666666666666667
+Human Dignity and Theological Anthropology,personhood,anthropological_philosophical,high,theological,3,0.3462005039056142,0.20057481576999028,0.14562568813562393,1.0,1.0,5.0
+Human Dignity and Theological Anthropology,poverty,social_moral,high,neutral,3,0.2428450733423233,0.35981868108113607,-0.11697360773881277,0.0,2.0,1.0
+Human Dignity and Theological Anthropology,poverty,social_moral,high,theological,3,0.3028491129477819,0.28702086210250854,0.015828250845273322,1.0,1.0,2.6666666666666665
+Human Dignity and Theological Anthropology,rational nature,anthropological_philosophical,medium,neutral,3,0.34924992124239607,0.29174494445323945,0.05750497678915658,1.0,1.0,3.6666666666666665
+Human Dignity and Theological Anthropology,rational nature,anthropological_philosophical,medium,theological,3,0.3523699790239334,0.26832850178082784,0.08404147724310558,1.0,1.0,4.0
+Human Dignity and Theological Anthropology,soul,anthropological_doctrinal,high,neutral,3,0.33555218279361726,0.28782138327757517,0.047730799516042054,1.0,1.0,3.3333333333333335
+Human Dignity and Theological Anthropology,soul,anthropological_doctrinal,high,theological,3,0.31611051360766096,0.20085526804129283,0.11525524556636813,1.0,1.0,4.333333333333333
+Human Dignity and Theological Anthropology,subsidiarity,social_doctrine,low,neutral,3,0.34131169617176055,0.2346526066462199,0.10665908952554067,1.0,1.0,5.0
+Human Dignity and Theological Anthropology,subsidiarity,social_doctrine,low,theological,3,0.3489251762628555,0.22027039527893066,0.12865478098392488,1.0,1.0,5.0
+Human Dignity and Theological Anthropology,suffering,anthropological_spiritual,high,neutral,3,0.26390273670355474,0.25261658330758413,0.011286153395970647,0.6666666666666666,1.6666666666666667,1.6666666666666667
+Human Dignity and Theological Anthropology,suffering,anthropological_spiritual,high,theological,3,0.2822856694459915,0.1889097770055135,0.09337589244047802,1.0,1.0,6.0
+Human Dignity and Theological Anthropology,unborn life,bioethical_anthropological,high,neutral,3,0.4395001530647278,0.31774582465489704,0.12175432840983075,1.0,1.0,5.0
+Human Dignity and Theological Anthropology,unborn life,bioethical_anthropological,high,theological,3,0.41903644303480786,0.26731357177098597,0.15172287126382192,1.0,1.0,5.0
+Human Dignity and Theological Anthropology,vocation,anthropological_spiritual,medium,neutral,3,0.3352589180072149,0.2912895500659943,0.043969367941220604,1.0,1.0,3.6666666666666665
+Human Dignity and Theological Anthropology,vocation,anthropological_spiritual,medium,theological,3,0.3293620328108469,0.23194669584433236,0.09741533696651457,1.0,1.0,4.666666666666667
+Human Dignity and Theological Anthropology,work,social_anthropological,high,neutral,3,0.2625872890154521,0.24796821375687916,0.014619075258572894,0.6666666666666666,1.3333333333333333,2.0
+Human Dignity and Theological Anthropology,work,social_anthropological,high,theological,3,0.3357178568840027,0.18374306658903758,0.1519747902949651,1.0,1.0,5.666666666666667
+Love Communion and Sacramentality,Eucharist,sacramental,low,neutral,3,0.4693039417266846,0.2937164098024368,0.17558753192424778,1.0,1.0,5.333333333333333
+Love Communion and Sacramentality,Eucharist,sacramental,low,theological,3,0.4563150882720947,0.2680156817038854,0.18829940656820932,1.0,1.0,6.0
+Love Communion and Sacramentality,agape,theological_love,low,neutral,3,0.3889638086160024,0.29039662778377534,0.09856718083222706,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Love Communion and Sacramentality,agape,theological_love,low,theological,3,0.41990886926651,0.2524099518855413,0.16749891738096875,0.6666666666666666,1.3333333333333333,3.6666666666666665
+Love Communion and Sacramentality,caritas,theological_virtue,medium,neutral,3,0.3857192854086558,0.3330711543560028,0.052648131052653,0.0,2.0,1.0
+Love Communion and Sacramentality,caritas,theological_virtue,medium,theological,3,0.3925238609313965,0.3265789528687795,0.06594490806261698,0.0,2.0,1.0
+Love Communion and Sacramentality,charity,theological_virtue,high,neutral,3,0.33729230165481566,0.36416483720143633,-0.02687253554662067,0.6666666666666666,1.3333333333333333,1.6666666666666667
+Love Communion and Sacramentality,charity,theological_virtue,high,theological,3,0.3912133773167928,0.30240457554658257,0.08880880177021024,1.0,1.0,4.0
+Love Communion and Sacramentality,chastity,moral_virtue,high,neutral,3,0.3281547784805298,0.36002910633881885,-0.03187432785828909,0.0,2.0,1.0
+Love Communion and Sacramentality,chastity,moral_virtue,high,theological,3,0.29947373569011687,0.3329410284757614,-0.03346729278564453,0.0,2.0,1.0
+Love Communion and Sacramentality,communion,ecclesial_sacramental,medium,neutral,3,0.4355379660924276,0.27189031342665354,0.16364765266577405,1.0,1.0,6.0
+Love Communion and Sacramentality,communion,ecclesial_sacramental,medium,theological,3,0.41162022948265076,0.18520191460847854,0.22641831487417222,1.0,1.0,6.0
+Love Communion and Sacramentality,compassion,moral_spiritual,medium,neutral,3,0.3685510138670603,0.33851619164148966,0.03003482222557069,0.6666666666666666,1.3333333333333333,2.0
+Love Communion and Sacramentality,compassion,moral_spiritual,medium,theological,3,0.4104173481464386,0.26552288631598153,0.14489446183045704,1.0,1.0,5.0
+Love Communion and Sacramentality,covenant,biblical_theological,medium,neutral,3,0.43963715036710105,0.3111647466818492,0.1284724036852519,1.0,1.0,5.666666666666667
+Love Communion and Sacramentality,covenant,biblical_theological,medium,theological,3,0.40717596014340723,0.2789684295654297,0.12820753057797749,1.0,1.0,5.333333333333333
+Love Communion and Sacramentality,enemy-love,moral_biblical,low,neutral,3,0.4010623921950658,0.26346883177757263,0.13759356041749318,1.0,1.0,4.0
+Love Communion and Sacramentality,enemy-love,moral_biblical,low,theological,3,0.4187901933987936,0.24055609206358594,0.17823410133520765,1.0,1.0,4.0
+Love Communion and Sacramentality,eros,anthropological_love,high,neutral,3,0.34075370728969573,0.3708480338255564,-0.030094326535860694,0.0,2.3333333333333335,1.0
+Love Communion and Sacramentality,eros,anthropological_love,high,theological,3,0.37834671934445696,0.3178333391745885,0.06051338016986846,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Love Communion and Sacramentality,family,social_anthropological,high,neutral,3,0.25784415006637573,0.25628725985685985,0.0015568902095158914,0.3333333333333333,1.6666666666666667,1.6666666666666667
+Love Communion and Sacramentality,family,social_anthropological,high,theological,3,0.3204887976249059,0.21647759328285854,0.10401120434204736,1.0,1.0,4.0
+Love Communion and Sacramentality,fidelity,moral_virtue,medium,neutral,3,0.4117477079232534,0.3251403699318568,0.08660733799139658,1.0,1.0,3.0
+Love Communion and Sacramentality,fidelity,moral_virtue,medium,theological,3,0.4056499679883321,0.25813187261422477,0.14751809537410734,1.0,1.0,4.333333333333333
+Love Communion and Sacramentality,friendship,moral_anthropological,high,neutral,3,0.285690434773763,0.2739844789107641,0.01170595586299894,0.3333333333333333,2.0,1.3333333333333333
+Love Communion and Sacramentality,friendship,moral_anthropological,high,theological,3,0.3677995532751083,0.24359102944533031,0.12420852382977803,1.0,1.0,4.0
+Love Communion and Sacramentality,fruitfulness,marital_social,medium,neutral,3,0.4306820710500081,0.2833110978205999,0.14737097322940826,1.0,1.0,4.0
+Love Communion and Sacramentality,fruitfulness,marital_social,medium,theological,3,0.4289588729540507,0.2242661212881406,0.20469275166591008,1.0,1.0,4.0
+Love Communion and Sacramentality,love,moral_anthropological,high,neutral,3,0.2722737441460292,0.2583753575881322,0.013898386557896944,0.6666666666666666,1.3333333333333333,2.0
+Love Communion and Sacramentality,love,moral_anthropological,high,theological,3,0.39620770812034606,0.202812131245931,0.19339557687441508,1.0,1.0,5.666666666666667
+Love Communion and Sacramentality,marriage,sacramental_anthropological,high,neutral,3,0.37333416740099584,0.2613849838574727,0.11194918354352318,1.0,1.0,4.333333333333333
+Love Communion and Sacramentality,marriage,sacramental_anthropological,high,theological,3,0.44328233798344935,0.19460027664899826,0.24868206133445106,1.0,1.0,6.0
+Love Communion and Sacramentality,neighbor,moral_biblical,high,neutral,3,0.2584399590889613,0.34636939664681754,-0.08792943755785622,0.0,3.0,1.0
+Love Communion and Sacramentality,neighbor,moral_biblical,high,theological,3,0.30336899459362027,0.26445494790871943,0.038914046684900915,1.0,1.0,3.3333333333333335
+Love Communion and Sacramentality,prayer,spiritual,medium,neutral,3,0.37607065836588544,0.22494686742623649,0.15112379093964895,1.0,1.0,5.0
+Love Communion and Sacramentality,prayer,spiritual,medium,theological,3,0.3411746978759766,0.16732362831632297,0.17385106955965357,1.0,1.0,5.666666666666667
+Love Communion and Sacramentality,sacrament,sacramental,low,neutral,3,0.4035637935002645,0.28995335946480433,0.11361043403546017,1.0,1.0,5.666666666666667
+Love Communion and Sacramentality,sacrament,sacramental,low,theological,3,0.39714210828145347,0.27238992154598235,0.1247521867354711,1.0,1.0,5.333333333333333
+Love Communion and Sacramentality,sacrifice,moral_liturgical,high,neutral,3,0.42125178774197897,0.2669756521781286,0.1542761355638504,1.0,1.0,5.0
+Love Communion and Sacramentality,sacrifice,moral_liturgical,high,theological,3,0.4470404446125031,0.20451390345891318,0.24252654115358988,1.0,1.0,5.0
+Love Communion and Sacramentality,self-gift,anthropological_moral,medium,neutral,3,0.5201612412929535,0.324863064289093,0.19529817700386043,1.0,1.0,5.0
+Love Communion and Sacramentality,self-gift,anthropological_moral,medium,theological,3,0.5138388633728027,0.28499929209550223,0.2288395712773005,1.0,1.0,6.0
+Love Communion and Sacramentality,service,moral_social,high,neutral,3,0.3370338420073191,0.2288981219132741,0.108135720094045,1.0,1.0,4.666666666666667
+Love Communion and Sacramentality,service,moral_social,high,theological,3,0.3608315567175547,0.179627983768781,0.18120357294877368,1.0,1.0,5.0
+Love Communion and Sacramentality,sexuality,anthropological_moral,high,neutral,3,0.24623514264822008,0.33763498961925503,-0.09139984697103498,0.0,3.6666666666666665,1.0
+Love Communion and Sacramentality,sexuality,anthropological_moral,high,theological,3,0.3270741810401281,0.25971414943536125,0.06736003160476683,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Love Communion and Sacramentality,solidarity,social_doctrine,medium,neutral,3,0.33727569778760275,0.3109898736079534,0.026285824179649364,0.6666666666666666,1.3333333333333333,2.6666666666666665
+Love Communion and Sacramentality,solidarity,social_doctrine,medium,theological,3,0.35617752075195314,0.24922101398309074,0.10695650676886238,1.0,1.0,5.0
+Love Communion and Sacramentality,worship,liturgical_spiritual,medium,neutral,3,0.44880120356877645,0.32618551949659985,0.12261568407217659,1.0,1.0,2.6666666666666665
+Love Communion and Sacramentality,worship,liturgical_spiritual,medium,theological,3,0.4316846966743469,0.27723594307899474,0.15444875359535218,1.0,1.0,4.333333333333333
+Sin Grace and Redemption,absolution,sacramental,low,neutral,3,0.38623481194178266,0.3471899966398875,0.039044815301895165,1.0,1.0,3.3333333333333335
+Sin Grace and Redemption,absolution,sacramental,low,theological,3,0.40635951757431027,0.30689022640387215,0.09946929117043814,1.0,1.0,3.6666666666666665
+Sin Grace and Redemption,concupiscence,doctrinal_anthropological,low,neutral,3,0.4209920893112818,0.2445689688126246,0.1764231204986572,1.0,1.0,5.666666666666667
+Sin Grace and Redemption,concupiscence,doctrinal_anthropological,low,theological,3,0.3925893326600393,0.21291751960913338,0.17967181305090588,1.0,1.0,5.666666666666667
+Sin Grace and Redemption,confession,sacramental,low,neutral,3,0.3705247282981872,0.28088399718205137,0.08964073111613591,1.0,1.0,3.0
+Sin Grace and Redemption,confession,sacramental,low,theological,3,0.36448115905125933,0.21588095525900522,0.14860020379225414,1.0,1.0,3.6666666666666665
+Sin Grace and Redemption,contrition,sacramental_moral,low,neutral,3,0.41344558000564574,0.30565736591815945,0.10778821408748628,1.0,1.0,4.666666666666667
+Sin Grace and Redemption,contrition,sacramental_moral,low,theological,3,0.38964326282342276,0.2515596777200699,0.1380835851033529,1.0,1.0,5.0
+Sin Grace and Redemption,conversion,moral_spiritual,medium,neutral,3,0.38210223118464154,0.3312166412671407,0.05088558991750083,1.0,1.0,2.0
+Sin Grace and Redemption,conversion,moral_spiritual,medium,theological,3,0.39523408015569056,0.2656616707642873,0.12957240939140321,1.0,1.0,5.0
+Sin Grace and Redemption,forgiveness,moral_spiritual,medium,neutral,3,0.3487940380970637,0.34070222576459247,0.008091812332471212,0.0,3.0,1.0
+Sin Grace and Redemption,forgiveness,moral_spiritual,medium,theological,3,0.37583947579065957,0.27265783747037253,0.10318163832028708,1.0,1.0,2.3333333333333335
+Sin Grace and Redemption,grace,doctrinal,low,neutral,3,0.3554386178652445,0.20179493923981984,0.15364367862542472,1.0,1.0,3.6666666666666665
+Sin Grace and Redemption,grace,doctrinal,low,theological,3,0.3592245697975159,0.1453356181581815,0.21388895163933438,1.0,1.0,6.0
+Sin Grace and Redemption,guilt,psychological_moral,high,neutral,3,0.347846723596255,0.3348064015309016,0.013040322065353402,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Sin Grace and Redemption,guilt,psychological_moral,high,theological,3,0.37308104236920675,0.26365018784999844,0.10943085451920827,1.0,1.0,2.6666666666666665
+Sin Grace and Redemption,judgment,eschatological_moral,high,neutral,3,0.3979379018147786,0.24501013954480488,0.15292776226997376,1.0,1.0,4.666666666666667
+Sin Grace and Redemption,judgment,eschatological_moral,high,theological,3,0.3847975154717764,0.2078226834535599,0.17697483201821643,1.0,1.0,5.333333333333333
+Sin Grace and Redemption,justification,doctrinal,low,neutral,3,0.3061183283726374,0.29743693868319193,0.008681389689445504,0.6666666666666666,1.6666666666666667,2.3333333333333335
+Sin Grace and Redemption,justification,doctrinal,low,theological,3,0.35420586665471393,0.2354975998401642,0.11870826681454978,1.0,1.0,5.0
+Sin Grace and Redemption,mercy,moral_spiritual,medium,neutral,3,0.3678115675846736,0.34067096710205075,0.02714060048262279,0.6666666666666666,1.3333333333333333,2.0
+Sin Grace and Redemption,mercy,moral_spiritual,medium,theological,3,0.3564810266097387,0.2783606509367625,0.07812037567297618,1.0,1.0,3.6666666666666665
+Sin Grace and Redemption,mortal sin,doctrinal,low,neutral,3,0.34597847064336146,0.2739754766225815,0.07200299402077993,1.0,1.0,4.0
+Sin Grace and Redemption,mortal sin,doctrinal,low,theological,3,0.32411133746306103,0.25516495207945505,0.06894638538360597,1.0,1.0,3.6666666666666665
+Sin Grace and Redemption,original sin,doctrinal,low,neutral,3,0.3506348828474681,0.24385540286699933,0.10677947998046873,1.0,1.0,3.6666666666666665
+Sin Grace and Redemption,original sin,doctrinal,low,theological,3,0.2938332011302312,0.21426219840844474,0.07957100272178651,1.0,1.0,3.0
+Sin Grace and Redemption,penance,sacramental_moral,low,neutral,3,0.36022459069887797,0.3183412810166677,0.04188330968221029,1.0,1.0,3.6666666666666665
+Sin Grace and Redemption,penance,sacramental_moral,low,theological,3,0.35017812649408975,0.3035485674937566,0.046629559000333165,1.0,1.0,3.0
+Sin Grace and Redemption,personal sin,moral_doctrinal,medium,neutral,3,0.3519966294368108,0.24070062239964804,0.1112960070371628,1.0,1.0,4.0
+Sin Grace and Redemption,personal sin,moral_doctrinal,medium,theological,3,0.31387495597203574,0.20110884656508765,0.11276610940694809,1.0,1.0,3.6666666666666665
+Sin Grace and Redemption,reconciliation,moral_sacramental,medium,neutral,3,0.33451893130938215,0.3285956194003423,0.00592331190903983,0.3333333333333333,2.0,1.3333333333333333
+Sin Grace and Redemption,reconciliation,moral_sacramental,medium,theological,3,0.3651457905769348,0.24112519025802612,0.12402060031890871,1.0,1.0,4.666666666666667
+Sin Grace and Redemption,redemption,doctrinal,medium,neutral,3,0.3880593220392863,0.24052179455757142,0.1475375274817149,1.0,1.0,5.0
+Sin Grace and Redemption,redemption,doctrinal,medium,theological,3,0.36163616379102076,0.18326132794221242,0.17837483584880828,1.0,1.0,5.333333333333333
+Sin Grace and Redemption,repentance,moral_spiritual,medium,neutral,3,0.3620514531930288,0.2639063348372777,0.09814511835575103,1.0,1.0,4.0
+Sin Grace and Redemption,repentance,moral_spiritual,medium,theological,3,0.3354111115137736,0.2202201763788859,0.11519093513488769,1.0,1.0,4.0
+Sin Grace and Redemption,salvation,doctrinal,medium,neutral,3,0.4182939827442169,0.22420261104901631,0.1940913716952006,1.0,1.0,6.0
+Sin Grace and Redemption,salvation,doctrinal,medium,theological,3,0.38429679870605465,0.14878226121266683,0.23551453749338783,1.0,1.0,6.0
+Sin Grace and Redemption,sanctification,doctrinal,low,neutral,3,0.4306981980800629,0.26091951330502827,0.16977868477503458,1.0,1.0,5.333333333333333
+Sin Grace and Redemption,sanctification,doctrinal,low,theological,3,0.3981450080871582,0.22667873998483024,0.171466268102328,1.0,1.0,6.0
+Sin Grace and Redemption,shame,psychological_moral,high,neutral,3,0.22966318527857463,0.35296277701854706,-0.1232995917399724,0.0,4.0,1.0
+Sin Grace and Redemption,shame,psychological_moral,high,theological,3,0.2559720496336619,0.2794245531161626,-0.02345250348250071,1.0,1.0,2.0
+Sin Grace and Redemption,sin,moral_doctrinal,medium,neutral,3,0.3443472782770793,0.20598530769348145,0.13836197058359784,1.0,1.0,6.0
+Sin Grace and Redemption,sin,moral_doctrinal,medium,theological,3,0.3190767159064611,0.17218819111585618,0.1468885247906049,1.0,1.0,6.0
+Sin Grace and Redemption,temptation,moral_spiritual,medium,neutral,3,0.3032660841941834,0.2590556174516678,0.04421046674251555,1.0,1.0,2.3333333333333335
+Sin Grace and Redemption,temptation,moral_spiritual,medium,theological,3,0.3101872503757477,0.1921049639582634,0.11808228641748426,1.0,1.0,4.666666666666667
+Sin Grace and Redemption,transgression,moral_juridical,medium,neutral,3,0.35895585417747494,0.2536658982435862,0.10528995593388878,1.0,1.0,4.0
+Sin Grace and Redemption,transgression,moral_juridical,medium,theological,3,0.39927599032719935,0.2212783396244049,0.1779976507027944,1.0,1.0,6.0
+Sin Grace and Redemption,venial sin,doctrinal,low,neutral,3,0.24660483226180077,0.2886034722129504,-0.041998639951149636,0.3333333333333333,1.6666666666666667,1.3333333333333333
+Sin Grace and Redemption,venial sin,doctrinal,low,theological,3,0.24639615565538406,0.2893952742218971,-0.04299911856651306,1.0,1.0,2.0

@@ -1,10 +1,31 @@
 # Statistical Analysis Plan
 
+## Version
+
+Active benchmark:
+
+    CTSB-100 v2 context draft
+
+Archived benchmark:
+
+    archive/ctsb_100_v1_draft/
+
 ## Unit of Analysis
 
 The main statistical unit is the concept.
 
-The CTSB-100 draft has 100 concepts. Each concept has multiple query templates and descriptor comparisons, but those comparisons are nested under the concept. They improve measurement reliability but should not be treated as fully independent observations.
+The CTSB-100 v2 draft has 100 concepts. Each concept has multiple query templates and descriptor comparisons, but those comparisons are nested under the concept. They improve measurement reliability but should not be treated as fully independent observations.
+
+## Query Conditions
+
+Version 2 separates four query contexts:
+
+1. bare/minimal;
+2. ordinary lived usage;
+3. neutral academic usage;
+4. explicit Catholic/theological usage.
+
+This distinction is important because an embedding model may behave differently when queried by a bare term, ordinary-language phrase, academic abstraction, or explicit theological framing.
 
 ## Primary Metrics
 
@@ -18,33 +39,41 @@ For a query:
 
 For each concept:
 
-    Neutral CAS = mean CAS across neutral templates
+    Bare CAS = mean CAS for bare/minimal query
 
-    Theological CAS = mean CAS across theological templates
+    Ordinary CAS = mean CAS across ordinary lived-usage templates
 
-    Context Shift = Theological CAS - Neutral CAS
+    Academic CAS = mean CAS across neutral academic templates
+
+    Catholic CAS = mean CAS across explicit Catholic/theological templates
+
+Primary shift metric:
+
+    Ordinary to Catholic Shift = Catholic CAS - Ordinary CAS
+
+Secondary shift metrics:
+
+    Bare to Catholic Shift = Catholic CAS - Bare CAS
+
+    Academic to Catholic Shift = Catholic CAS - Academic CAS
 
 ## Main Tests
 
-1. Neutral CAS vs zero
+1. Bare CAS vs zero.
 
-   Tests whether neutral queries are closer to Catholic or secular descriptors.
+2. Ordinary CAS vs zero.
 
-2. Theological CAS vs zero
+3. Academic CAS vs zero.
 
-   Tests whether explicitly theological queries are closer to Catholic or secular descriptors.
+4. Catholic CAS vs zero.
 
-3. Context Shift vs zero
+5. Ordinary to Catholic Shift vs zero.
 
-   Tests whether explicit theological framing moves embeddings toward Catholic-magisterial descriptors.
+6. Academic to Catholic Shift vs zero.
 
-4. Locus-level tests
+7. Locus-level tests for the four theological loci.
 
-   Tests whether the four theological loci behave differently.
-
-5. Concept-type tests
-
-   Tests whether doctrinal, anthropological, sacramental, social-ethical, and juridical concepts behave differently.
+8. Concept-type exploratory tests.
 
 ## Interpretation Rules
 
@@ -86,3 +115,7 @@ Primary evidence remains:
 - concept-level CAS;
 - confidence intervals;
 - effect sizes.
+
+## Benchmark Status
+
+CTSB-100 v2 is still a draft benchmark. Before final dissertation claims, the descriptor sets should be reviewed, frozen, and tagged.
