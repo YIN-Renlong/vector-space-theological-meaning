@@ -1,946 +1,833 @@
 # Vector Space and Theological Meaning
 
-**Measuring Secular Semantic Priors in Large Language Model Embeddings**
+## CTSB v3.4 Methodology Design
 
-This repository contains a theological embedding-space audit pipeline. It measures whether general-purpose sentence embedding models associate theological concepts more closely with Catholic-magisterial descriptors or with secular/common-language contrast descriptors.
+**From doctrinal legibility to theological behaviour under ambiguity and critical contexts**
 
-Public dashboard: [https://yin-renlong.github.io/vector-space-theological-meaning/](https://yin-renlong.github.io/vector-space-theological-meaning/)
+CTSB v3.4 redesigns the project as a source-grounded and validated theological audit of Azure/OpenAI `text-embedding-3-large`.
 
-Life and Death dashboard: [https://yin-renlong.github.io/vector-space-theological-meaning/life_death.html](https://yin-renlong.github.io/vector-space-theological-meaning/life_death.html)
+The active repository currently contains the **v3.4 methodology protocol and benchmark-construction plan only**. The v3.4 benchmark data, audit script, statistical outputs, and dashboard have not yet been implemented.
 
-## Iteration History
+The previous v2 implementation has been frozen in the repository archive:
 
-### CTSB-100 v1 draft
+- [CTSB-100 v2 context-draft archive](archive/ctsb_100_v2_context_draft/README.md)
+- [CTSB-100 v1 draft archive](archive/ctsb_100_v1_draft/README.md)
 
-Version 1 is archived at:
+Public archival dashboards:
 
-    archive/ctsb_100_v1_draft/
+- [CTSB-100 v2 dashboard](https://yin-renlong.github.io/vector-space-theological-meaning/archive/ctsb_100_v2_context_draft/index_v2_dashboard.html)
+- [Life and Death v1 dashboard](https://yin-renlong.github.io/vector-space-theological-meaning/archive/ctsb_100_v2_context_draft/life_death_v1_dashboard.html)
 
-It was the first successful 100-concept benchmark run. It used two query conditions:
+The root `index.html` and `life_death.html` remain temporarily as compatibility copies of the v2 dashboards. They are not v3.4 results.
 
-1. neutral/academic wording;
-2. explicit theological/Catholic wording.
+---
 
-It remains a valid methodological starting point because it demonstrated that the pipeline, Catholic Alignment Score, rank-order metrics, and concept-level statistical analysis work.
+## 1. Project purpose
 
-### CTSB-100 v2 context draft
+This project performs a black-box theological audit of a commercial text-embedding model.
 
-Version 2 is now the active benchmark. It separates four query contexts:
+Its purpose is not to use vector similarity to determine theological truth. It is to make the otherwise opaque semantic behaviour of an embedding system available for theological examination.
 
-1. bare/minimal: `love`, `freedom`, `body`;
-2. ordinary lived usage: ordinary/everyday usage templates;
-3. neutral academic usage: concept/meaning/discussion templates;
-4. explicit Catholic/theological usage: Catholic theology/teaching/Christian doctrine templates.
+The project asks where Catholic theological meaning is:
 
-This makes the analysis more precise because it distinguishes ordinary-language secular priors from academic abstraction and explicit theological code-switching.
+- stably represented;
+- foregrounded or attenuated under ambiguity;
+- dependent on explicit context;
+- jointly accessible with valid psychological, biological, clinical, legal, social, and ordinary-language dimensions;
+- displaced by another semantic register;
+- or difficult to recover in morally and pastorally critical contexts.
 
-## Current Method
+The intended contribution resembles a computational semantic autopsy. It exposes representational patterns that theologians cannot inspect by reading source code or by looking at an embedding vector directly.
 
-The current pipeline uses Azure OpenAI embeddings and calculates a Catholic Alignment Score.
+A vector is only a numerical representation. The theological interpretation comes from controlled comparisons with source-grounded and independently reviewed natural-language references.
 
-    Catholic Alignment Score = mean cosine(query, Catholic descriptors) - mean cosine(query, secular descriptors)
+---
+
+## 2. Direct object of study
+
+The direct object of v3.4 is:
+
+> Azure/OpenAI `text-embedding-3-large`
+
+The study does not claim to audit:
+
+- ChatGPT's hidden states;
+- a GPT model's internal embedding layer;
+- all OpenAI systems;
+- all embedding models;
+- all Christian traditions;
+- or the truth of Catholic theology.
+
+The project is specifically a Catholic theological case study of one deployed commercial embedding endpoint.
+
+---
+
+## 3. Why audit an embedding model?
+
+Embeddings are independently deployed semantic infrastructure used in:
+
+- semantic search;
+- retrieval-augmented generation;
+- document ranking;
+- classification;
+- clustering;
+- recommendation;
+- memory;
+- routing;
+- and content retrieval.
+
+Users may not knowingly interact with an embedding model, but embeddings can affect which documents, concepts, or resources are selected for a user-facing AI system.
+
+Embedding models are therefore not studied merely because they return convenient numbers. They are studied because they perform a real semantic function in contemporary AI systems.
+
+Unlike a generative chatbot response, an embedding is normally stable under a fixed model version and configuration. This makes controlled semantic comparisons reproducible.
+
+### Relationship to ChatGPT
+
+`text-embedding-3-large` is not assumed to be ChatGPT's internal embedding module.
+
+The connection is layered:
+
+1. **Embedding representation:** how meanings are organised in the audited vector space.
+2. **Retrieval and ranking:** how those representations may affect which materials reach a user-facing system.
+3. **Generative behaviour:** how a GPT model formulates an actual answer.
+
+v3.4 studies the first layer. Retrieval and controlled generative-model audits remain future work.
+
+---
+
+## 4. Primary research question
+
+> **In morally ambiguous and pastorally critical concepts, how does Azure/OpenAI `text-embedding-3-large` distribute semantic salience among Catholic theological and valid psychological, biological, clinical, legal, social, economic, affective, generic-religious, and ordinary-language registers, and which recurring modes of behaviour—joint accessibility, theological association gain, register displacement, label dependence, context-dependent recovery, or persistent theological attenuation—appear across theological domains?**
+
+This question is not answered by observing that words have several meanings.
+
+The empirical questions concern a particular AI system:
+
+- Which register is foregrounded under ambiguous wording?
+- Does natural crisis wording reorganise the semantic field?
+- Does Catholic contextualisation increase actual Catholic-reference proximity?
+- Does a positive relative shift instead arise from movement away from another register?
+- Can theological and clinically or psychologically valid dimensions remain simultaneously accessible?
+- Which concepts remain comparatively attenuated across contexts?
+- Are these patterns concentrated in particular theological loci?
+
+---
+
+## 5. Preliminary v2 findings to be re-tested
+
+The v2 benchmark generated the following historical aggregate results:
+
+| Context or shift | v2 mean | v2 bootstrap 95% interval |
+|---|---:|---:|
+| Bare CAS | -0.0202 | -0.0390 to -0.0022 |
+| Ordinary CAS | +0.0234 | +0.0086 to +0.0373 |
+| Academic CAS | +0.0525 | +0.0377 to +0.0667 |
+| Explicit Catholic CAS | +0.1113 | +0.0986 to +0.1241 |
+| Ordinary-to-Catholic shift | +0.0880 | +0.0773 to +0.0991 |
+
+The Life and Death supplement produced:
+
+| Context or shift | v2 mean | v2 bootstrap 95% interval |
+|---|---:|---:|
+| Bare CAS | -0.0438 | -0.0797 to -0.0095 |
+| Ordinary CAS | -0.0069 | -0.0363 to +0.0202 |
+| Academic CAS | +0.0104 | -0.0209 to +0.0398 |
+| Explicit Catholic CAS | +0.0939 | +0.0657 to +0.1210 |
+| Ordinary-to-Catholic shift | +0.1009 | +0.0782 to +0.1225 |
+
+These are **archived exploratory findings**, not v3.4 results.
+
+They motivate, but do not predetermine, the following v3.4 hypotheses:
+
+1. The audited model is not uniformly dominated by non-theological registers.
+2. Catholic-associated neighbourhoods appear present but vary substantially in accessibility.
+3. Explicit Catholic wording produces a strong relative shift.
+4. The shift may not always represent an increase in Catholic-reference similarity.
+5. Theological fragility may be concentrated in morally, anthropologically, and pastorally ambiguous concepts.
+6. Biological, clinical, psychological, legal, economic, affective, and autonomy-centred registers may be especially salient in some domains.
+7. Crisis concepts such as grief, suicide, euthanasia, dying, and end-of-life care require separate critical-context analysis.
+
+v3.4 will re-test these claims using source-grounded references, held-out validation, natural queries, explicit relationship metadata, and component-level analysis.
+
+---
+
+## 6. How the embedding comparison actually works
+
+An embedding model does not output natural-language explanations. It returns a numerical vector.
+
+For an exact text \(q\), the model returns:
+
+\[
+e(q)=[x_1,x_2,\ldots,x_d]
+\]
+
+where \(d\) is the model's embedding dimension.
+
+There is no individual coordinate that means:
+
+- Catholic;
+- psychological;
+- biological;
+- moral;
+- secular;
+- or theological.
+
+The method works by embedding **both the query and known reference texts**, then comparing their vectors.
+
+### Example
+
+Suppose the query is:
+
+> Grief in Catholic theology.
+
+The model embeds that query:
+
+\[
+e(q)
+\]
+
+The project also embeds source-grounded Catholic-pastoral reference texts, such as:
+
+- mourning held in Christian hope;
+- sorrow before God;
+- consolation through prayer and communion;
+- hope in the resurrection amid loss.
+
+These become:
+
+\[
+e(c_1),e(c_2),\ldots,e(c_m)
+\]
+
+A separately defined psychological-bereavement reference set might include:
+
+- emotional response to loss;
+- bereavement;
+- psychological sorrow;
+- mourning process;
+- coping with death.
+
+These become:
+
+\[
+e(r_1),e(r_2),\ldots,e(r_n)
+\]
+
+The pipeline calculates cosine similarity between the query vector and every reference vector.
+
+The natural-language reference texts are not decoded from the vectors. The project already knows which original text generated each stored vector.
+
+A result table can therefore report the original text attached to the nearest reference vector.
+
+“Top reference” means:
+
+> top-ranked among the predefined benchmark references supplied for that concept.
+
+It does not mean the globally nearest possible phrase in the model's entire semantic space.
+
+---
+
+## 7. Catholic Association Contrast
+
+v3.4 uses the name:
+
+> **Catholic Association Contrast (CAS)**
+
+This replaces the older phrase “Catholic Alignment Score,” which could be confused with normative AI alignment.
+
+For query \(q\), Catholic reference set \(C\), and comparison-register reference set \(R\):
+
+\[
+S_C(q)=\frac{1}{|C|}\sum_{c\in C}\cos(e(q),e(c))
+\]
+
+\[
+S_R(q)=\frac{1}{|R|}\sum_{r\in R}\cos(e(q),e(r))
+\]
+
+\[
+CAS(q;C,R)=S_C(q)-S_R(q)
+\]
 
 Interpretation:
 
-- Positive CAS: closer to Catholic-magisterial descriptors.
-- Negative CAS: closer to secular/common-language descriptors.
-- Context Shift: theological CAS minus neutral CAS.
-
-This is a semantic representational audit. It is not a claim that an embedding model has belief, intention, soul, or literal metaphysical ontology.
-
-<!-- BEGIN V2_PRELIMINARY_RESULTS -->
-
-## Preliminary Results and Interpretation: CTSB-100 v2 and Life/Death Supplement
-
-### Executive Abstract
-
-CTSB-100 v2 is an empirical audit of theological meaning in embedding space. It tests whether Azure OpenAI `text-embedding-3-large` represents Catholic theological concepts closer to Catholic-magisterial descriptors or to secular/common-language contrast descriptors. The active benchmark contains 100 concepts across four theological loci and evaluates each concept under four query contexts:
-
-1. **Bare/minimal**: the concept alone, for example `love`, `freedom`, `body`.
-2. **Ordinary lived usage**: how the term appears in everyday human experience, for example `How people experience love`.
-3. **Neutral academic usage**: abstract conceptual framing, for example `The concept of love`.
-4. **Explicit Catholic/theological usage**: direct Catholic framing, for example `Love in Catholic theology`.
-
-The central metric is the Catholic Alignment Score, or CAS:
-
-    CAS = mean cosine(query, Catholic descriptors) - mean cosine(query, secular descriptors)
-
-Positive CAS means that the query is closer to the Catholic-magisterial descriptor set. Negative CAS means that it is closer to the secular/common-language descriptor set. The statistical unit is the concept, not every individual query-descriptor comparison.
-
-The headline result is a stable context gradient:
-
-    bare term < ordinary usage < academic framing < Catholic/theological framing
-
-Across 100 concepts, bare terms are slightly negative on average, ordinary usage becomes weakly positive, academic framing becomes meaningfully positive, and explicit Catholic framing becomes strongly positive. The model therefore does not simply erase Catholic meaning. Rather, it encodes multiple semantic registers and activates them differently depending on context.
-
-The strongest interpretation is:
-
-> General-purpose embeddings are not uniformly secularized, but they are not theologically neutral either. Catholic meanings are often available to the model, but they are context-dependent. Bare and ordinary terms frequently activate secular, biological, psychological, legal, romantic, or autonomy-centered meanings. Explicit Catholic framing produces a statistically significant shift toward Catholic-magisterial meaning, but some morally and pastorally sensitive concepts remain resistant.
-
-The focused Life and Death supplement confirms this pattern in a more existential and pastoral domain. Life/death concepts show strong biological, medical, psychological, and secular default pulls. Catholic framing shifts most concepts toward created life, dignity, resurrection, hope, judgment, and pastoral accompaniment. However, concepts such as `suicide`, `euthanasia`, and `grief` remain partially resistant, which is important for theological HCI and pastoral AI design.
-
----
-
-### Dashboard and Selected Figure References
-
-Interactive dashboards:
-
-- [Main CTSB-100 v2 dashboard](https://yin-renlong.github.io/vector-space-theological-meaning/)
-- [Life and Death supplement dashboard](https://yin-renlong.github.io/vector-space-theological-meaning/life_death.html)
-
-Selected exported figures:
-
-![CTSB-100 v2 Context-Level CAS Distributions](outputs/img/Vector_Space_and_Theological_Meaning_plotly_charts_20260708_144811/01_Vector_Space_and_Theological_Meaning_Context-Level_CAS_Distributions.png)
-
-![CTSB-100 v2 Catholic Context Shift Distributions](outputs/img/Vector_Space_and_Theological_Meaning_plotly_charts_20260708_144811/02_Vector_Space_and_Theological_Meaning_Catholic_Context_Shift_Distributions.png)
-
-![CTSB-100 v2 Locus-Level Comparison](outputs/img/Vector_Space_and_Theological_Meaning_plotly_charts_20260708_144811/04_Vector_Space_and_Theological_Meaning_Locus-Level_Comparison.png)
-
-![Life and Death Ordinary vs Catholic Quadrant Map](outputs/img/Life_and_Death_Semantic_Audit_plotly_charts_20260708_144909/02_Life_and_Death_Semantic_Audit_Ordinary_vs_Catholic_Quadrant_Map.png)
-
-The dashboards contain additional plots, raw data export panels, and downloadable CSVs. The figures above are included only as selected reference points.
-
----
-
-## 1. Methodological Summary
-
-### 1.1 Benchmark Design
-
-CTSB-100 v2 contains:
-
-- 100 theological concepts;
-- 4 theological loci;
-- 4 query contexts;
-- 1000 query rows;
-- 5 Catholic-magisterial descriptors per concept;
-- 5 secular/common-language contrast descriptors per concept.
-
-The four theological loci are:
-
-1. Sin, grace, and redemption.
-2. Love, communion, and sacramentality.
-3. Human dignity and theological anthropology.
-4. Freedom, truth, and moral teleology.
-
-Each concept is tested using the same descriptor sets across contexts, so that the effect of query framing can be measured.
-
-### 1.2 Why Four Query Contexts Matter
-
-Version 1 used a simpler neutral-vs-theological design. Version 2 is stronger because it distinguishes four different semantic conditions:
-
-| Context | Purpose |
+| Result | Meaning |
 |---|---|
-| Bare/minimal | Tests the model's closest default lexical attractor. |
-| Ordinary lived usage | Tests common-language meaning in everyday human life. |
-| Neutral academic usage | Tests abstract conceptual framing without explicit Catholic cues. |
-| Catholic/theological usage | Tests context-sensitive theological code-switching. |
+| \(CAS>0\) | Catholic references are closer on average than the specified comparison references |
+| \(CAS<0\) | Comparison references are closer on average than the Catholic references |
+| \(CAS\approx0\) | Little relative separation between the two reference sets |
+| \(\Delta S_C>0\) | Mean similarity to Catholic references increased |
+| \(\Delta S_R<0\) | Mean similarity to the comparison register decreased |
+| \(\Delta CAS>0\) | Catholic references gained relative to the comparison references |
 
-This distinction matters because the model behaves differently when asked about `love`, `the everyday meaning of love`, `the concept of love`, and `love in Catholic theology`.
+A negative CAS does not independently mean:
 
-The four-context design avoids a simplistic conclusion. It allows the project to say not merely that a model is secular or theological, but that it activates different semantic registers under different framing conditions.
+- common language;
+- secular ideology;
+- hostility to Catholic theology;
+- absence of Catholic associations;
+- or theological error.
 
-### 1.3 Catholic Alignment Score
-
-For each query, the system embeds:
-
-- the query phrase;
-- five Catholic descriptors;
-- five secular/common-language descriptors.
-
-It then computes:
-
-    CatholicScore = mean cosine(query, Catholic descriptors)
-
-    SecularScore = mean cosine(query, secular descriptors)
-
-    CAS = CatholicScore - SecularScore
-
-Interpretation:
-
-| CAS value | Meaning |
-|---:|---|
-| CAS > 0 | query is closer to Catholic descriptors |
-| CAS < 0 | query is closer to secular/common-language descriptors |
-| CAS near 0 | no clear directional preference |
-
-The concept is the main statistical unit. Multiple query templates improve measurement reliability, but they are not treated as fully independent concepts.
+It means only that the selected comparison references have greater mean cosine similarity than the selected Catholic references.
 
 ---
 
-## 2. Overall CTSB-100 v2 Statistical Findings
+## 8. Methodological foundation
 
-The full CTSB-100 v2 run produced the following concept-level results.
+The CAS formula adapts the single-target differential cosine-association function introduced in the Word Embedding Association Test:
 
-| Query context / shift | Mean CAS or shift | 95% bootstrap CI | Positive concepts | Effect label | Interpretation |
-|---|---:|---:|---:|---|---|
-| Bare CAS | -0.0202 | -0.0390 to -0.0022 | 43/100 | small | negative Catholic alignment |
-| Ordinary CAS | +0.0234 | +0.0086 to +0.0373 | 62/100 | small | positive Catholic alignment |
-| Academic CAS | +0.0525 | +0.0377 to +0.0667 | 77/100 | meaningful | positive Catholic alignment |
-| Catholic CAS | +0.1113 | +0.0986 to +0.1241 | 95/100 | strong | positive Catholic alignment |
-| Bare to Catholic shift | +0.1315 | +0.1185 to +0.1450 | 99/100 | strong | positive shift |
-| Ordinary to Catholic shift | +0.0880 | +0.0773 to +0.0991 | 95/100 | meaningful | positive shift |
-| Academic to Catholic shift | +0.0589 | +0.0504 to +0.0679 | 91/100 | meaningful | positive shift |
-| Default to Catholic shift | +0.1098 | +0.0988 to +0.1215 | 100/100 | strong | positive shift |
+\[
+s(w,A,B)=
+\operatorname{mean}_{a\in A}\cos(w,a)
+-
+\operatorname{mean}_{b\in B}\cos(w,b)
+\]
 
-The most important mathematical result is the systematic context shift. Almost every concept moves toward Catholic descriptors when explicitly framed in Catholic language.
+Caliskan, Bryson, and Narayanan used this function within the wider WEAT procedure.
 
-This supports the following claim:
+May et al. extended WEAT-style association testing to sentence encoders through SEAT. Their results also identified important cautions:
 
-> The model's embedding space contains Catholic theological meaning, but Catholic meaning is not always the default register. It is activated most strongly when the query supplies explicit Catholic/theological framing.
+- sentence templates can influence results;
+- reference sets may not form coherent concepts for an encoder;
+- similar tests can produce inconsistent outcomes;
+- cosine-based intrinsic effects may not predict downstream behaviour;
+- and a null result does not prove absence of bias.
 
-This finding is statistically strong but should be interpreted carefully. It does not prove that the model has belief, intention, or metaphysical commitment. It proves, within this benchmark, that the model's semantic neighborhoods shift systematically under theological context.
+Tsirtsis et al. provide a contemporary 2026 example of reference-based cosine classification using modern embedding models, human-labelled texts, held-out calibration, model ensembles, and cross-format validation.
 
----
-
-## 3. Locus-Level Findings
-
-### 3.1 Freedom, Truth, and Moral Teleology
-
-This is the most secular-sensitive locus.
-
-| Context | Mean CAS | Interpretation |
-|---|---:|---|
-| Bare | -0.0614 | meaningful negative Catholic alignment |
-| Ordinary | +0.0005 | no meaningful aggregate difference |
-| Academic | +0.0215 | small and inconclusive |
-| Catholic | +0.0751 | meaningful positive Catholic alignment |
-| Ordinary to Catholic shift | +0.0745 | meaningful positive shift |
-| Academic to Catholic shift | +0.0535 | meaningful positive shift |
-
-This locus includes `freedom`, `autonomy`, `happiness`, `flourishing`, `responsibility`, `rights`, `duties`, `justice`, `virtue`, `obedience`, and `license`.
-
-Theologically, this is the most important locus for questions of moral agency and teleology. It is also the locus in which secular modern language is strongest: autonomy, choice, rights, self-expression, psychological flourishing, and legal permission all exert semantic pressure.
-
-Key examples:
-
-| Concept | Bare CAS | Ordinary CAS | Academic CAS | Catholic CAS | Interpretation |
-|---|---:|---:|---:|---:|---|
-| autonomy | -0.2466 | -0.1259 | -0.1093 | -0.0110 | strongly secular by default; Catholic framing only partly repairs |
-| happiness | -0.1834 | -0.1140 | -0.0729 | +0.0920 | shifts from life satisfaction/positive emotion toward beatitude |
-| flourishing | -0.1384 | -0.0566 | -0.0435 | +0.0984 | shifts from prosperity/thriving toward integral development and vocation |
-| responsibility | -0.1226 | -0.0579 | -0.0026 | +0.0936 | shifts from liability/accountability to moral responsibility before God |
-| freedom | -0.0573 | -0.0489 | -0.0040 | +0.0970 | shifts from autonomy/choice to liberation from sin and freedom for truth |
-| license | -0.2483 | -0.0641 | -0.0802 | -0.0532 | resistant; legal permission dominates |
-
-Nuance: some concepts have a Catholic top descriptor but still a weak or negative average CAS. For example, `freedom` often has `freedom for truth` as a strong local neighbor, but the broader secular descriptor set remains competitive in bare and ordinary contexts. This shows why both CAS and rank-order metrics are necessary.
-
-Interpretation:
-
-> The model can represent Catholic moral theology when asked explicitly, but its default moral-teleological register is unstable and often pulled toward autonomy, choice, permission, and psychological flourishing.
-
-For theological HCI, this is critical. A pastoral or moral AI system should not assume that terms like `freedom`, `happiness`, or `autonomy` naturally carry Catholic teleological meaning.
+v3.4 borrows the foundational differential-association logic while adding theological source provenance, held-out validation, relationship typing, critical-context analysis, and decomposition of the component similarities.
 
 ---
 
-### 3.2 Human Dignity and Theological Anthropology
+## 9. How a reference is identified as Catholic
 
-Anthropology shows a strong context effect.
+The embedding model does not decide which reference texts are Catholic.
 
-| Context | Mean CAS | Interpretation |
-|---|---:|---|
-| Bare | -0.0326 | small, inconclusive |
-| Ordinary | +0.0036 | negligible |
-| Academic | +0.0378 | small positive |
-| Catholic | +0.1038 | strong positive |
-| Ordinary to Catholic shift | +0.1002 | strong positive shift |
-| Academic to Catholic shift | +0.0660 | meaningful positive shift |
+Catholic classification is established outside the model through:
 
-This locus includes concepts such as `human person`, `human dignity`, `body`, `soul`, `personhood`, `conscience`, `free will`, `poverty`, `disability`, `work`, `migration`, and `ecological responsibility`.
+1. identifiable Catholic sources;
+2. careful natural-language extraction or paraphrase;
+3. recorded source provenance;
+4. independent theological review;
+5. and held-out validation.
 
-Key examples:
+Potential sources include:
 
-| Concept | Bare CAS | Ordinary CAS | Academic CAS | Catholic CAS | Interpretation |
-|---|---:|---:|---:|---:|---|
-| body | -0.0777 | -0.0267 | -0.0075 | +0.0862 | shifts from material body to body destined for resurrection |
-| death | -0.1114 | -0.0824 | -0.0617 | +0.0538 | shifts from mortality/end of life toward hope of resurrection |
-| disability | -0.2159 | -0.0867 | -0.0690 | +0.0311 | medical/functional language remains strong |
-| poverty | -0.2323 | -0.1336 | -0.1170 | +0.0158 | economic deprivation dominates; Catholic context only partly shifts |
-| work | -0.1179 | -0.0528 | +0.0146 | +0.1520 | shifts from employment/labor to dignity and sanctification through labor |
-| personhood | -0.0291 | -0.0172 | +0.0383 | +0.1456 | shifts from individual identity/legal status to body-soul dignity |
-| human dignity | +0.1621 | +0.1048 | +0.1742 | +0.2234 | strongly Catholic-aligned across contexts |
+- the *Catechism of the Catholic Church*;
+- conciliar documents;
+- papal encyclicals;
+- doctrinal texts;
+- Catholic social teaching;
+- authoritative Catholic moral and pastoral documents.
 
-Theologically, the key issue is not that biological, medical, or social descriptors are false. Catholic theology affirms embodiment and biological life. The issue is reductionism: whether the person is represented primarily as organism, patient, worker, consumer, legal subject, or bearer of imago Dei and intrinsic dignity.
+The correct empirical statement is not:
 
-Interpretation:
+> The vector itself is Catholic.
 
-> Anthropological concepts are often semantically unstable in default contexts. Catholic framing re-situates them within dignity, createdness, body-soul unity, vocation, and communion.
+It is:
 
-This supports a Catholic HCI concern: AI systems optimized around generic user language may implicitly frame the human being as a biological, psychological, economic, or informational subject unless theological design intervenes.
+> The query has greater mean cosine similarity to vectors generated from source-grounded and independently reviewed Catholic reference texts.
 
 ---
 
-### 3.3 Love, Communion, and Sacramentality
+## 10. Held-out validation
 
-This locus has the strongest Catholic-context alignment.
+Reference review alone is insufficient.
 
-| Context | Mean CAS | Interpretation |
-|---|---:|---|
-| Bare | +0.0083 | negligible |
-| Ordinary | +0.0355 | small/borderline positive |
-| Academic | +0.0732 | meaningful positive |
-| Catholic | +0.1449 | strong positive |
-| Ordinary to Catholic shift | +0.1094 | strong positive shift |
-| Academic to Catholic shift | +0.0717 | meaningful positive shift |
+v3.4 must test the numerical instrument using natural-language passages not used to construct the references.
 
-Key examples:
+### Stage A: clear-register validation
 
-| Concept | Bare CAS | Ordinary CAS | Academic CAS | Catholic CAS | Interpretation |
-|---|---:|---:|---:|---:|---|
-| love | -0.0101 | -0.0537 | +0.0139 | +0.1934 | ordinary love is romantic/affective; Catholic love shifts to caritas/agape |
-| neighbor | -0.2073 | -0.1524 | -0.0879 | +0.0389 | shifts from spatial/social proximity to one owed charity |
-| sexuality | -0.2215 | -0.1131 | -0.0914 | +0.0674 | shifts from sexual identity/drive to embodied vocation and self-gift |
-| marriage | +0.0116 | +0.0588 | +0.1119 | +0.2487 | strong sacramental alignment under Catholic context |
-| family | -0.0607 | -0.0394 | +0.0016 | +0.1040 | shifts from household/kinship to domestic church |
-| chastity | -0.0771 | -0.0792 | -0.0486 | -0.0520 | resistant; abstinence/purity-culture associations dominate |
-| self-gift | +0.1795 | +0.1672 | +0.1953 | +0.2288 | strongly Catholic-aligned across contexts |
+Create separate held-out texts that independent reviewers classify as:
 
-This locus shows an important theological distinction. Catholic love is not reducible to romance, affection, desire, or emotional attachment. However, ordinary-language embeddings often pull `love`, `friendship`, `neighbor`, `sexuality`, and `family` toward social, romantic, or affective meanings. Catholic context activates caritas, self-gift, communion, and sacramentality.
+- clearly Catholic-theological in the relevant sense; or
+- clearly representative of the specified comparison register.
 
-Nuance: the result does not imply a crude opposition between eros and agape. Catholic theology does not simply reject eros. The result instead shows whether the model can integrate eros into a broader Catholic theology of love, self-gift, and communion.
+The audit then tests whether CAS distinguishes those held-out texts.
 
----
+Primary validation measures:
 
-### 3.4 Sin, Grace, and Redemption
+- balanced accuracy;
+- Catholic-reference recall;
+- comparison-register recall;
+- macro F1;
+- confusion matrix.
 
-This locus is already relatively theological in ordinary and academic contexts.
+If the instrument cannot distinguish clear held-out examples, ambiguous-query results for that concept should not receive strong interpretation.
 
-| Context | Mean CAS | Interpretation |
-|---|---:|---|
-| Bare | +0.0048 | negligible |
-| Ordinary | +0.0538 | meaningful positive |
-| Academic | +0.0773 | meaningful positive |
-| Catholic | +0.1215 | strong positive |
-| Ordinary to Catholic shift | +0.0677 | meaningful positive shift |
-| Academic to Catholic shift | +0.0442 | small positive shift |
+### Stage B: integrative passages
 
-Key examples:
+Some texts legitimately combine theological and other dimensions.
 
-| Concept | Bare CAS | Ordinary CAS | Academic CAS | Catholic CAS | Interpretation |
-|---|---:|---:|---:|---:|---|
-| sin | +0.0009 | +0.0899 | +0.1384 | +0.1469 | already theological once context is given |
-| grace | -0.0194 | +0.1399 | +0.1536 | +0.2139 | shifts away from elegance/social grace toward divine gift |
-| justification | -0.1791 | -0.0287 | +0.0087 | +0.1187 | shifts from rational excuse/legal defense to being made righteous by grace |
-| reconciliation | -0.0696 | -0.0290 | +0.0059 | +0.1240 | shifts from relationship repair to sacramental reconciliation |
-| shame | -0.1919 | -0.1594 | -0.1233 | -0.0235 | resistant; social humiliation remains strong |
-| venial sin | -0.1046 | -0.0175 | -0.0079 | -0.0103 | resistant/mixed; trivial wrongdoing remains close |
-| salvation | +0.1571 | +0.1691 | +0.1941 | +0.2355 | strongly Catholic-aligned across contexts |
-| sanctification | +0.1638 | +0.1655 | +0.1698 | +0.1715 | stable theological alignment |
+For example:
 
-This result complicates the initial secularization hypothesis. The model is not generally incapable of theological language. For explicitly religious terms, it often already has strong theological neighborhoods. The problem is sharper in ambiguous moral, anthropological, and pastoral terms.
+> Grief is a profound psychological response to bereavement that, in Christian life, is held within prayer and hope in the resurrection.
+
+Such a passage should not be forced into an exclusive Catholic-versus-psychological class.
+
+Instead, v3.4 examines the pair:
+
+\[
+(S_C,S_R)
+\]
+
+and asks whether both registers remain accessible.
+
+### Stage C: critical and crisis-language passages
+
+Natural critical-context texts will test concepts such as:
+
+- grief;
+- suicide;
+- euthanasia;
+- suffering;
+- dying;
+- end-of-life care.
+
+These passages require ethical and theological review before evaluation.
 
 ---
 
-## 4. Concept Typology Emerging from v2
+## 11. Theological relationships between registers
 
-The results suggest a useful four-part typology.
+Catholic, psychological, biological, medical, legal, social, and ordinary meanings are analytically distinguishable but not always mutually exclusive.
 
-### Type A: Explicit doctrinal terms with stable Catholic alignment
+Before any final embedding run, each concept-level comparison must be assigned one relationship type.
 
-Examples:
+| Relationship type | Example | Interpretation |
+|---|---|---|
+| Complementary levels | biological death and eschatological death | Both may describe the same reality at different explanatory levels |
+| Valid but partial | grief as bereavement | The comparison meaning may be valid but incomplete if treated as exhaustive |
+| Normatively conflicting | direct euthanasia as permissible versus Catholic moral rejection | The propositions genuinely differ morally |
+| Alternative lexical senses | grace as divine gift versus elegance | Competing senses of one expression |
+| Generic religious versus Catholic-specific | generic afterlife judgment versus particular judgment | Both are religious, but one is more doctrinally specific |
 
-- `salvation`;
-- `sanctification`;
-- `resurrection`;
-- `Eucharist`;
-- `sacrament`;
-- `created life`;
-- `human dignity`.
+This theological relationship must be established before viewing model results.
 
-These terms are already theologically legible to the model and become even stronger with Catholic framing.
-
-### Type B: Secular default, Catholic correction
-
-Examples:
-
-- `happiness`;
-- `freedom`;
-- `sexuality`;
-- `body`;
-- `death`;
-- `work`;
-- `poverty`;
-- `neighbor`;
-- `reconciliation`;
-- `justification`.
-
-These concepts are the strongest evidence for context-sensitive theological reorientation. They begin in secular/common-language neighborhoods and move toward Catholic descriptors when context is added.
-
-### Type C: Resistant concepts
-
-Examples:
-
-- `autonomy`;
-- `license`;
-- `chastity`;
-- `shame`;
-- `venial sin`;
-- `grief`;
-- `suicide`;
-- `euthanasia`.
-
-These concepts remain semantically contested even with Catholic framing. They are important for pastoral AI because they are often morally or emotionally sensitive.
-
-### Type D: Mixed rank-order cases
-
-Some concepts have positive average CAS but still show a secular top descriptor, or vice versa. This means the average semantic field and the nearest-neighbor attractor can diverge.
-
-Examples include:
-
-- `obedience`, where submission-to-authority remains a strong nearest neighbor;
-- `purgatory`, where generic religious descriptors compete with Catholic descriptors;
-- `judgment after death`, where afterlife-judgment language remains strong even under Catholic context;
-- `grief`, where Catholic descriptors become top-ranked in Catholic context but overall CAS remains weak.
-
-This typology is important because it prevents overclaiming. It shows that the model's theological behavior is not binary.
+The model's numerical output must not determine retrospectively whether the comparison register is compatible or incompatible with Catholic theology.
 
 ---
 
-## 5. AI Studies Interpretation
+## 12. Shift decomposition
 
-From an AI studies perspective, the v2 benchmark demonstrates that semantic priors should be tested under context variation.
+For matched contexts \(q_0\) and \(q_1\):
 
-### 5.1 Embeddings are context-sensitive
+\[
+\Delta CAS=CAS(q_1)-CAS(q_0)
+\]
 
-The same concept can move significantly depending on query wording. A bare term and a theologically framed phrase do not necessarily occupy the same semantic neighborhood.
+Because:
 
-Example:
+\[
+CAS=S_C-S_R
+\]
 
-- `happiness` as a bare or ordinary concept is close to life satisfaction and positive emotion.
-- `happiness in Catholic theology` moves toward beatitude and the highest good.
+it follows exactly that:
 
-This means that a one-token or single-phrase audit is insufficient. The audit must model context conditions.
+\[
+\Delta CAS=\Delta S_C-\Delta S_R
+\]
 
-### 5.2 Surface output is not enough
+This distinguishes several semantic behaviours.
 
-Chatbot output can be shaped by instruction tuning, RLHF, safety policies, or retrieval. Embedding audits measure a different layer: the semantic neighborhoods of representational space.
+| Change | Interpretation |
+|---|---|
+| \(S_C\) increases while \(S_R\) is stable | Theological association gain |
+| Both increase, with greater Catholic gain | Joint accessibility with theological enrichment |
+| \(S_C\) increases and \(S_R\) decreases | Strong register differentiation |
+| \(S_C\) is stable while \(S_R\) decreases | Relative Catholic shift without theological gain |
+| \(S_C\) decreases but \(S_R\) decreases more | Positive CAS shift despite declining Catholic proximity |
+| Neither changes materially | Context resistance |
 
-This project does not claim that public Azure embeddings are the hidden source code of ChatGPT. Rather, it treats them as an accessible commercial embedding system that can be audited quantitatively.
+A positive CAS shift must not automatically be called “Catholic activation.”
 
-### 5.3 Rank-order metrics matter
+A claim of theological association gain requires:
 
-CAS measures the average descriptor-set difference. But top-descriptor rank shows the strongest local attractor. Both are necessary.
-
-A concept can have positive CAS while the top descriptor remains secular, or a Catholic top descriptor while the average field remains mixed. This is especially important for HCI because users often experience the nearest, most salient association rather than the full statistical field.
-
-### 5.4 UMAP is useful but secondary
-
-The dashboard includes UMAP visualizations. These are helpful for exploration and teaching, but UMAP is not the primary evidence. The primary evidence is:
-
-- high-dimensional cosine similarity;
-- concept-level CAS;
-- confidence intervals;
-- p-values;
-- effect sizes;
-- directional consistency across concepts.
+- positive \(\Delta S_C\);
+- stability across natural paraphrases;
+- reference-sensitivity checks;
+- compatibility with held-out validation;
+- and appropriate nearest-reference results.
 
 ---
 
-## 6. Theological Interpretation
+## 13. Theological behaviour taxonomy
 
-### 6.1 Not total secularization, but layered semantic activation
+The final v3.4 analysis will classify observed behaviour more precisely than positive or negative CAS.
 
-The results do not support the claim that the model mathematically deletes theology. A better claim is:
+| Behaviour type | Operational meaning |
+|---|---|
+| Stable theological legibility | Catholic-reference association remains strong across relevant contexts |
+| General-use foregrounding with theological recoverability | Another register dominates initially, but Catholic association rises robustly under context |
+| Joint accessibility | Catholic and valid comparison-register similarities remain simultaneously substantial |
+| Theological association gain | Catholic similarity itself increases |
+| Register displacement | Relative Catholic movement is driven mainly by suppression of another register |
+| Label-dependent shift | Overt religious wording produces substantially more movement than equivalent theological content |
+| Persistent theological attenuation | Catholic-reference proximity remains comparatively weak across reviewed contexts |
+| Mixed local/global association | The top-ranked reference and mean reference-field contrast point in different directions |
 
-> The model contains Catholic theological associations, but they are activated unevenly. Theological meaning is strongest under explicit theological context and weakest under bare or ordinary usage.
+This taxonomy is intended to help theologians inspect where AI behaviour warrants particular caution.
 
-This is more nuanced and more defensible.
+---
 
-### 6.2 Catholic meaning is often non-default
+## 14. Theological loci retained from v2
 
-For many concepts, especially in anthropology and teleology, the Catholic meaning is not the default semantic frame. It must be invoked.
+### 14.1 Freedom, truth, and moral teleology
 
-This matters because Catholic theology often depends on:
+v3.4 tests possible **teleological compression**.
+
+The question is whether concepts such as:
+
+- freedom;
+- happiness;
+- flourishing;
+- responsibility;
+- conscience;
+- autonomy;
+- rights;
+- virtue;
+- obedience;
+- and license
+
+are represented mainly through choice, permission, self-expression, liability, or psychological outcome, while orientation toward truth, goodness, virtue, vocation, and final ends remains comparatively attenuated.
+
+The v2 findings for autonomy, happiness, flourishing, responsibility, freedom, and license remain preliminary cases for re-testing.
+
+### 14.2 Human dignity and theological anthropology
+
+v3.4 tests possible **anthropological narrowing**.
+
+The question is whether body, personhood, disability, poverty, work, suffering, and death are organised primarily through material, functional, legal, economic, or biological descriptions, or whether their theological-anthropological significance remains jointly accessible.
+
+Relevant Catholic dimensions include:
 
 - createdness;
-- grace;
-- final ends;
-- communion;
-- dignity;
+- intrinsic dignity;
+- embodied personhood;
 - body-soul unity;
-- moral truth;
-- hope in resurrection.
+- relational vocation;
+- communion;
+- moral agency;
+- and final destiny.
 
-These are not always the dominant meanings in ordinary secular language.
+The proximate descriptions are not presumed false. The empirical question is whether one dimension dominates or excludes another.
 
-### 6.3 Pastoral AI risk is concentrated in ambiguous concepts
+### 14.3 Love, communion, and sacramentality
 
-The most dangerous concepts are not necessarily explicit doctrinal terms such as `Eucharist` or `sanctification`. The most pastorally sensitive concepts are ambiguous terms such as:
+v3.4 examines whether affective, romantic, bodily, social, charitable, and sacramental dimensions can remain semantically integrated.
 
-- `freedom`;
-- `happiness`;
-- `love`;
-- `body`;
-- `death`;
-- `grief`;
-- `suicide`;
-- `euthanasia`;
-- `poverty`;
-- `disability`;
-- `sexuality`.
+It re-tests v2 patterns involving:
 
-These are precisely the concepts where secular, clinical, legal, psychological, and theological registers overlap.
+- love;
+- friendship;
+- neighbour;
+- sexuality;
+- marriage;
+- family;
+- chastity;
+- self-gift;
+- caritas;
+- communion;
+- and sacramentality.
+
+The research does not oppose eros to agape or affection to Catholic love. It asks whether Catholic contextualisation expands the semantic field or merely substitutes one vocabulary for another.
+
+### 14.4 Sin, grace, and redemption
+
+This locus functions partly as an internal theological control.
+
+It compares explicitly religious concepts such as:
+
+- salvation;
+- sanctification;
+- grace;
+- original sin;
+- sacrament;
+- and resurrection
+
+with adjacent moral and pastoral concepts such as:
+
+- guilt;
+- shame;
+- forgiveness;
+- justification;
+- reconciliation;
+- and judgment.
+
+The v2 result suggested that theological legibility may be strongest where religious meaning is lexically explicit and weaker where theological interpretation operates through ordinary human experience.
+
+v3.4 will test that proposition rather than assume it.
 
 ---
 
-## 7. Focused Life and Death Supplement
+## 15. Life and Death critical-context module
 
-The Life and Death supplement contains 24 concepts and 240 query rows. It was added because life and death are ultimate theological, existential, biological, medical, and secular questions.
+Life and death will remain a central v3.4 module.
 
-### 7.1 Overall Life and Death Results
+The research question is:
 
-| Context / shift | Mean CAS or shift | 95% bootstrap CI | Positive concepts | Effect label | Interpretation |
-|---|---:|---:|---:|---|---|
-| Bare CAS | -0.0438 | -0.0797 to -0.0095 | 6/24 | small | negative Catholic alignment |
-| Ordinary CAS | -0.0069 | -0.0363 to +0.0202 | 12/24 | negligible | mixed / no clear direction |
-| Academic CAS | +0.0104 | -0.0209 to +0.0398 | 13/24 | negligible | mixed / no clear direction |
-| Catholic CAS | +0.0939 | +0.0657 to +0.1210 | 21/24 | meaningful | positive Catholic alignment |
-| Bare to Catholic shift | +0.1377 | +0.1099 to +0.1641 | 23/24 | strong | positive shift |
-| Ordinary to Catholic shift | +0.1009 | +0.0782 to +0.1225 | 22/24 | strong | positive shift |
-| Academic to Catholic shift | +0.0836 | +0.0654 to +0.1014 | 23/24 | meaningful | positive shift |
+> **How does the embedding reorganise semantic salience when life, death, grief, suffering, suicide, euthanasia, and dying are expressed as natural existential, pastoral, or crisis-language utterances rather than abstract concepts?**
 
-This confirms the broader CTSB-100 pattern in a pastorally concentrated domain.
+Possible behaviours include:
 
-### 7.2 Created Life
+- crisis-register dominance;
+- preservation of clinically necessary meaning;
+- theological attenuation;
+- joint clinical-pastoral accessibility;
+- context-dependent theological recovery;
+- persistent attenuation;
+- and register displacement.
 
-| Context | Mean CAS |
-|---|---:|
-| Bare | +0.0046 |
-| Ordinary | +0.0252 |
-| Academic | +0.0591 |
-| Catholic | +0.1549 |
+Strong crisis or mental-health associations are not automatically classified as defects. For suicide, such associations may be appropriate and safety-relevant.
 
-Key examples:
+The theological question is whether the model also retains access to concepts such as:
 
-| Concept | Bare CAS | Ordinary CAS | Academic CAS | Catholic CAS | Interpretation |
-|---|---:|---:|---:|---:|---|
-| life | -0.0603 | -0.0382 | +0.0109 | +0.1615 | shifts from personal/biological existence to life as gift from God |
-| biological life | -0.0955 | -0.0378 | -0.0431 | +0.1047 | shifts from organismic survival to created bodily life |
-| human life | -0.0177 | +0.0048 | +0.0354 | +0.1492 | shifts toward sacred human existence and inviolable dignity |
-| created life | +0.0761 | +0.1389 | +0.1889 | +0.2365 | strongly Catholic-aligned |
+- dignity;
+- mercy;
+- accompaniment;
+- hope;
+- moral seriousness;
+- prayer;
+- resurrection;
+- and pastoral care.
 
-Interpretation:
+---
 
-> The model defaults to life as biological process or personal existence. Catholic framing re-situates life as created gift, sacredness, and participation in divine order.
+## 16. Planned query conditions
 
-### 7.3 Mortality
+The exact wording must be developed, reviewed, and frozen before the final run.
 
-| Context | Mean CAS |
-|---|---:|
-| Bare | -0.0889 |
-| Ordinary | -0.0345 |
-| Academic | -0.0221 |
-| Catholic | +0.0865 |
+The planned conditions are:
 
-Key examples:
+1. **Bare or minimally specified concept**
+2. **Natural contemporary general-use context**
+3. **Natural morally or pastorally ambiguous context**
+4. **Natural critical or crisis context**, where appropriate
+5. **Label-free theological-content context**
+6. **Explicit Catholic contextualisation**
+7. **Integrative theological-proximate context**, for complementary domains
 
-| Concept | Bare CAS | Ordinary CAS | Academic CAS | Catholic CAS | Interpretation |
-|---|---:|---:|---:|---:|---|
-| death | -0.0760 | -0.0391 | -0.0217 | +0.0911 | shifts from mortality/end of life to death transformed by Christ |
-| dying | -0.1101 | -0.0419 | -0.0295 | +0.1117 | shifts from terminal process to pastoral care and hope in Christ |
-| mortality | -0.0401 | +0.0400 | +0.0436 | +0.1328 | shifts toward creatureliness and resurrection hope |
-| grief | -0.1564 | -0.1401 | -0.1241 | -0.0015 | resistant; psychological bereavement remains strong |
-| mourning | -0.1410 | -0.1071 | -0.0676 | +0.0349 | partial shift toward Christian mourning and hope |
+Not every condition is appropriate for every concept.
 
-Interpretation:
+The benchmark protocol must specify applicability before evaluation.
 
-> Mortality language is strongly influenced by biological and psychological meanings. Catholic context can reframe death and dying, but grief remains pastorally resistant.
+---
 
-### 7.4 Eschatology
+## 17. Minimum robustness requirements
 
-| Context | Mean CAS |
-|---|---:|
-| Bare | +0.0204 |
-| Ordinary | +0.0355 |
-| Academic | +0.0370 |
-| Catholic | +0.0716 |
+v3.4 prioritises a small set of foundational checks.
 
-Key examples:
+### Required
 
-| Concept | Pattern |
+1. Held-out validation of clear-register texts
+2. Independent theological review of Catholic references
+3. Recorded source provenance
+4. Leave-one-reference-out sensitivity
+5. Natural paraphrase or leave-one-template-out sensitivity
+6. Component-level shift decomposition
+7. Small embedding determinism check
+8. Full query-to-reference cosine export
+9. Frozen benchmark before final evaluation
+
+### Statistical unit
+
+The principal statistical unit remains the concept.
+
+Multiple references and query paraphrases improve measurement reliability but must not be treated as fully independent conceptual observations.
+
+### Primary statistical summaries
+
+- mean concept-level shift;
+- median concept-level shift;
+- bootstrap confidence interval over concepts;
+- number and proportion of positive shifts;
+- paired sign-flip permutation test;
+- held-out balanced accuracy;
+- class-specific recall;
+- macro F1;
+- confusion matrix.
+
+Subgroup and concept-type analyses will be marked exploratory unless pre-specified and adequately powered.
+
+---
+
+## 18. Raw and processed data
+
+v3.4 will distinguish several data levels.
+
+| Level | Content |
 |---|---|
-| resurrection | strongly Catholic-aligned in all contexts |
-| heaven | shifts from generic paradise to beatific vision and communion with God |
-| hell | shifts partially, but afterlife-torment imagery remains strong |
-| eternal life | mixed; immortality and afterlife language compete with communion with God |
-| purgatory | mixed; generic Catholic-afterlife language competes with precise purification descriptors |
-| judgment after death | high CAS but top descriptor often generic afterlife judgment |
+| Benchmark source data | Queries, references, provenance, relationship types, reviewer status, and data splits |
+| Raw model output | High-dimensional embedding vectors |
+| Descriptor-level scored data | Every query-to-reference cosine similarity and rank |
+| Query-level summary | \(S_C\), \(S_R\), CAS, nearest references, and ranks |
+| Concept-level summary | Context means and component-level shifts |
+| Statistical summary | Validation metrics, confidence intervals, paired tests, and sensitivity results |
 
-Interpretation:
-
-> Eschatological terms are already religiously marked, but the model often represents them through generic cultural-religious imagery rather than specifically Catholic doctrinal precision.
-
-Future versions should separate three descriptor classes:
-
-1. Catholic doctrinal;
-2. generic religious/cultural;
-3. secular or philosophical.
-
-### 7.5 Pastoral Ethics
-
-| Context | Mean CAS |
-|---|---:|
-| Bare | -0.1112 |
-| Ordinary | -0.0538 |
-| Academic | -0.0324 |
-| Catholic | +0.0628, but confidence interval overlaps zero |
-
-Key examples:
-
-| Concept | Bare CAS | Ordinary CAS | Academic CAS | Catholic CAS | Interpretation |
-|---|---:|---:|---:|---:|---|
-| hope | -0.0070 | +0.0192 | +0.0547 | +0.2021 | strong theological-virtue recovery |
-| suffering | -0.0690 | -0.0392 | +0.0308 | +0.1233 | shifts toward suffering held before God |
-| end-of-life care | -0.1508 | -0.0550 | -0.0555 | +0.0435 | partial shift toward dignity and spiritual care |
-| euthanasia | -0.1902 | -0.0961 | -0.0929 | -0.0328 | resistant; assisted dying/mercy killing dominate |
-| suicide | -0.2314 | -0.1441 | -0.1273 | -0.0265 | resistant; clinical/crisis language dominates |
-
-Interpretation:
-
-> Pastoral ethics is the most resistant life/death domain. Hope and suffering can be strongly reframed. Euthanasia and suicide remain dominated by medical, legal, psychological, and crisis-language attractors even under Catholic framing.
-
-This does not mean clinical language is wrong. For suicide and end-of-life care, clinical and psychological language is necessary. The theological concern is whether the model can integrate clinical care with dignity, hope, moral seriousness, and pastoral accompaniment. Generic embeddings appear only partially able to do so.
+The descriptor-level export is essential because it allows reviewers to reconstruct every mean, contrast, and ranking.
 
 ---
 
-## 8. What Has Been Demonstrated?
+## 19. Data before visualisation
 
-Within the operational limits of the benchmark, the project has demonstrated several things mathematically and statistically.
+The primary evidence is numerical analysis in the model's original high-dimensional embedding space.
 
-### 8.1 Bare terms are not neutral
+Substantive conclusions will rely on:
 
-Bare terms often lean toward secular/common-language descriptors. This is true in CTSB-100 overall and in the Life and Death supplement.
+- query-to-reference cosine similarities;
+- component means;
+- CAS;
+- component-level shifts;
+- held-out validation;
+- confidence intervals;
+- directional consistency;
+- and robustness checks.
 
-This is especially visible for:
+Visualisations remain important for:
 
-- `autonomy`;
-- `happiness`;
-- `sexuality`;
-- `poverty`;
-- `disability`;
-- `work`;
-- `neighbor`;
-- `life`;
-- `death`;
-- `grief`;
-- `suicide`;
-- `euthanasia`.
+- identifying heterogeneity;
+- inspecting outliers;
+- communicating behaviour types;
+- and diagnosing misleading aggregates.
 
-### 8.2 Catholic framing produces systematic semantic reorientation
+UMAP, if retained, will be explicitly exploratory. Its axes and apparent global distances will not be treated as substantive theological evidence.
 
-The largest and most robust finding is the context shift.
+The appropriate principle is:
 
-Across CTSB-100:
-
-- 99/100 concepts shift positively from bare to Catholic.
-- 95/100 shift positively from ordinary to Catholic.
-- 91/100 shift positively from academic to Catholic.
-- 100/100 shift positively from default to Catholic.
-
-Across Life and Death:
-
-- 23/24 concepts shift positively from bare to Catholic.
-- 22/24 shift positively from ordinary to Catholic.
-- 23/24 shift positively from academic to Catholic.
-
-This is strong evidence for algorithmic theological code-switching.
-
-### 8.3 The strongest default secular pull appears in moral anthropology, moral teleology, and pastoral ethics
-
-The model handles explicit doctrinal terms relatively well. The most difficult concepts are ambiguous and existentially charged.
-
-This matters because pastoral AI is most likely to be used around precisely those ambiguous concepts.
-
-### 8.4 Some concepts remain resistant even under Catholic framing
-
-Important resistant concepts include:
-
-- `autonomy`;
-- `license`;
-- `chastity`;
-- `shame`;
-- `grief`;
-- `suicide`;
-- `euthanasia`.
-
-These concepts should become priority case studies for theological HCI.
+> Numerical analysis establishes the result; visualisation diagnoses and communicates it.
 
 ---
 
-## 9. What Has Not Been Demonstrated?
+## 20. What v3.4 may conclude
 
-The project should avoid overclaiming.
+If validation succeeds, v3.4 may support benchmark-relative claims about:
 
-It does not demonstrate:
+- which semantic register is foregrounded under ambiguity;
+- whether Catholic-reference proximity increases under context;
+- whether theological and proximate dimensions remain jointly accessible;
+- whether a relative shift is driven by enrichment or displacement;
+- whether critical wording attenuates theological-pastoral association;
+- and where persistent theological attenuation occurs.
 
-1. that the model has beliefs;
-2. that the model possesses a metaphysical ontology;
-3. that ChatGPT internally uses this exact embedding model;
-4. that cosine similarity is theological truth;
-5. that the Catholic descriptor set is perfect;
-6. that all secular descriptors are false or theologically hostile.
+It will not establish:
 
-It demonstrates something more precise:
-
-> Under a defined benchmark, a commercial embedding model displays measurable representational priors and context-sensitive shifts in theological semantic alignment.
-
-That is enough for a serious empirical argument without making metaphysical claims about machine belief.
-
----
-
-## 10. Design Implications for Theological HCI and Pastoral AI
-
-The v2 results suggest several design principles.
-
-### 10.1 Do not rely on generic embeddings alone
-
-Generic embeddings may be adequate for general religious vocabulary, but they are not sufficient for ambiguous pastoral and moral concepts.
-
-### 10.2 Use domain-sensitive retrieval
-
-Pastoral AI should retrieve from authoritative theological corpora, such as magisterial documents, catechetical texts, Catholic social teaching, and pastoral-care resources.
-
-### 10.3 Treat crisis concepts as special cases
-
-Terms such as `suicide`, `euthanasia`, `grief`, `dying`, and `end-of-life care` require special handling. They involve clinical, legal, pastoral, and theological dimensions.
-
-### 10.4 Do not confuse surface Catholic language with semantic alignment
-
-A model may generate Catholic-sounding language when prompted. The deeper question is whether its semantic neighborhoods and retrieved sources actually support Catholic interpretation.
-
-### 10.5 Preserve human and ecclesial responsibility
-
-The model can assist reading, retrieval, comparison, and explanation. It should not replace pastoral judgment, priestly care, medical expertise, or human spiritual discernment.
+- machine belief;
+- metaphysical ontology;
+- theological truth;
+- hostility toward Catholicism;
+- behaviour of all embedding models;
+- or ChatGPT's actual generated pastoral responses.
 
 ---
 
-## 11. Limitations and Next Steps
+## 21. Relevance to theologians
 
-### Current limitations
+The project translates vector-space behaviour into theological questions concerning:
 
-1. The benchmark audits sentence embeddings, not full generative LLM internals.
-2. Descriptor sets are draft and require theological review.
-3. Some contrast descriptors are generic religious, clinical, legal, or cultural rather than purely secular.
-4. Per-locus Life and Death tests have only six concepts each and should be treated as exploratory.
-5. UMAP visualizations are illustrative, not primary evidence.
-6. Statistical significance must be interpreted alongside theological significance.
+- teleology;
+- theological anthropology;
+- reductionism;
+- doctrinal legibility;
+- moral ambiguity;
+- semantic integration;
+- pastoral adequacy;
+- and critical-context vulnerability.
 
-### Next steps
+Its purpose is to help theologians say:
 
-1. Review and freeze descriptor sets.
-2. Add a third descriptor class for generic religious/cultural meanings where needed.
-3. Compare Azure `text-embedding-3-large` with open-source embedding baselines.
-4. Train or adapt a Catholic-domain reference embedding model on a curated magisterial corpus.
-5. Compare general-purpose embeddings with Catholic-domain adapted embeddings.
-6. Extend the dashboard to support model-to-model comparison.
-7. Prepare a formal dissertation chapter around the v2 results and the Life and Death supplement.
+- where an AI model's theological associations are stable;
+- where they are dependent on context;
+- where valid clinical or psychological meanings dominate;
+- where theological meaning is added without suppressing those meanings;
+- where one register replaces another;
+- and where particular caution is warranted.
+
+The embedding model does not perform the theological interpretation. The audit provides empirical evidence that theologians can interpret.
 
 ---
 
-## 12. Preliminary Conclusion
+## 22. Future enhancements
 
-CTSB-100 v2 provides strong preliminary evidence that general-purpose embeddings encode layered and context-dependent theological semantic priors.
+After the v3.4 methodology and benchmark are validated and frozen, future work may include:
 
-The model is not simply secularized in every respect. It often contains Catholic theological associations and can shift strongly toward them when context is explicit. However, Catholic meaning is not always the default semantic frame. Bare and ordinary language often activates secular, clinical, psychological, legal, biological, romantic, or autonomy-centered attractors.
+1. cross-provider replication using a Google embedding model;
+2. evaluation with three or more independent embedding families;
+3. retrieval and ranking audits;
+4. controlled generative GPT audits;
+5. integrated RAG-system evaluation;
+6. multilingual theological benchmarks;
+7. other Christian or religious traditions;
+8. multimodal theological representation.
 
-The most significant theological and HCI conclusion is:
+Raw CAS values from different embedding models must not be compared as if they shared one calibrated scale.
 
-> Catholic meaning is available but context-dependent. For doctrinal and sacramental terms, the model often performs well. For ambiguous moral, anthropological, and pastoral concepts, especially in life/death and crisis contexts, generic embeddings require domain-sensitive theological design.
+For example:
 
-This makes the project valuable not because it proves that AI has an ontology, but because it shows how theological meaning can be measured, compared, and audited in vector space.
+> OpenAI CAS = 0.10 and Google CAS = 0.05
 
-<!-- END V2_PRELIMINARY_RESULTS -->
+would not establish that OpenAI is twice as Catholic-associated.
 
-## Benchmark Files
+Cross-model comparison should instead examine:
 
-Main active draft benchmark:
+- held-out performance;
+- within-model effect patterns;
+- sign and direction consistency;
+- class-specific recall;
+- concept-level rank correlation;
+- and standardised within-model effects.
 
-    data/benchmarks/ctsb_100_v2_contexts_draft.csv
+---
 
-Archived v1 benchmark:
+## 23. Key methodological references
 
-    archive/ctsb_100_v1_draft/
+### Foundational differential association
 
-Active compact descriptor source:
+Caliskan, A., Bryson, J. J., and Narayanan, A. (2017). “Semantics derived automatically from language corpora contain human-like biases.” *Science*, 356(6334), 183–186.  
+https://doi.org/10.1126/science.aal4230
 
-    data/benchmarks/ctsb_100_concepts_descriptors_v2_draft.csv
+### Sentence-encoder extension and cautions
 
-Archived compact descriptor source:
+May, C., Wang, A., Bordia, S., Bowman, S. R., and Rudinger, R. (2019). “On Measuring Social Biases in Sentence Encoders.” *Proceedings of NAACL-HLT 2019*.  
+https://aclanthology.org/N19-1063/
 
-    data/benchmarks/ctsb_100_concepts_descriptors_v1_draft.csv
+### Contemporary reference-based embedding validation
 
-Pilot benchmark:
+Tsirtsis, S., Rawal, K., Russell, C., Mittelstadt, B., and Wachter, S. (2026). “AI-Mediated Communication Can Steer Collective Opinion.” arXiv:2605.16245. Accepted for presentation at the AI4Good and Technical AI Governance Research workshops at ICML 2026.  
+https://arxiv.org/abs/2605.16245
 
-    data/benchmarks/ctsb_pilot.csv
+---
 
-The CTSB-100 v2 draft contains:
+## 24. Current implementation status
 
-- 100 theological concepts
-- 4 theological loci
-- 1 bare/minimal query per concept
-- 3 ordinary lived-usage query templates per concept
-- 3 neutral academic query templates per concept
-- 3 explicit Catholic/theological query templates per concept
-- 5 Catholic-magisterial descriptors per concept
-- 5 secular/common-language descriptors per concept
-- 1000 query rows total
+The active v3.4 repository does not yet contain:
 
-The four loci are:
+- a final v3.4 benchmark;
+- a v3.4 audit script;
+- v3.4 embedding results;
+- or a v3.4 dashboard.
 
-1. Sin, grace, and redemption
-2. Love, communion, and sacramentality
-3. Human dignity and theological anthropology
-4. Freedom, truth, and moral teleology
+Those components will be implemented only after the written methodology, source procedure, review process, validation split, query conditions, and statistical plan are frozen.
 
-## Important Status Note
+The archived v2 code must not be silently reused as if it implemented the v3.4 protocol.
 
-CTSB-100 v1 is a **draft** benchmark. It is suitable for exploratory analysis and pipeline testing.
+---
 
-Before using it for final dissertation claims, the benchmark should be:
+## 25. Repository layout
 
-1. theologically reviewed;
-2. checked for descriptor balance;
-3. frozen before final model evaluation;
-4. tagged in GitHub as a stable benchmark version.
+    vector-space-theological-meaning/
+    ├── README.md
+    ├── VERSION
+    ├── docs/
+    │   └── development_log.md
+    ├── data/
+    │   └── benchmarks/
+    │       └── v3_4/
+    │           └── README.md
+    ├── archive/
+    │   ├── ctsb_100_v1_draft/
+    │   └── ctsb_100_v2_context_draft/
+    ├── index.html
+    └── life_death.html
 
-## Local Setup
-
-Create and activate a virtual environment:
-
-    python3 -m venv .venv
-    source .venv/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
-
-Copy `.env.example` to `.env` and fill in your Azure details:
-
-    AZURE_OPENAI_API_KEY=your_key_here
-    AZURE_OPENAI_ENDPOINT=https://your-resource-name.openai.azure.com/
-    AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-large-prova1
-    AZURE_OPENAI_API_VERSION=2024-02-01
-
-Do not commit `.env`.
-
-## Run the CTSB-100 Audit
-
-Default full v2 draft benchmark:
-
-    .venv/bin/python scripts/audit_azure_embeddings.py --open
-
-Faster run without UMAP:
-
-    .venv/bin/python scripts/audit_azure_embeddings.py --skip-umap --open
-
-Pilot benchmark:
-
-    python3 scripts/audit_azure_embeddings.py \
-      --benchmark data/benchmarks/ctsb_pilot.csv \
-      --output-csv outputs/results/ctsb_pilot_results.csv \
-      --output-condition-csv outputs/results/ctsb_pilot_condition_summary.csv \
-      --output-concept-csv outputs/results/ctsb_pilot_concept_summary.csv \
-      --output-stats-csv outputs/results/ctsb_pilot_statistical_summary.csv \
-      --open
-
-## Generated Outputs
-
-The active v2 audit generates:
-
-    outputs/results/ctsb_100_v2_results.csv
-    outputs/results/ctsb_100_v2_condition_summary.csv
-    outputs/results/ctsb_100_v2_concept_summary.csv
-    outputs/results/ctsb_100_v2_statistical_summary.csv
-    index.html
-
-The dashboard includes:
-
-- summary metrics;
-- statistical tests;
-- CAS distributions;
-- neutral-to-theological slope plot;
-- locus-level comparison;
-- concept heatmap;
-- global query-only UMAP;
-- per-locus UMAPs;
-- concept-level table;
-- raw query-level table.
-
-UMAP is illustrative only. Substantive conclusions should rely on high-dimensional cosine, rank-order metrics, confidence intervals, and effect sizes.
-
-## Model Metadata
-
-The dashboard records:
-
-- Azure deployment name
-- API version
-- model name: `text-embedding-3-large`
-- model version: `1`
-- lifecycle status: `GenerallyAvailable`
-- creation/update dates
-- retirement date
-
-The displayed benchmark path is privacy-safe and does not expose the local machine path.
-
-## Statistical Interpretation
-
-The main statistical unit is the **concept**, not every individual query-descriptor comparison.
-
-Main tests:
-
-1. neutral CAS vs zero;
-2. theological CAS vs zero;
-3. context shift vs zero;
-4. locus-level context shift;
-5. concept-type context shift.
-
-A statistically significant result should not be interpreted as proof of ontology. The appropriate conclusion is evidence of a systematic representational prior.
-
-## Life and Death Supplement
-
-A focused life/death benchmark has been added as a supplement because life and death are ultimate theological, existential, biological, and secular questions.
-
-Benchmark:
-
-    data/benchmarks/life_death_v1_draft.csv
-
-Descriptor source:
-
-    data/benchmarks/life_death_concepts_descriptors_v1_draft.csv
-
-Outputs:
-
-    outputs/results/life_death_v1_results.csv
-    outputs/results/life_death_v1_condition_summary.csv
-    outputs/results/life_death_v1_concept_summary.csv
-    outputs/results/life_death_v1_statistical_summary.csv
-
-Focused dashboard:
-
-    life_death.html
-
-Local run:
-
-    .venv/bin/python scripts/audit_life_death_embeddings.py --open
-
-The main dashboard also includes a hidden raw-data panel for the life/death supplement only, so that the supplemental data can be copied without copying the full CTSB-100 dataset.
-
-## GitHub Pages
-
-This project is configured for GitHub Pages from:
-
-- branch: `main`
-- folder: `/`
-
-Expected URL:
-
-    https://yin-renlong.github.io/vector-space-theological-meaning/
-
-
-## Advanced Raw Data Export
-
-The generated dashboard includes a hidden-by-default raw data section. Open the details blocks to copy or download:
-
-- statistical summary CSV;
-- concept-level summary CSV;
-- condition-level summary CSV;
-- raw query-level result CSV.
-
-This is intended to make peer review and external analysis easier.
+The root HTML files are temporary compatibility copies of the v2 dashboards. Canonical historical copies are stored inside the v2 archive.

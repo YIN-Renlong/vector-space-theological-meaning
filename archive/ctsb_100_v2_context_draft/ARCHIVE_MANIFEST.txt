@@ -1,0 +1,17 @@
+CTSB-100 v2 Context Draft Archive
+Archived: 10 July 2026
+Git tag: ctsb-v2-context-draft-2026-07-10
+
+This snapshot contains:
+- the v2 project README;
+- the v2 statistical analysis plan;
+- benchmark CSV files;
+- v2 audit scripts;
+- query-level and summary result CSV files;
+- exported images;
+- generated dashboard HTML files;
+- the v2 requirements file.
+
+The Azure embedding cache is local-only and excluded from Git.
+
+The active methodology after this snapshot is CTSB v3.4.
