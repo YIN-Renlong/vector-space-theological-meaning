@@ -279,9 +279,7 @@ The CAS formula adapts the single-target differential cosine-association functio
 
 $$
 s(w,A,B)=
-\operatorname{mean}_{a\in A}\cos(w,a)
--
-\operatorname{mean}_{b\in B}\cos(w,b)
+\operatorname{mean}_{a\in A}\cos(w,a) - \operatorname{mean}_{b\in B}\cos(w,b)
 $$
 
 Caliskan, Bryson, and Narayanan used this function within the wider WEAT procedure.
