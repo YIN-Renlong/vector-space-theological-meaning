@@ -1,10 +1,9 @@
 .DS_Store
 __pycache__/
-*.py[cod]
+**/__pycache__/
+*.pyc
 .env
 .venv/
 node_modules/
-outputs/cache/
 _patch_backups/
-*.egg-info/
-.pytest_cache/
+**/azure_embeddings_cache.json
