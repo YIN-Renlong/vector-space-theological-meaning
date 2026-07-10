@@ -278,7 +278,7 @@ It means only that the selected comparison references have greater mean cosine s
 The CAS formula adapts the single-target differential cosine-association function introduced in the Word Embedding Association Test:
 
 $$
-s(w,A,B)= \operatorname{mean}_{a\in A}\cos(w,a) - \operatorname{mean}_{b\in B}\cos(w,b)
+s(w,A,B)= \mathrm{mean}_{a\in A}\cos(w,a) - \mathrm{mean}_{b\in B}\cos(w,b)
 $$
 
 Caliskan, Bryson, and Narayanan used this function within the wider WEAT procedure.
