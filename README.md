@@ -156,13 +156,13 @@ v3.4 will re-test these claims using source-grounded references, held-out valida
 
 An embedding model does not output natural-language explanations. It returns a numerical vector.
 
-For an exact text \(q\), the model returns:
+For an exact text $q$, the model returns:
 
-\[
+$$
 e(q)=[x_1,x_2,\ldots,x_d]
-\]
+$$
 
-where \(d\) is the model's embedding dimension.
+where $d$ is the model's embedding dimension.
 
 There is no individual coordinate that means:
 
@@ -183,9 +183,9 @@ Suppose the query is:
 
 The model embeds that query:
 
-\[
+$$
 e(q)
-\]
+$$
 
 The project also embeds source-grounded Catholic-pastoral reference texts, such as:
 
@@ -196,9 +196,9 @@ The project also embeds source-grounded Catholic-pastoral reference texts, such 
 
 These become:
 
-\[
+$$
 e(c_1),e(c_2),\ldots,e(c_m)
-\]
+$$
 
 A separately defined psychological-bereavement reference set might include:
 
@@ -210,9 +210,9 @@ A separately defined psychological-bereavement reference set might include:
 
 These become:
 
-\[
+$$
 e(r_1),e(r_2),\ldots,e(r_n)
-\]
+$$
 
 The pipeline calculates cosine similarity between the query vector and every reference vector.
 
@@ -236,30 +236,30 @@ v3.4 uses the name:
 
 This replaces the older phrase “Catholic Alignment Score,” which could be confused with normative AI alignment.
 
-For query \(q\), Catholic reference set \(C\), and comparison-register reference set \(R\):
+For query $q$, Catholic reference set $C$, and comparison-register reference set $R$:
 
-\[
+$$
 S_C(q)=\frac{1}{|C|}\sum_{c\in C}\cos(e(q),e(c))
-\]
+$$
 
-\[
+$$
 S_R(q)=\frac{1}{|R|}\sum_{r\in R}\cos(e(q),e(r))
-\]
+$$
 
-\[
+$$
 CAS(q;C,R)=S_C(q)-S_R(q)
-\]
+$$
 
 Interpretation:
 
 | Result | Meaning |
 |---|---|
-| \(CAS>0\) | Catholic references are closer on average than the specified comparison references |
-| \(CAS<0\) | Comparison references are closer on average than the Catholic references |
-| \(CAS\approx0\) | Little relative separation between the two reference sets |
-| \(\Delta S_C>0\) | Mean similarity to Catholic references increased |
-| \(\Delta S_R<0\) | Mean similarity to the comparison register decreased |
-| \(\Delta CAS>0\) | Catholic references gained relative to the comparison references |
+| $CAS>0$ | Catholic references are closer on average than the specified comparison references |
+| $CAS<0$ | Comparison references are closer on average than the Catholic references |
+| $CAS\approx0$ | Little relative separation between the two reference sets |
+| $\Delta S_C>0$ | Mean similarity to Catholic references increased |
+| $\Delta S_R<0$ | Mean similarity to the comparison register decreased |
+| $\Delta CAS>0$ | Catholic references gained relative to the comparison references |
 
 A negative CAS does not independently mean:
 
@@ -277,12 +277,12 @@ It means only that the selected comparison references have greater mean cosine s
 
 The CAS formula adapts the single-target differential cosine-association function introduced in the Word Embedding Association Test:
 
-\[
+$$
 s(w,A,B)=
 \operatorname{mean}_{a\in A}\cos(w,a)
 -
 \operatorname{mean}_{b\in B}\cos(w,b)
-\]
+$$
 
 Caliskan, Bryson, and Narayanan used this function within the wider WEAT procedure.
 
@@ -368,9 +368,9 @@ Such a passage should not be forced into an exclusive Catholic-versus-psychologi
 
 Instead, v3.4 examines the pair:
 
-\[
+$$
 (S_C,S_R)
-\]
+$$
 
 and asks whether both registers remain accessible.
 
@@ -411,40 +411,40 @@ The model's numerical output must not determine retrospectively whether the comp
 
 ## 12. Shift decomposition
 
-For matched contexts \(q_0\) and \(q_1\):
+For matched contexts $q_0$ and $q_1$:
 
-\[
+$$
 \Delta CAS=CAS(q_1)-CAS(q_0)
-\]
+$$
 
 Because:
 
-\[
+$$
 CAS=S_C-S_R
-\]
+$$
 
 it follows exactly that:
 
-\[
+$$
 \Delta CAS=\Delta S_C-\Delta S_R
-\]
+$$
 
 This distinguishes several semantic behaviours.
 
 | Change | Interpretation |
 |---|---|
-| \(S_C\) increases while \(S_R\) is stable | Theological association gain |
+| $S_C$ increases while $S_R$ is stable | Theological association gain |
 | Both increase, with greater Catholic gain | Joint accessibility with theological enrichment |
-| \(S_C\) increases and \(S_R\) decreases | Strong register differentiation |
-| \(S_C\) is stable while \(S_R\) decreases | Relative Catholic shift without theological gain |
-| \(S_C\) decreases but \(S_R\) decreases more | Positive CAS shift despite declining Catholic proximity |
+| $S_C$ increases and $S_R$ decreases | Strong register differentiation |
+| $S_C$ is stable while $S_R$ decreases | Relative Catholic shift without theological gain |
+| $S_C$ decreases but $S_R$ decreases more | Positive CAS shift despite declining Catholic proximity |
 | Neither changes materially | Context resistance |
 
 A positive CAS shift must not automatically be called “Catholic activation.”
 
 A claim of theological association gain requires:
 
-- positive \(\Delta S_C\);
+- positive $\Delta S_C$;
 - stability across natural paraphrases;
 - reference-sensitivity checks;
 - compatibility with held-out validation;
@@ -661,7 +661,7 @@ v3.4 will distinguish several data levels.
 | Benchmark source data | Queries, references, provenance, relationship types, reviewer status, and data splits |
 | Raw model output | High-dimensional embedding vectors |
 | Descriptor-level scored data | Every query-to-reference cosine similarity and rank |
-| Query-level summary | \(S_C\), \(S_R\), CAS, nearest references, and ranks |
+| Query-level summary | $S_C$, $S_R$, CAS, nearest references, and ranks |
 | Concept-level summary | Context means and component-level shifts |
 | Statistical summary | Validation metrics, confidence intervals, paired tests, and sensitivity results |
 
