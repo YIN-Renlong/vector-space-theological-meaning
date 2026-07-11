@@ -7,3 +7,4 @@ __pycache__/
 node_modules/
 _patch_backups/
 **/azure_embeddings_cache.json
+ai_context/
