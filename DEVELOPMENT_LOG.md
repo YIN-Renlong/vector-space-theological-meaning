@@ -639,3 +639,21 @@ The following patterns will be independently re-tested:
 The next stage will design the v3.4 benchmark schema and source-review workflow.
 
 The v3.4 Python audit must be written separately. The archived v2 script does not implement the v3.4 protocol.
+
+<!-- BEGIN V3_5_ALPHA_GENERATED_100_20260713 -->
+## CTSB v3.5-alpha generated 100-concept expansion — 13 July 2026
+
+A generated exploratory 100-concept benchmark was added as CTSB v3.5-alpha.
+
+The alpha contains 100 audits, 600 generated references, 1,624 queries, 808 generated development-validation passages, and eight critical-context audits. It retains the five v3.4 audits and uses explicitly named comparison registers and pre-assigned theological relationship types.
+
+A deterministic mock run passed structural, mathematical, hashing, leave-one-reference-out, and paraphrase-analysis code paths. CAS reconstruction and shift decomposition were exact within floating-point precision.
+
+The mock results are not semantic evidence. Perfect generated validation reflects shared construction fields and is not independent held-out validation.
+
+All generated references remain marked as unreviewed, non-evidential, and pending exact-source, theological, and disciplinary review. Human review is formally deferred to future work rather than represented as complete.
+
+Before evidential use, the project still requires exact source verification, reviewed reference wording, genuinely independent validation, ethical review of critical passages, benchmark freeze, and a final post-freeze model run.
+
+Generated vectors, caches, and run outputs remain local and excluded from Git.
+<!-- END V3_5_ALPHA_GENERATED_100_20260713 -->

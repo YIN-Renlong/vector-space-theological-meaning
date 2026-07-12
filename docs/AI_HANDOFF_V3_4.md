@@ -1,5 +1,7 @@
 # AI Handoff: CTSB v3.4
 
+> **Status notice — 13 July 2026:** This document preserves the CTSB v3.4 Step 1 handoff. The active generated exploratory expansion is [CTSB v3.5-alpha](AI_HANDOFF_V3_5_ALPHA.md). CTSB v3.4 remains the mathematical and methodological foundation.
+
 ## Continuation instruction
 
 You are continuing the project **Vector Space and Theological Meaning**.

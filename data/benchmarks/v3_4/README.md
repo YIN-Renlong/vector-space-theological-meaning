@@ -133,3 +133,13 @@ Run the deterministic offline prototype:
 Run automated tests:
 
     .venv/bin/python tests/test_ctsb_v3_4_prototype.py
+
+<!-- BEGIN V3_5_ALPHA_POINTER -->
+## Generated CTSB v3.5-alpha expansion
+
+The active generated exploratory 100-concept expansion is documented at:
+
+- [`../v3_5_alpha/README.md`](../v3_5_alpha/README.md)
+
+It inherits the CTSB v3.4 instrument but remains unreviewed and non-evidential.
+<!-- END V3_5_ALPHA_POINTER -->

@@ -1,5 +1,36 @@
 # Vector Space and Theological Meaning
 
+<!-- BEGIN V3_5_ALPHA_STATUS -->
+## Active development status — CTSB v3.5-alpha
+
+CTSB v3.5-alpha is a **generated exploratory 100-concept expansion** of the CTSB v3.4 mathematical instrument.
+
+It currently contains:
+
+- 100 explicitly defined concept-to-register audits;
+- 25 concepts in each of the four theological loci;
+- 600 generated and unreviewed reference anchors;
+- 1,624 controlled queries;
+- 808 generated development-validation passages;
+- eight critical-context audits;
+- strict label-free and explicit-Catholic pairs;
+- natural paraphrases;
+- leave-one-reference-out sensitivity;
+- and the five original v3.4 audits covering death, grief, euthanasia, grace, and judgment after death.
+
+The generated wording is **non-evidential**. It is not a quotation or verified paraphrase of the listed candidate sources. Its validation passages are development diagnostics rather than genuinely independent held-out validation.
+
+Azure results from this alpha may be analysed only as exploratory patterns relative to the generated benchmark. Human source verification, Catholic theological review, relevant disciplinary review, independent validation, ethical review of critical passages, and benchmark freeze remain required before final claims.
+
+See:
+
+- [CTSB v3.5-alpha protocol](docs/CTSB_V3_5_ALPHA_PROTOCOL.md)
+- [Active alpha handoff](docs/AI_HANDOFF_V3_5_ALPHA.md)
+- [Generated benchmark documentation](data/benchmarks/v3_5_alpha/README.md)
+
+Dashboard work remains deferred.
+<!-- END V3_5_ALPHA_STATUS -->
+
 ## CTSB v3.4 Methodology Design
 
 **From doctrinal legibility to theological behaviour under ambiguity and critical contexts**
@@ -853,19 +884,24 @@ https://arxiv.org/abs/2605.16245
 
 ## 24. Current implementation status
 
-The active v3.4 repository does not yet contain:
+The repository contains:
 
-- a final v3.4 benchmark;
-- a v3.4 audit script;
-- v3.4 embedding results;
-- or a v3.4 dashboard.
+- the CTSB v3.4 methodology and synthetic five-audit prototype;
+- the working v3.4 scoring engine;
+- the generated CTSB v3.5-alpha 100-concept expansion;
+- mock analysis and robustness support;
+- and successful prior Azure integration with `text-embedding-3-large`.
 
-Those components will be implemented only after the written methodology, source procedure, review process, validation split, query conditions, and statistical plan are frozen.
+The repository does not yet contain:
 
-The archived v2 code must not be silently reused as if it implemented the v3.4 protocol.
+- a source-verified final v3.5 benchmark;
+- genuinely independent held-out alpha validation;
+- completed theological or disciplinary review;
+- a frozen final 100-concept benchmark;
+- final evidential v3.5 results;
+- or a v3.5 dashboard.
 
----
-
+The generated alpha must not be presented as a final benchmark. Archived v2 code and categories remain historical only.
 ## 25. Repository layout
 
     vector-space-theological-meaning/
