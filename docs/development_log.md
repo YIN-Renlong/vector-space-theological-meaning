@@ -35,7 +35,7 @@ Attribution for externally raised review questions will be added only with the r
   
   $$
   \Delta CAS=\Delta S_C-\Delta S_R
-  \]
+$$
 
 - Introduce natural ambiguity and critical-context conditions.
 - Keep visualisations secondary to high-dimensional numerical analysis.
