@@ -33,7 +33,7 @@ Attribution for externally raised review questions will be added only with the r
 - Retain separate Catholic and comparison similarities alongside their difference.
 - Decompose every context shift as:
   
-  \[
+  $$
   \Delta CAS=\Delta S_C-\Delta S_R
   \]
 
@@ -327,27 +327,27 @@ Azure returned 3,072-dimensional vectors and identified the response model as `t
 
 The scoring identity was preserved:
 
-\[
+$$
 CAS(q)=S_C(q)-S_R(q)
-\]
+$$
 
 For every registered query contrast:
 
-\[
+$$
 \Delta CAS=CAS(q_1)-CAS(q_0)
-\]
+$$
 
 and:
 
-\[
+$$
 \Delta CAS=\Delta S_C-\Delta S_R
-\]
+$$
 
 The maximum recorded decomposition error was:
 
-\[
+$$
 2.775557561563e-17
-\]
+$$
 
 This is ordinary floating-point precision and confirms that the component decomposition was implemented correctly.
 
