@@ -6,7 +6,7 @@
 
 CTSB v3.4 redesigns the project as a source-grounded and validated theological audit of Azure/OpenAI `text-embedding-3-large`.
 
-The active repository currently contains the **v3.4 methodology protocol and benchmark-construction plan only**. The v3.4 benchmark data, audit script, statistical outputs, and dashboard have not yet been implemented.
+The active repository contains the **v3.4 methodology protocol, benchmark-construction plan, and a non-evidential synthetic development prototype**. The prototype tests data validation, differential cosine scoring, matched contextual contrasts, shift decomposition, and output generation. It is not the final v3.4 benchmark and does not provide empirical theological findings.
 
 The previous v2 implementation has been frozen in the repository archive:
 
@@ -294,6 +294,12 @@ May et al. extended WEAT-style association testing to sentence encoders through 
 Tsirtsis et al. provide a contemporary 2026 example of reference-based cosine classification using modern embedding models, human-labelled texts, held-out calibration, model ensembles, and cross-format validation.
 
 v3.4 borrows the foundational differential-association logic while adding theological source provenance, held-out validation, relationship typing, critical-context analysis, and decomposition of the component similarities.
+
+### Methodological contribution
+
+CTSB v3.4 proposes a domain-specific synthesis for Catholic theological auditing of embedding models. It combines peer-reviewed foundations in differential embedding association, controlled contextual contrast, minimal-pair evaluation, held-out validation, and sensitivity analysis with theological relationship typing, component-level shift decomposition, integrative-register analysis, and critical-context evaluation.
+
+The individual computational techniques are established or strongly precedented. Their synthesis and theological operationalisation constitute this project's methodological contribution. CTSB v3.4 is not yet an independently peer-reviewed or universally validated instrument, and the project does not claim historical priority without a systematic literature review.
 
 ---
 

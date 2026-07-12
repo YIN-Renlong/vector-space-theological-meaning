@@ -59,3 +59,32 @@ The following patterns will be independently re-tested:
 The next stage will design the v3.4 benchmark schema and source-review workflow.
 
 The v3.4 Python audit must be written separately. The archived v2 script does not implement the v3.4 protocol.
+
+## 12 July 2026 — CTSB v3.4 synthetic prototype
+
+### Status
+
+A lean, non-evidential development prototype has been added before full benchmark construction.
+
+### Prototype scope
+
+- five illustrative audit units spanning the five theological relationship types;
+- four CSV fixture files;
+- one integrated Python script;
+- deterministic offline mock embeddings;
+- optional Azure embedding access;
+- full query-to-reference cosine export;
+- separate Catholic and comparison similarities;
+- Catholic Association Contrast;
+- matched contextual shifts;
+- exact component decomposition;
+- basic synthetic held-out classification metrics;
+- and automated tests.
+
+### Interpretation restriction
+
+The fixture references, validation passages, and mock scores are synthetic. They test implementation behaviour only and are not theological evidence or empirical findings about the audited Azure/OpenAI model.
+
+### Next substantive stage
+
+Replace synthetic anchors with source-grounded and independently reviewed references, construct genuine held-out validation passages, pre-specify acceptance criteria and statistics, and freeze the benchmark before final evaluation.

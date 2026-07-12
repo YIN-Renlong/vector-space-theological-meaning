@@ -12,7 +12,7 @@ Direct object of study: Azure/OpenAI text-embedding-3-large
 Primary intellectual orientation: A Catholic theological audit of semantic behaviour in a commercial embedding model, especially under moral ambiguity, anthropological complexity, pastoral sensitivity, and critical or crisis contexts.
 
 ## 2. Current repository state
-The active root contains the v3.4 methodology README and development files. The next task is to design and implement the v3.4 data and computation pipeline. Visualisation and dashboard development are not the next primary task.
+The active root contains the v3.4 methodology README and development files. A lean, non-evidential synthetic prototype now tests five audit units using four CSV files and one integrated Python script. This prototype validates data flow and mathematics only. The next substantive task is source-grounded benchmark construction and review. Visualisation and dashboard development are not the next primary task.
 
 ## 3. Historical v2 status
 The v2 findings are preliminary observations to be re-tested, not assumptions that v3.4 must reproduce. The v2 comparison category was too broad. A negative v2 CAS must therefore not be interpreted simply as secularism or opposition to Catholic theology.

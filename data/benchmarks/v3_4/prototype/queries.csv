@@ -1,0 +1,33 @@
+query_id,audit_id,condition,paraphrase_id,query_text,baseline_query_id,contrast_type,review_status
+death_bare_1,death_biological,bare,p1,death,,,fixture_only
+death_general_1,death_biological,natural_general,p1,The patient's vital biological functions ceased irreversibly.,death_bare_1,bare_to_general,fixture_only
+death_ambiguous_1,death_biological,natural_ambiguous,p1,What does death mean for a person and for those who remain?,death_general_1,general_to_ambiguous,fixture_only
+death_critical_1,death_biological,critical,p1,The family has been told that death is near and must decide how to accompany the patient.,death_general_1,general_to_critical,fixture_only
+death_label_free_1,death_biological,label_free_theological,p1,Death ends earthly life but is faced with hope in resurrection and communion with God.,death_general_1,general_to_label_free_theological,fixture_only
+death_catholic_1,death_biological,explicit_catholic,p1,In Catholic teaching death ends earthly life but is faced with hope in resurrection and communion with God.,death_label_free_1,label_free_to_explicit_catholic,fixture_only
+death_integrative_1,death_biological,integrative,p1,Death is the biological end of earthly life and is also faced with prayer and hope in resurrection.,death_general_1,general_to_integrative,fixture_only
+grief_bare_1,grief_psychological,bare,p1,grief,,,fixture_only
+grief_general_1,grief_psychological,natural_general,p1,She is grieving after the death of her mother.,grief_bare_1,bare_to_general,fixture_only
+grief_ambiguous_1,grief_psychological,natural_ambiguous,p1,She is trying to understand what her grief means and how to live with it.,grief_general_1,general_to_ambiguous,fixture_only
+grief_critical_1,grief_psychological,critical,p1,Since the death she can barely sleep work or speak to anyone.,grief_general_1,general_to_critical,fixture_only
+grief_label_free_1,grief_psychological,label_free_theological,p1,In mourning sorrow is brought to God in prayer and held with hope in the resurrection.,grief_general_1,general_to_label_free_theological,fixture_only
+grief_catholic_1,grief_psychological,explicit_catholic,p1,In Catholic life sorrow in mourning is brought to God in prayer and held with hope in the resurrection.,grief_label_free_1,label_free_to_explicit_catholic,fixture_only
+grief_integrative_1,grief_psychological,integrative,p1,Grief may require psychological care while also being held in prayer and hope in the resurrection.,grief_general_1,general_to_integrative,fixture_only
+euthanasia_bare_1,euthanasia_assisted_dying,bare,p1,euthanasia,,,fixture_only
+euthanasia_general_1,euthanasia_assisted_dying,natural_general,p1,The patient requested medical assistance to end life because of unbearable suffering.,euthanasia_bare_1,bare_to_general,fixture_only
+euthanasia_ambiguous_1,euthanasia_assisted_dying,natural_ambiguous,p1,Is ending a patient's life an act of mercy or a violation of dignity?,euthanasia_general_1,general_to_ambiguous,fixture_only
+euthanasia_critical_1,euthanasia_assisted_dying,critical,p1,A terminally ill patient in severe pain asks the clinical team to help end life.,euthanasia_general_1,general_to_critical,fixture_only
+euthanasia_label_free_1,euthanasia_assisted_dying,label_free_theological,p1,Compassionate care should relieve suffering while refusing the intentional ending of innocent human life.,euthanasia_general_1,general_to_label_free_theological,fixture_only
+euthanasia_catholic_1,euthanasia_assisted_dying,explicit_catholic,p1,In Catholic teaching compassionate care should relieve suffering while refusing the intentional ending of innocent human life.,euthanasia_label_free_1,label_free_to_explicit_catholic,fixture_only
+euthanasia_integrative_1,euthanasia_assisted_dying,integrative,p1,Palliative medicine can relieve severe suffering while respecting the person's dignity and refusing intentional killing.,euthanasia_general_1,general_to_integrative,fixture_only
+grace_bare_1,grace_lexical,bare,p1,grace,,,fixture_only
+grace_general_1,grace_lexical,natural_general,p1,She moved across the stage with grace and elegance.,grace_bare_1,bare_to_general,fixture_only
+grace_ambiguous_1,grace_lexical,natural_ambiguous,p1,He spoke about receiving grace during a difficult time.,grace_general_1,general_to_ambiguous,fixture_only
+grace_label_free_1,grace_lexical,label_free_theological,p1,Human beings receive an unearned divine gift that heals and draws them into life with God.,grace_general_1,general_to_label_free_theological,fixture_only
+grace_catholic_1,grace_lexical,explicit_catholic,p1,In Catholic teaching grace is the unearned divine gift that heals and draws human beings into life with God.,grace_label_free_1,label_free_to_explicit_catholic,fixture_only
+judgment_bare_1,judgment_after_death_generic,bare,p1,judgment after death,,,fixture_only
+judgment_general_1,judgment_after_death_generic,natural_general,p1,Many religions describe a judgment after death in which deeds are evaluated.,judgment_bare_1,bare_to_general,fixture_only
+judgment_ambiguous_1,judgment_after_death_generic,natural_ambiguous,p1,What might judgment after death mean for the way a person has lived?,judgment_general_1,general_to_ambiguous,fixture_only
+judgment_label_free_1,judgment_after_death_generic,label_free_theological,p1,After death each person faces judgment before God where the truth of life is revealed in mercy and justice.,judgment_general_1,general_to_label_free_theological,fixture_only
+judgment_catholic_1,judgment_after_death_generic,explicit_catholic,p1,In Catholic teaching after death each person faces particular judgment before God where the truth of life is revealed in mercy and justice.,judgment_label_free_1,label_free_to_explicit_catholic,fixture_only
+judgment_integrative_1,judgment_after_death_generic,integrative,p1,Religions speak broadly of afterlife judgment while Catholic doctrine describes a particular judgment before God.,judgment_general_1,general_to_integrative,fixture_only

@@ -105,3 +105,31 @@ Before final evaluation:
 8. only then run the final embedding audit.
 
 No v3.4 result should be labelled final if the benchmark was revised after inspecting that result.
+
+## Synthetic development prototype
+
+The `prototype/` directory contains five illustrative audit units:
+
+- death versus biological description;
+- grief versus psychological bereavement;
+- euthanasia versus a permissive assisted-dying register;
+- grace versus elegance and social charm;
+- judgment after death versus generic religious afterlife judgment.
+
+These files are synthetic development fixtures. They test the v3.4 data structure and Python calculations only. They are not source-grounded benchmark evidence and must not be used for theological or model-performance claims.
+
+The integrated prototype script is:
+
+    scripts/ctsb_v3_4_prototype.py
+
+Validate the fixture:
+
+    .venv/bin/python scripts/ctsb_v3_4_prototype.py validate
+
+Run the deterministic offline prototype:
+
+    .venv/bin/python scripts/ctsb_v3_4_prototype.py run --backend mock
+
+Run automated tests:
+
+    .venv/bin/python tests/test_ctsb_v3_4_prototype.py

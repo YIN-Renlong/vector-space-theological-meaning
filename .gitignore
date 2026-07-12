@@ -8,3 +8,5 @@ node_modules/
 _patch_backups/
 **/azure_embeddings_cache.json
 ai_context/
+outputs/v3_4/embedding_cache.json
+outputs/v3_4/prototype_runs/
