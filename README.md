@@ -20,30 +20,55 @@ Public archival dashboards:
 
 The root `index.html` and `life_death.html` remain temporarily as compatibility copies of the v2 dashboards. They are not v3.4 results.
 
-<!-- BEGIN V3_4_DEVELOPMENT_LOG -->
-## Development log
+<!-- BEGIN V3_4_CURRENT_STATUS -->
+## Current status — 12 July 2026
 
-The canonical chronological record of methodology decisions, implementation changes, tests, prototype runs, limitations, and next actions is maintained in:
+**CTSB v3.4 Step 1 is complete.**
 
-- [CTSB development log](docs/development_log.md)
+The project has moved from methodology design to a working, lean development prototype. The completed Step 1 includes:
 
-### Latest milestone: 12 July 2026
+- five illustrative audit units covering all five theological relationship types;
+- four linked synthetic fixture tables for comparisons, references, queries, and validation passages;
+- one integrated Python analysis script;
+- deterministic local mock embeddings for offline testing;
+- five passing automated tests;
+- successful Azure embedding integration;
+- confirmation that Azure returned `text-embedding-3-large` vectors with 3,072 dimensions;
+- complete query-to-reference cosine exports;
+- separate Catholic and comparison similarities, `S_C` and `S_R`;
+- Catholic Association Contrast, `CAS = S_C - S_R`;
+- nearest-reference rankings;
+- matched contextual contrasts;
+- and numerical verification of `Delta CAS = Delta S_C - Delta S_R`.
 
-**CTSB v3.4 Step 1 is complete.** A lean, non-evidential five-audit prototype now validates the redesigned data structure, Azure `text-embedding-3-large` integration, full cosine export, Catholic Association Contrast, nearest-reference ranking, held-out scoring workflow, and exact component-level shift decomposition.
+The Azure integration run embedded 90 synthetic fixture texts and successfully generated query scores, validation scores, reference-level similarities, component shifts, raw vectors, and a run manifest.
 
-Primary tracked prototype records:
+These prototype texts and results are **synthetic and non-evidential**. They demonstrate that the v3.4 data flow, mathematics, Azure connection, and output structure work correctly. They are not final theological findings and must not be presented as validated evidence about Catholic theology or the audited model.
+
+The next substantive phase is a source-grounded five-audit pilot. Synthetic references will be replaced with short references derived from verified Catholic and disciplinary sources, followed by genuinely separate held-out validation, natural paraphrases, sensitivity analysis, review, and benchmark freeze.
+
+> **For supervisors and reviewers:** Read the [full development log](DEVELOPMENT_LOG.md), especially the [detailed 12 July 2026 Step 1 record](DEVELOPMENT_LOG.md#step-1-2026-07-12), for the complete interactive design decisions, implementation history, mock and Azure tests, initial fixture-relative observations, limitations, documentation safeguards, and next-step plan.
+
+### Development milestones
+
+| Date | Milestone | Status | Detailed record |
+|---|---|---|---|
+| **12 July 2026** | Lean synthetic prototype, automated tests, mock run, and Azure `text-embedding-3-large` integration | **Complete** | [Full Step 1 record](DEVELOPMENT_LOG.md#step-1-2026-07-12) |
+| **10 July 2026** | CTSB v3.4 methodology redesign and archival separation from v2 | **Complete** | [Methodology-redesign record](DEVELOPMENT_LOG.md#methodology-redesign-2026-07-10) |
+| **Next phase** | Source-grounded and independently reviewed five-audit pilot | Planned | [Benchmark construction area](data/benchmarks/v3_4/README.md) |
+
+### Primary Step 1 records
 
 - [Audit definitions](data/benchmarks/v3_4/prototype/comparisons.csv)
-- [Synthetic references](data/benchmarks/v3_4/prototype/references.csv)
-- [Controlled queries](data/benchmarks/v3_4/prototype/queries.csv)
+- [Synthetic reference anchors](data/benchmarks/v3_4/prototype/references.csv)
+- [Controlled contextual queries](data/benchmarks/v3_4/prototype/queries.csv)
 - [Synthetic validation passages](data/benchmarks/v3_4/prototype/validation.csv)
 - [Integrated Python prototype](scripts/ctsb_v3_4_prototype.py)
 - [Automated tests](tests/test_ctsb_v3_4_prototype.py)
+- [Full development log](DEVELOPMENT_LOG.md)
 
-The detailed [12 July 2026 development-log entry](docs/development_log.md) records the interactive design decisions, mock and Azure tests, run metadata, source-file hashes, initial fixture-relative observations, interpretation restrictions, and Step 2 plan.
-
-Prototype texts and generated scores are synthetic and non-evidential. Local run outputs remain under `outputs/v3_4/prototype_runs/` and are intentionally excluded from Git.
-<!-- END V3_4_DEVELOPMENT_LOG -->
+Generated mock and Azure prototype-run outputs remain local under `outputs/v3_4/prototype_runs/` and are intentionally excluded from Git.
+<!-- END V3_4_CURRENT_STATUS -->
 
 ---
 
@@ -846,8 +871,10 @@ The archived v2 code must not be silently reused as if it implemented the v3.4 p
     vector-space-theological-meaning/
     ├── README.md
     ├── VERSION
+    ├── DEVELOPMENT_LOG.md
     ├── docs/
-    │   └── development_log.md
+    │   ├── AI_HANDOFF_V3_4.md
+    │   └── development_log.md  # compatibility link
     ├── data/
     │   └── benchmarks/
     │       └── v3_4/
