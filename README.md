@@ -20,6 +20,31 @@ Public archival dashboards:
 
 The root `index.html` and `life_death.html` remain temporarily as compatibility copies of the v2 dashboards. They are not v3.4 results.
 
+<!-- BEGIN V3_4_DEVELOPMENT_LOG -->
+## Development log
+
+The canonical chronological record of methodology decisions, implementation changes, tests, prototype runs, limitations, and next actions is maintained in:
+
+- [CTSB development log](docs/development_log.md)
+
+### Latest milestone: 12 July 2026
+
+**CTSB v3.4 Step 1 is complete.** A lean, non-evidential five-audit prototype now validates the redesigned data structure, Azure `text-embedding-3-large` integration, full cosine export, Catholic Association Contrast, nearest-reference ranking, held-out scoring workflow, and exact component-level shift decomposition.
+
+Primary tracked prototype records:
+
+- [Audit definitions](data/benchmarks/v3_4/prototype/comparisons.csv)
+- [Synthetic references](data/benchmarks/v3_4/prototype/references.csv)
+- [Controlled queries](data/benchmarks/v3_4/prototype/queries.csv)
+- [Synthetic validation passages](data/benchmarks/v3_4/prototype/validation.csv)
+- [Integrated Python prototype](scripts/ctsb_v3_4_prototype.py)
+- [Automated tests](tests/test_ctsb_v3_4_prototype.py)
+
+The detailed [12 July 2026 development-log entry](docs/development_log.md) records the interactive design decisions, mock and Azure tests, run metadata, source-file hashes, initial fixture-relative observations, interpretation restrictions, and Step 2 plan.
+
+Prototype texts and generated scores are synthetic and non-evidential. Local run outputs remain under `outputs/v3_4/prototype_runs/` and are intentionally excluded from Git.
+<!-- END V3_4_DEVELOPMENT_LOG -->
+
 ---
 
 ## 1. Project purpose
