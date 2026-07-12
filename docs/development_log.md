@@ -540,3 +540,100 @@ The next work is to:
 8. run the five-audit source-grounded Azure pilot;
 9. review the results before deciding the size of the final benchmark;
 10. and only later construct the dashboard.
+
+<!-- BEGIN 2026-07-12 DOCUMENTATION-SAFEGUARDS -->
+### Appendix: documentation corrections and safeguards
+
+Two documentation-generation issues were identified and corrected during the recording of CTSB v3.4 Step 1. Neither issue affected the prototype data, Python calculations, Azure embeddings, or numerical results.
+
+#### 1. Literal replacement text in Python regular expressions
+
+The first documentation update raised:
+
+    re.error: bad escape \D
+
+The generated Markdown included LaTeX commands such as `\Delta`. When that Markdown was passed directly as the replacement-string argument to `re.sub()` or `Pattern.sub()`, Python attempted to interpret the backslashes as regex replacement-template syntax.
+
+For generated Markdown or any other replacement text that may contain backslashes, future updates must use a callable replacement:
+
+    updated_text = pattern.sub(
+        lambda _: replacement_text,
+        original_text,
+        count=1,
+    )
+
+The callable return value is inserted literally. This protects LaTeX commands, paths, source code, and possible sequences resembling regex backreferences.
+
+The same practice should be used for README replacements even when the present replacement text has no backslashes, because later revisions may introduce them.
+
+#### 2. GitHub-compatible mathematical notation
+
+GitHub Markdown should use dollar-sign math delimiters.
+
+Inline mathematics should be written as:
+
+    $CAS(q)=S_C(q)-S_R(q)$
+
+Display mathematics should be written as:
+
+    $$
+    \Delta CAS=\Delta S_C-\Delta S_R
+    $$
+
+The earlier backslash-plus-square-bracket display notation was rendered as ordinary bracketed text on GitHub rather than as a mathematical block. The affected development-log equations were converted to double-dollar display blocks.
+
+#### 3. Why no global legacy-delimiter rejection is used
+
+A previous correction attempted to reject every occurrence of legacy math-delimiter character sequences. That check also detected explanatory prose describing the obsolete notation itself and stopped the update before writing the corrected file.
+
+Future documentation maintenance should therefore:
+
+- target actual standalone math-delimiter lines;
+- use callable regex replacements;
+- review the resulting Markdown diff;
+- verify the relevant rendered GitHub page;
+- and avoid broad rejection rules that cannot distinguish notation from explanatory prose.
+
+#### 4. Required precautions for future development-log updates
+
+Future automated documentation changes should:
+
+1. create a timestamped backup;
+2. use `pathlib` and `shutil.copy2` for safe file handling;
+3. use callable replacements when regex is necessary;
+4. prefer direct string replacement when a unique literal anchor is sufficient;
+5. use `$...$` for inline GitHub math;
+6. use paired standalone `$$` lines for display math;
+7. run `git diff --check`;
+8. inspect the Markdown headings and changed sections before committing;
+9. preserve links to the original tracked CSV and Python files;
+10. keep synthetic fixture outputs explicitly non-evidential;
+11. keep `.env`, API keys, embedding caches, and private credentials outside Git;
+12. avoid allowing documentation failures to modify benchmark data or numerical outputs.
+
+#### 5. Scope of the documentation issues
+
+The errors occurred only while generating or rendering the written development record. They did not change:
+
+- `data/benchmarks/v3_4/prototype/comparisons.csv`;
+- `data/benchmarks/v3_4/prototype/references.csv`;
+- `data/benchmarks/v3_4/prototype/queries.csv`;
+- `data/benchmarks/v3_4/prototype/validation.csv`;
+- `scripts/ctsb_v3_4_prototype.py`;
+- `tests/test_ctsb_v3_4_prototype.py`;
+- the mock run;
+- the Azure run;
+- the 3,072-dimensional vectors;
+- the query-to-reference cosine similarities;
+- the CAS scores;
+- or the shift-decomposition identity.
+
+The original tracked Step 1 inputs remain available at:
+
+- [Audit definitions](../data/benchmarks/v3_4/prototype/comparisons.csv)
+- [Synthetic reference anchors](../data/benchmarks/v3_4/prototype/references.csv)
+- [Controlled contextual queries](../data/benchmarks/v3_4/prototype/queries.csv)
+- [Synthetic validation passages](../data/benchmarks/v3_4/prototype/validation.csv)
+- [Integrated prototype script](../scripts/ctsb_v3_4_prototype.py)
+- [Automated prototype tests](../tests/test_ctsb_v3_4_prototype.py)
+<!-- END 2026-07-12 DOCUMENTATION-SAFEGUARDS -->
