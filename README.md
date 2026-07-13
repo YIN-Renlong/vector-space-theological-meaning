@@ -72,9 +72,8 @@ Public archival dashboards:
 The root `index.html` and `life_death.html` remain temporarily as compatibility copies of the v2 dashboards. They are not v3.4 results.
 
 <!-- BEGIN V3_4_CURRENT_STATUS -->
-## Current status — 12 July 2026
 
-**CTSB v3.4 Step 1 is complete.**
+## CTSB v3.4 Step 1 - 12 July 2026
 
 The project has moved from methodology design to a working, lean development prototype. The completed Step 1 includes:
 
