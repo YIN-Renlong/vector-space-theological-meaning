@@ -1,0 +1,182 @@
+==============================================================================
+CTSB v3.5-alpha Azure diagnostic
+==============================================================================
+Run directory: /Users/Renlong/Projects/GitHub/YIN-Renlong/vector-space-theological-meaning/outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232
+Git commit: 3d8c92dfe0807363d8e424202ece7a42bc60b28c
+Methodology: CTSB v3.5-alpha
+Backend: azure
+Provider: azure_openai
+Requested model: text-embedding-3-large
+Azure-reported model: text-embedding-3-large
+Embedding dimensions: 3072
+New embeddings: 3032
+Cached embeddings: 0
+Unique embedded texts: 3032
+
+Evidential status: NON-EVIDENTIAL GENERATED DEVELOPMENT ANALYSIS
+IMPORTANT: results are relative to generated, unreviewed references and are not validated theological findings.
+
+==============================================================================
+1. Output integrity
+==============================================================================
+Audits: 100
+Query scores: 1624
+Matched shifts: 1524
+Validation scores: 808
+Reference-level similarities: 14592
+Maximum CAS reconstruction error: 2.220e-16
+Maximum decomposition error: 5.551e-17
+All query scores finite: True
+Cosine range: 0.152236 to 0.974701
+Manifest hashes valid: True
+
+==============================================================================
+2. Generated development-validation diagnostic
+==============================================================================
+     scope   n  balanced_accuracy  catholic_recall  comparison_recall  macro_f1
+ALL_AUDITS 600           1.000000         1.000000           1.000000  1.000000
+
+This is generated development validation, not genuinely independent held-out validation.
+
+==============================================================================
+3. Condition-level Azure summary
+==============================================================================
+             condition  concept_count  mean_s_c  mean_s_r  mean_cas  median_cas  positive_cas_proportion  cas_bootstrap_95_low  cas_bootstrap_95_high
+                  bare            100  0.467934  0.502100 -0.034166   -0.037230                 0.250000             -0.044995              -0.023106
+       natural_general            100  0.516648  0.760013 -0.243365   -0.247406                 0.000000             -0.253303              -0.233577
+     natural_ambiguous            100  0.489977  0.496311 -0.006333   -0.008598                 0.420000             -0.012740               0.000000
+label_free_theological            100  0.806735  0.522436  0.284299    0.277365                 1.000000              0.274793               0.294195
+     explicit_catholic            100  0.891948  0.469370  0.422579    0.421961                 1.000000              0.411486               0.433550
+           integrative            100  0.709446  0.675652  0.033793    0.032170                 0.700000              0.024502               0.042632
+              critical              8  0.396597  0.419816 -0.023219   -0.030520                 0.375000             -0.055163               0.009229
+
+==============================================================================
+4. Matched-shift Azure summary
+==============================================================================
+                    contrast_type  concept_count  mean_delta_s_c  mean_delta_s_r  mean_delta_cas  positive_delta_cas_proportion  delta_cas_bootstrap_95_low  delta_cas_bootstrap_95_high  paired_sign_flip_pvalue
+                  bare_to_general            100        0.048714        0.257913       -0.209198                       0.000000                   -0.221077                    -0.197365                 0.000050
+             general_to_ambiguous            100       -0.026671       -0.263702        0.237031                       1.000000                    0.225657                     0.248423                 0.000050
+general_to_label_free_theological            100        0.290087       -0.237576        0.527664                       1.000000                    0.509668                     0.545511                 0.000050
+  label_free_to_explicit_catholic            100        0.085213       -0.053067        0.138280                       1.000000                    0.131700                     0.144706                 0.000050
+           general_to_integrative            100        0.192798       -0.084361        0.277158                       1.000000                    0.262754                     0.291103                 0.000050
+              general_to_critical              8       -0.075205       -0.330231        0.255026                       1.000000                    0.220898                     0.285287                 0.007550
+
+==============================================================================
+5. Robustness summary
+==============================================================================
+Queries sign-stable under every leave-one-reference-out case: 1461/1624
+Mean leave-one-reference-out sign stability: 0.970956
+Minimum leave-one-reference-out sign stability: 0.333333
+Largest leave-one-reference-out absolute CAS change: 0.093610
+Audit-condition groups with mixed CAS signs across paraphrases: 137/508
+Audit-contrast groups with mixed Delta CAS signs across paraphrases: 0/508
+Median condition CAS standard deviation: 0.032449
+Maximum condition CAS standard deviation: 0.133858
+Median shift Delta CAS standard deviation: 0.031324
+Maximum shift Delta CAS standard deviation: 0.132309
+
+==============================================================================
+6. Eight critical-context audits
+==============================================================================
+                          audit_id  mean_s_c  mean_s_r  mean_cas   min_cas   max_cas
+                  death_biological  0.329531  0.369277 -0.039746 -0.186489  0.075671
+            dying_terminal_decline  0.495384  0.444069  0.051316  0.003079  0.088432
+         euthanasia_assisted_dying  0.419191  0.524270 -0.105078 -0.169953 -0.047030
+               grief_psychological  0.388448  0.413750 -0.025302 -0.059069  0.011336
+                illness_biomedical  0.342922  0.312354  0.030568 -0.008029  0.050245
+palliative_care_symptom_management  0.477481  0.473446  0.004036 -0.018118  0.040266
+            suffering_pain_symptom  0.355371  0.391110 -0.035739 -0.057911  0.006080
+             suicide_mental_health  0.364448  0.430254 -0.065806 -0.188517  0.013418
+
+==============================================================================
+7. Retained CTSB v3.4 audits: selected component shifts
+==============================================================================
+                    audit_id                     contrast_type  mean_delta_s_c  mean_delta_s_r  mean_delta_cas
+            death_biological               general_to_critical       -0.081415       -0.389161        0.307746
+            death_biological            general_to_integrative        0.290663       -0.148982        0.439645
+            death_biological general_to_label_free_theological        0.376951       -0.341537        0.718488
+            death_biological   label_free_to_explicit_catholic        0.096398       -0.027306        0.123704
+   euthanasia_assisted_dying               general_to_critical       -0.101281       -0.256607        0.155326
+   euthanasia_assisted_dying            general_to_integrative        0.194685       -0.079686        0.274371
+   euthanasia_assisted_dying general_to_label_free_theological        0.314093       -0.241564        0.555657
+   euthanasia_assisted_dying   label_free_to_explicit_catholic        0.077618       -0.067227        0.144845
+               grace_lexical            general_to_integrative        0.200887       -0.098159        0.299046
+               grace_lexical general_to_label_free_theological        0.326764       -0.350991        0.677755
+               grace_lexical   label_free_to_explicit_catholic        0.075239       -0.070582        0.145821
+         grief_psychological               general_to_critical       -0.099393       -0.359942        0.260549
+         grief_psychological            general_to_integrative        0.257140       -0.105274        0.362414
+         grief_psychological general_to_label_free_theological        0.350873       -0.286251        0.637125
+         grief_psychological   label_free_to_explicit_catholic        0.083086       -0.024778        0.107864
+judgment_after_death_generic            general_to_integrative        0.123004       -0.074277        0.197281
+judgment_after_death_generic general_to_label_free_theological        0.204746       -0.220476        0.425222
+judgment_after_death_generic   label_free_to_explicit_catholic        0.075516       -0.063356        0.138871
+
+==============================================================================
+8. Extreme generated-benchmark patterns
+==============================================================================
+
+Lowest five mean CAS values — natural_general:
+                audit_id  mean_s_c  mean_s_r  mean_cas
+license_legal_permission  0.394989  0.748351 -0.353362
+        death_biological  0.410946  0.758437 -0.347492
+        law_positive_law  0.388290  0.732067 -0.343777
+         body_biological  0.381887  0.719397 -0.337510
+           grace_lexical  0.456882  0.790888 -0.334006
+
+Highest five mean CAS values — natural_general:
+                      audit_id  mean_s_c  mean_s_r  mean_cas
+         agape_altruistic_love  0.631196  0.782276 -0.151080
+    hospitality_social_welcome  0.572822  0.732712 -0.159890
+         temperance_moderation  0.596043  0.757326 -0.161283
+     caritas_charitable_giving  0.603782  0.765979 -0.162197
+moral_agency_decision_capacity  0.636349  0.799564 -0.163215
+
+Lowest five mean CAS values — label_free_theological:
+                      audit_id  mean_s_c  mean_s_r  mean_cas
+         agape_altruistic_love  0.807782  0.619085  0.188697
+          eros_romantic_desire  0.824887  0.630021  0.194866
+  judgment_after_death_generic  0.825232  0.625270  0.199963
+moral_agency_decision_capacity  0.811415  0.611166  0.200249
+         temperance_moderation  0.826001  0.621700  0.204301
+
+Highest five mean CAS values — label_free_theological:
+                audit_id  mean_s_c  mean_s_r  mean_cas
+      illness_biomedical  0.840758  0.414352  0.426406
+license_legal_permission  0.789983  0.368958  0.421025
+ care_healthcare_service  0.802783  0.399189  0.403594
+    redemption_financial  0.837026  0.435660  0.401366
+  suffering_pain_symptom  0.821765  0.441689  0.380076
+
+Lowest five mean CAS values — integrative:
+                        audit_id  mean_s_c  mean_s_r  mean_cas
+                       soul_mind  0.614829  0.672984 -0.058154
+    resurrection_generic_rebirth  0.680865  0.728028 -0.047163
+          heaven_happy_afterlife  0.676785  0.721857 -0.045072
+     virtue_character_psychology  0.641773  0.685317 -0.043544
+conscience_subjective_preference  0.668106  0.707605 -0.039499
+
+Highest five mean CAS values — integrative:
+                        audit_id  mean_s_c  mean_s_r  mean_cas
+disability_functional_impairment  0.765215  0.602732  0.162483
+              illness_biomedical  0.710574  0.567951  0.142623
+            responsibility_legal  0.749063  0.618465  0.130598
+    neighbour_physical_proximity  0.739448  0.621155  0.118293
+         care_healthcare_service  0.697790  0.581947  0.115843
+
+==============================================================================
+9. Core Azure checks
+==============================================================================
+PASS: backend is Azure
+PASS: methodology is CTSB v3.5-alpha
+PASS: Azure reported text-embedding-3-large
+PASS: embedding dimensions are 3072
+PASS: 100 audits are present
+PASS: 1,624 query scores are present
+PASS: CAS reconstruction is valid
+PASS: shift decomposition is valid
+PASS: all query scores are finite
+PASS: manifest hashes are valid
+
+CORE AZURE INTEGRATION CHECK: PASS
+
+Interpretive restriction: these are generated-benchmark-relative alpha results, not validated theological findings.
