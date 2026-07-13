@@ -7,9 +7,9 @@
 **Azure run:** `v3_5_alpha_azure_20260713-010232`  
 **Public status:** Generated, unreviewed, exploratory, and non-evidential
 
-The dashboard should provide a professional visual explanation of the CTSB v3.5-alpha Azure experiment.
+This document is the controlling visual-design specification for the CTSB v3.5-alpha dashboard.
 
-It should be suitable for presentation to a university professor while remaining:
+The dashboard should be suitable for presentation to a university professor while remaining:
 
 - mathematically accurate;
 - statistically responsible;
@@ -17,29 +17,30 @@ It should be suitable for presentation to a university professor while remaining
 - informed by NLP and embedding-evaluation practice;
 - visually elegant;
 - concise enough to understand in one sitting;
+- accessible;
 - and explicit about the limitations of the generated benchmark.
 
-The dashboard must not present the alpha as a validated theological audit.
+The visual design must serve the research questions. It must not simply display every available file or statistic.
 
 ---
 
 ## 2. Central research narrative
 
-The dashboard should be designed around this central question:
+The dashboard should answer this central question:
 
 > **Does Catholic theological meaning remain accessible under ambiguity and semantic competition, and can apparent theological recovery be distinguished from genuine Catholic-reference association gain?**
 
-The page should tell one coherent story:
+The main narrative is:
 
 1. What semantic register is foregrounded under natural or ambiguous language?
 2. Can Catholic theological and valid adjacent meanings remain jointly accessible?
 3. Is theological substance legible without an overt Catholic label?
-4. Does explicit Catholic framing produce substantive theological recovery?
+4. Does explicit Catholic framing produce substantive Catholic-reference recovery?
 5. Can CAS become more positive even while Catholic-reference similarity declines?
-6. What happens under critical and crisis language?
-7. How sensitive are the results to paraphrases and exact reference selection?
+6. What happens under pastorally or clinically critical language?
+7. How sensitive are the observations to paraphrases and exact reference selection?
 
-The predictable fact that adding Catholic vocabulary increases Catholic association must not become the dashboard's main conclusion.
+The predictable result that adding Catholic vocabulary increases Catholic association must remain a secondary diagnostic, not the dashboard's main conclusion.
 
 ---
 
@@ -47,7 +48,7 @@ The predictable fact that adding Catholic vocabulary increases Catholic associat
 
 Display this warning prominently near the top and repeat a shorter version near the conclusion:
 
-> **Generated exploratory alpha — non-evidential.** The references, queries, and validation passages were generated for instrument development and have not received exact-source, theological, disciplinary, or independent validation review. Results are relative to the predefined generated reference fields and must not be interpreted as validated findings about Catholic theology, model bias, pastoral adequacy, or ChatGPT responses.
+> **Generated exploratory alpha — non-evidential.** The references, queries, and validation passages were generated for instrument development and have not received exact-source, theological, disciplinary, or independent validation review. Results are relative to predefined generated reference fields and must not be interpreted as validated findings about Catholic theology, model bias, pastoral adequacy, or ChatGPT responses.
 
 The dashboard must not imply:
 
@@ -55,277 +56,263 @@ The dashboard must not imply:
 - that negative CAS means hostility, error, or secularism;
 - that positive CAS proves theological adequacy;
 - that the embedding model has beliefs, intentions, consciousness, or a subconscious;
-- that the model intentionally deceives users;
-- or that these findings generalise to all AI systems.
+- that the model deliberately deceives users;
+- that the model is pastorally adequate or inadequate;
+- or that the results generalise to all embedding models or AI systems.
 
 ---
 
-## 4. Public data location
+## 4. Public result-data strategy
 
-The dashboard may read the committed result files directly from:
+The selected alpha result files are committed under:
 
-    ../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/
+    outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/
 
-when the dashboard is located at:
+The dashboard should fetch these committed files directly through repository-relative paths.
+
+When the dashboard is located at:
 
     dashboards/v3_5_alpha/index.html
 
-For example:
+the result files can be reached through paths such as:
 
     ../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/alpha_condition_statistics.csv
 
-This preserves the existing project structure and avoids duplicating the result tables.
+The dashboard should not duplicate the existing result CSVs unless a derived dataset is genuinely required.
 
-The browser may directly fetch these tracked CSV and JSON files through GitHub Pages.
+### Public files already available
 
-Do not publish or request:
+- `alpha_condition_statistics.csv`
+- `alpha_shift_statistics.csv`
+- `condition_summary.csv`
+- `embedding_index.csv`
+- `leave_one_reference_out.csv`
+- `leave_one_reference_out_summary.csv`
+- `paraphrase_condition_sensitivity.csv`
+- `paraphrase_leave_one_out.csv`
+- `paraphrase_shift_sensitivity.csv`
+- `query_scores.csv`
+- `shifts.csv`
+- `similarities.csv`
+- `validation_metrics.csv`
+- `validation_scores.csv`
+- `run_manifest.json`
+- `alpha_run_report.md`
+- `azure_diagnostic_report.txt`
 
-- `embeddings.npz`;
-- `embedding_cache.json`;
+The benchmark metadata remain available under:
+
+    data/benchmarks/v3_5_alpha/generated_100/
+
+### Files that must not be published as dashboard runtime data
+
 - `.env`;
 - API keys;
 - private credentials;
-- or backup files.
-
-`embedding_index.csv` may be published because it provides text-role metadata needed for UMAP tooltips and reproducibility.
+- embedding caches;
+- backup directories;
+- Python bytecode;
+- or local absolute paths.
 
 ---
 
-## 5. Required static dashboard location
+## 5. Raw-vector and UMAP strategy
 
-Create the dashboard under:
+The local file:
+
+    outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/embeddings.npz
+
+contains the original 3,072-dimensional vectors.
+
+It is available locally for deterministic preprocessing, but should not be required by the browser.
+
+Uploading the raw vectors would not remove the need for preprocessing because:
+
+- browsers do not natively read NumPy `.npz` files;
+- GitHub Pages cannot run Python;
+- browser-side UMAP would be unnecessarily slow and complex;
+- and the dashboard requires stable, reproducible coordinates.
+
+### Required preprocessing output
+
+Create one derived file:
+
+    outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/umap_3d_coordinates.csv
+
+Recommended fields:
+
+- `embedding_id`;
+- `umap_x`;
+- `umap_y`;
+- `umap_z`.
+
+The coordinates should join to `embedding_index.csv` through `embedding_id`.
+
+A small metadata file may also be created if useful:
+
+    outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/umap_3d_manifest.json
+
+It should record:
+
+- source run ID;
+- source embedding-file SHA-256;
+- number of vectors;
+- original dimensions;
+- UMAP package version;
+- metric;
+- `n_neighbors`;
+- `min_dist`;
+- `n_components`;
+- random seed;
+- coordinate-file SHA-256;
+- and generation timestamp.
+
+Only the coordinates and non-sensitive metadata should be committed.
+
+Raw vectors should remain local.
+
+---
+
+## 6. One UMAP calculation, three 3D views
+
+Calculate one reproducible global UMAP and reuse the same coordinates for all three graphics.
+
+Do not calculate three unrelated projections.
+
+Recommended initial configuration:
+
+- all 3,032 vectors;
+- metric: cosine;
+- `n_neighbors=30`;
+- `min_dist=0.15`;
+- `n_components=3`;
+- `random_state=42`.
+
+Record the exact `umap-learn` version and parameters.
+
+The preprocessing stage should inspect a small number of nearby parameter settings. If the visible structure changes substantially, disclose that the projection is parameter-sensitive.
+
+### UMAP restriction
+
+Every UMAP panel must state:
+
+> **Exploratory projection only.** Apparent distances, clusters, and separation in this three-dimensional UMAP are not substantive evidence. Conclusions are based on cosine similarities in the original 3,072-dimensional space, component scores, matched shifts, and robustness analyses.
+
+Three-dimensional UMAP is visually useful but can be misleading because:
+
+- camera angle changes apparent separation;
+- points can obscure one another;
+- rotation can alter visual impressions;
+- UMAP distorts some global distances;
+- and visible clusters can depend on parameters.
+
+UMAP is therefore secondary to the numerical analysis.
+
+---
+
+## 7. Minimal dashboard structure
+
+Keep the implementation simple:
 
     dashboards/v3_5_alpha/
     ├── index.html
-    ├── README.md
-    └── assets/
-        ├── css/
-        │   └── styles.css
-        └── js/
-            └── dashboard.js
+    └── prepare_umap_3d.py
 
-A small local UMAP-preparation script may also be added:
+The single `index.html` may contain:
 
-    dashboards/v3_5_alpha/prepare_umap.py
+- semantic HTML;
+- inline CSS;
+- inline JavaScript;
+- Plotly.js loaded from a CDN;
+- direct loading of committed CSV files;
+- responsive layout;
+- and all explanatory text.
 
-Generated public UMAP coordinates may be stored as:
+The Python file should:
 
-    outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/umap_coordinates.csv
+1. read local `embeddings.npz`;
+2. read `embedding_index.csv`;
+3. verify vector count and dimensions;
+4. calculate one reproducible three-dimensional UMAP;
+5. write `umap_3d_coordinates.csv`;
+6. write UMAP metadata and hashes;
+7. never alter the source vectors;
+8. never copy raw vectors into dashboard files;
+9. be deterministic and safely rerunnable.
 
-or, if implementation simplicity requires it:
-
-    dashboards/v3_5_alpha/data/umap_coordinates.csv
-
-Only two-dimensional coordinates and sanitised metadata should be published. Raw vectors must remain local.
-
-Expected public dashboard URL:
-
-    https://yin-renlong.github.io/vector-space-theological-meaning/dashboards/v3_5_alpha/
+GitHub Pages serves the static HTML and data. Python is used only for local preprocessing.
 
 ---
 
-## 6. Recommended page length and order
+## 8. Recommended page length and order
 
-The main page should contain approximately eight analytical sections:
+The professor-facing main page should contain:
 
-1. Hero, warning, and executive summary;
-2. global exploratory UMAP;
-3. semantic foregrounding by query condition;
-4. matched shift decomposition;
-5. joint accessibility;
-6. critical-context analysis;
-7. robustness and validation limitations;
-8. final exploratory UMAP views and methodology.
+1. Hero and permanent warning;
+2. central research question and three headline observations;
+3. global 3D UMAP semantic atlas;
+4. semantic foregrounding by query condition;
+5. matched shift decomposition;
+6. joint semantic accessibility;
+7. critical-context analysis;
+8. robustness and validation limitations;
+9. reference-field 3D UMAP;
+10. selected-concept 3D constellation;
+11. methodology, limitations, and reproducibility.
 
-The complete 100-concept explorer should be:
+The detailed 100-concept explorer should be:
 
 - collapsible;
 - tabbed;
 - or visually secondary.
 
-Do not display all 100 concepts in one long unstructured page.
+Do not make the professor scroll through all 100 concepts before reaching the main conclusions.
 
 ---
 
-## 7. Visual design direction
+## 9. Hero and executive summary
 
-### 7.1 Overall style
+Use a white background and show:
 
-Use a restrained academic visual style:
+- project title;
+- “Generated exploratory alpha — non-evidential” badge;
+- central research question;
+- model family;
+- 3,072 dimensions;
+- 100 audits;
+- 3,032 embedded texts;
+- run ID;
+- Git commit;
+- prominent limitations link.
 
-- white primary background;
-- warm-white or very pale grey section backgrounds;
-- maximum content width of approximately 1,200–1,280 pixels;
-- generous whitespace;
-- fine neutral borders;
-- very subtle shadows;
-- clear vertical rhythm;
-- strong heading hierarchy;
-- and responsive layouts.
+Suggested subtitle:
 
-The design should feel like a professional research publication rather than a commercial analytics product.
+> An embedding audit of whether Catholic theological meaning remains accessible under ambiguity—and whether apparent recovery is genuine or produced by movement away from another semantic register.
 
-### 7.2 Typography
+Suggested headline observations:
 
-Use no more than two font families:
-
-- a restrained serif for the project title and major section headings;
-- a clean sans-serif for body text, chart labels, controls, tables, and tooltips.
-
-Typography must remain readable on laptops, tablets, and phones.
-
-### 7.3 Colour system
-
-Use a consistent colour-blind-aware palette:
-
-| Meaning | Suggested colour |
-|---|---|
-| Catholic similarity, \(S_C\) | Deep navy or academic blue |
-| Comparison similarity, \(S_R\) | Muted ochre or amber |
-| CAS | Purple or dark slate |
-| Integrative context | Teal |
-| Critical context | Burgundy |
-| Natural or neutral context | Cool grey |
-| Uncertainty intervals | Light neutral grey |
-
-Do not use red versus green to imply failure and success.
-
-Negative CAS must not be visually coded as theological failure.
-
-### 7.4 Chart standards
-
-Every principal graphic should include:
-
-- a plain-language title;
-- a technical subtitle;
-- sample size;
-- exact axis labels;
-- a zero or diagonal reference line where appropriate;
-- an accessible legend;
-- useful tooltips;
-- downloadable source data;
-- consistent decimal precision;
-- and an insight panel immediately underneath.
-
-Use three decimal places in charts and four where additional precision is genuinely useful.
-
-Avoid:
-
-- three-dimensional charts;
-- decorative gauges;
-- universal “Catholic score” indicators;
-- unexplained acronyms;
-- sensational animation;
-- excessive gradients;
-- ecclesial decoration unrelated to the evidence;
-- and red/green verdict language.
+1. ambiguous and integrative conditions were close to aggregate CAS balance;
+2. positive CAS shifts did not always represent Catholic-reference gain;
+3. reference and paraphrase sensitivity were substantial for some borderline cases.
 
 ---
 
-## 8. Insight-panel standard
-
-Under every major graphic, provide four concise elements:
-
-### Research question
-
-What substantive research question does the chart address?
-
-### Observation
-
-What does the alpha data numerically show?
-
-### Interpretation
-
-What narrow benchmark-relative interpretation is justified?
-
-### Limitation
-
-Why is this not yet a validated theological conclusion?
-
-Use language such as:
-
-- “within this generated benchmark”;
-- “relative to the predefined reference fields”;
-- “the alpha data show”;
-- “this pattern is consistent with”;
-- “this does not establish”;
-- and “requires source-grounded beta validation.”
-
----
-
-# 9. Principal graphics
-
-## 9.1 Graphic 1 — Global exploratory UMAP
-
-### Position
-
-Place it after the hero, warning, and short executive summary.
-
-Do not place it above the evidential warning.
-
-### Purpose
-
-Provide an attractive visual orientation to the complete generated embedding set.
-
-It must not establish a substantive result.
-
-### Data
-
-Locally read:
-
-- `embeddings.npz`;
-- `embedding_index.csv`;
-- benchmark query, reference, and validation metadata.
-
-Publish only:
-
-- UMAP x coordinate;
-- UMAP y coordinate;
-- text identifier;
-- text role;
-- audit ID;
-- concept;
-- condition or group;
-- theological locus;
-- relationship type;
-- short text or tooltip text.
-
-### Display
-
-Show all 3,032 embedded texts using restrained role-based colours:
-
-- Catholic references;
-- comparison references;
-- natural and ambiguous queries;
-- label-free theological queries;
-- explicit-Catholic queries;
-- integrative queries;
-- critical queries;
-- validation passages.
-
-Use low opacity for background points and clearer highlighting on hover or selection.
-
-### Required caption
-
-> This is an exploratory two-dimensional projection of 3,072-dimensional vectors. UMAP can preserve some local neighbourhood structure but may distort global distances, cluster shapes, and apparent separation. Substantive conclusions rely on high-dimensional cosine similarities, component scores, matched shifts, validation, and sensitivity analysis—not visual position alone.
-
----
-
-## 9.2 Graphic 2 — Semantic foregrounding by condition
+## 10. Principal numerical graphics
+## 10.1 Semantic foregrounding by condition
 
 This is the first primary numerical graphic.
 
-### Panel A: component dumbbell plot
+### Panel A — Component dumbbell plot
 
-For each query condition, show:
+For each condition, show:
 
 - mean \(S_C\);
 - mean \(S_R\);
 - a line connecting the two values.
 
-A horizontal dumbbell plot is preferred over ordinary grouped bars because it highlights the relationship between the component similarities.
+Use a horizontal dumbbell plot rather than conventional grouped bars.
 
-### Panel B: CAS interval plot
+### Panel B — CAS interval plot
 
 For each condition, show:
 
@@ -335,7 +322,7 @@ For each condition, show:
 - positive-CAS proportion;
 - concept count.
 
-### Data
+### Source
 
 Use:
 
@@ -357,10 +344,10 @@ Use:
 
 Highlight:
 
-- strong comparison proximity in the generated natural-general condition;
+- comparison-register proximity in generated natural-general wording;
 - approximate aggregate balance under ambiguous wording;
-- simultaneous high component proximity under integrative wording;
-- and uncertainty around the small critical-context aggregate.
+- high component proximity under integrative wording;
+- and uncertainty around the critical aggregate.
 
 ### Limitation
 
@@ -368,13 +355,13 @@ The generated conditions contain construction effects and shared semantic fields
 
 ---
 
-## 9.3 Graphic 3 — Matched shift decomposition
+## 10.2 Matched shift decomposition
 
-This should be the most prominent analytical graphic.
+This should be the dashboard's most prominent analytical graphic.
 
 ### Display
 
-Use a diverging component chart showing, for each contrast:
+Use a diverging component chart showing:
 
 - \(\Delta S_C\);
 - \(\Delta S_R\);
@@ -382,12 +369,12 @@ Use a diverging component chart showing, for each contrast:
 
 Include:
 
-- a zero line;
+- zero reference line;
 - exact numerical labels;
 - concise contrast names;
-- and highlighting for contrasts where CAS and Catholic-reference movement tell different stories.
+- visual emphasis on contrasts where CAS and Catholic-reference movement tell different stories.
 
-### Data
+### Source
 
 Use:
 
@@ -395,13 +382,13 @@ Use:
 
 ### Essential examples
 
-#### General to ambiguous
+General to ambiguous:
 
 - \(\Delta S_C=-0.027\);
 - \(\Delta S_R=-0.264\);
 - \(\Delta CAS=+0.237\).
 
-#### General to critical
+General to critical:
 
 - \(\Delta S_C=-0.075\);
 - \(\Delta S_R=-0.330\);
@@ -415,7 +402,7 @@ This is the strongest methodological insight of CTSB v3.5-alpha.
 
 ---
 
-## 9.4 Graphic 4 — Joint semantic accessibility
+## 10.3 Joint semantic accessibility
 
 ### Display
 
@@ -425,26 +412,26 @@ Use an \(S_R\)-versus-\(S_C\) scatter plot:
 - vertical axis: \(S_C\);
 - diagonal line: CAS \(=0\);
 - colour: theological locus;
-- optional shape or border: relationship type;
-- tooltip: concept, comparison register, relationship, \(S_C\), \(S_R\), and CAS.
+- optional marker outline: relationship type;
+- tooltip: concept, register, relationship, \(S_C\), \(S_R\), and CAS.
 
 Default to integrative concept-level means.
 
-Allow optional switching among:
+Allow switching among:
 
 - integrative;
 - ambiguous;
 - critical;
-- and label-free theological conditions.
+- label-free theological conditions.
 
-### Data
+### Sources
 
 Use:
 
 - `query_scores.csv`;
 - `comparisons.csv`.
 
-### Main alpha observation
+### Main observation
 
 For integrative wording:
 
@@ -452,19 +439,19 @@ For integrative wording:
 - mean \(S_R=0.676\);
 - mean CAS \(=+0.034\).
 
-### Statistical restriction
+### Restriction
 
-Do not create arbitrary “successful integration” thresholds.
+Do not create arbitrary “successful integration” quadrants.
 
-The current alpha has no independently calibrated universal high/low cosine boundary.
+The alpha has no independently calibrated universal threshold for high or low semantic accessibility.
 
 ---
 
-## 9.5 Graphic 5 — Critical-context component comparison
+## 10.4 Critical-context component comparison
 
 ### Display
 
-Use a horizontal paired-dot or dumbbell plot for:
+Use a horizontal dumbbell plot for:
 
 - death;
 - dying;
@@ -475,15 +462,15 @@ Use a horizontal paired-dot or dumbbell plot for:
 - suffering;
 - suicide.
 
-For every concept, show:
+For each concept show:
 
 - mean \(S_C\);
 - mean \(S_R\);
 - mean CAS;
 - paraphrase minimum and maximum;
-- whether paraphrases cross the CAS-zero line.
+- whether the paraphrase range crosses CAS zero.
 
-### Data
+### Sources
 
 Use:
 
@@ -495,13 +482,13 @@ Use:
 
 Negative CAS must not be called failure.
 
-Clinical, psychological, biological, or safety-related salience may be valid.
+Clinical, psychological, biological, or safety-related salience may be valid and necessary.
 
-The research question is whether these dimensions coexist with or exclude theological-pastoral meaning.
+The question is whether those dimensions coexist with or exclude theological-pastoral meaning.
 
 ---
 
-## 9.6 Graphic 6 — Content recovery and Catholic-label effect
+## 10.5 Content recovery and Catholic-label effect
 
 This is a secondary diagnostic graphic.
 
@@ -519,16 +506,16 @@ Show:
 - CAS;
 - component changes.
 
-### Data
+### Sources
 
 Use:
 
 - `query_scores.csv`;
 - `shifts.csv`.
 
-### Required limitation
+### Limitation
 
-The generated Catholic anchors repeatedly contain Catholic-identifying wording.
+The generated Catholic anchors repeatedly contain Catholic-identifying language.
 
 The explicit-label effect is therefore confounded by benchmark construction.
 
@@ -536,11 +523,11 @@ Do not present “adding Catholic increased CAS” as the principal discovery.
 
 ---
 
-## 9.7 Graphic 7 — Robustness
+## 10.6 Robustness and validation
 
 Use a compact multi-panel figure.
 
-### Panel A: leave-one-reference-out stability
+### Panel A — Leave-one-reference-out stability
 
 Show:
 
@@ -552,7 +539,7 @@ Headline result:
 
 > 1,461 of 1,624 queries retained the same CAS sign under every individual reference omission.
 
-### Panel B: paraphrase sensitivity
+### Panel B — Paraphrase sensitivity
 
 Show:
 
@@ -564,15 +551,15 @@ Headline result:
 
 > 137 of 508 audit-condition groups crossed the CAS-zero boundary across paraphrases.
 
-### Panel C: validation caveat
+### Panel C — Validation caveat
 
-Display the generated validation score alongside this warning:
+Display the perfect generated validation score beside this warning:
 
 > The references and validation passages share generated conceptual fields and related templates. Perfect classification demonstrates pipeline separability, not independent held-out validation.
 
 Do not use a celebratory score gauge.
 
-### Data
+### Sources
 
 Use:
 
@@ -583,105 +570,116 @@ Use:
 
 ---
 
-# 10. Three UMAP views
+## 11. Three interactive 3D UMAP graphics
+## 11.1 Global 3D semantic atlas
 
-## 10.1 One computation, three views
+### Position
 
-Calculate one reproducible global UMAP and reuse the same coordinates for all three graphics.
+Place after the hero, warning, research question, and executive summary.
 
-Do not compute three unrelated projections.
+### Display
 
-Recommended initial configuration:
+Show all 3,032 texts.
 
-- metric: cosine;
-- `n_neighbors=30`;
-- `min_dist=0.15`;
-- fixed `random_state=42`;
-- all 3,032 vectors;
-- record Python and `umap-learn` versions.
+Use restrained colours for:
 
-The preprocessing report should record:
+- Catholic references;
+- comparison references;
+- general and ambiguous queries;
+- label-free theological queries;
+- explicit-Catholic queries;
+- integrative queries;
+- critical queries;
+- validation passages.
 
-- input vector count;
-- original dimensions;
-- UMAP parameters;
-- random seed;
-- source run ID;
-- and coordinate-file hash.
+### Interaction
 
-The UMAP should be tested with a few nearby parameter settings. If visible structure changes substantially, disclose that the projection is parameter-sensitive.
+Include:
 
-## 10.2 UMAP view 1 — Global semantic atlas
+- rotation;
+- zoom;
+- camera reset;
+- role filters;
+- theological-locus filter;
+- hover text;
+- visible point count.
 
-Location: near the beginning.
+Use low opacity for background points.
 
-Display:
+Do not permanently label thousands of points.
 
-- all texts;
-- broad role-based colours;
-- filters for locus and role;
-- restrained opacity;
-- rich tooltips.
+---
 
-Purpose:
+## 11.2 3D reference-field map
 
-- visual orientation;
-- local-neighbourhood exploration;
-- introduction to the semantic material.
+### Position
 
-## 10.3 UMAP view 2 — Reference-field map
+Place near the end under:
 
-Location: near the end under “Exploratory vector-space views.”
+> Exploratory vector-space views
 
-Display only the 600 reference points.
+### Display
+
+Show only the 600 reference anchors.
 
 Encoding:
 
 - colour: Catholic versus comparison;
-- shape: relationship type;
-- filter or facet: theological locus;
-- tooltip: audit, concept, register, text, and review status.
+- marker shape: theological relationship type;
+- filter: theological locus;
+- tooltip: audit, concept, register, text, source status, and review status.
 
-Purpose:
+### Purpose
 
-- inspect generated anchor-field separation and overlap.
+Inspect generated anchor-field separation and overlap.
 
-Required warning:
+### Required warning
 
-> Visible reference separation may reflect repeated generated templates, labels, and construction choices.
+> Visible separation may partly reflect repeated generated templates, Catholic-identifying language, and benchmark construction. It does not establish natural theological separation in the model.
 
-## 10.4 UMAP view 3 — Local concept-neighbourhood explorer
+---
 
-Location: final visual section.
+## 11.3 3D concept constellation
+
+Use this as the final interactive graphic.
+
+### Display
 
 Provide a concept selector.
 
 For the selected concept, highlight:
 
-- Catholic references;
-- comparison references;
-- queries by condition;
-- validation passages;
-- nearby points from other concepts where helpful.
+- its three Catholic references;
+- its three comparison references;
+- all applicable queries;
+- validation passages.
 
-Suggested markers:
+Dim unrelated points rather than removing them completely.
+
+### Suggested markers
 
 | Role | Marker |
 |---|---|
 | Catholic reference | Deep-blue circle |
-| Comparison reference | Amber circle |
-| General or ambiguous query | Grey or teal point |
+| Comparison reference | Muted-amber circle |
+| General or ambiguous query | Grey point |
 | Label-free theological query | Blue diamond |
 | Explicit-Catholic query | Purple diamond |
 | Integrative query | Teal square |
 | Critical query | Burgundy triangle |
 | Validation passage | Hollow marker |
 
-Optional connecting lines between matched conditions must be faint and described as projected visual guides—not high-dimensional semantic trajectories.
+Optional connecting lines must be faint and labelled as projected visual guides.
+
+They must not be called high-dimensional semantic trajectories.
+
+If nearest points are displayed, nearest-neighbour selection must use original 3,072-dimensional cosine similarity—not three-dimensional UMAP distance.
+
+For the first release, simply highlight the selected concept without adding a new nearest-neighbour calculation.
 
 ---
 
-## 11. Concept explorer
+## 12. Concept explorer
 
 Provide filters for:
 
@@ -707,15 +705,46 @@ For a selected concept, show:
 - leave-one-reference-out stability;
 - source status;
 - review status;
-- and the permanent alpha warning.
+- and permanent alpha warning.
 
-“Nearest reference” must always mean nearest among the predefined benchmark references.
+“Nearest reference” must mean nearest among the predefined benchmark references.
 
-It must not imply the globally nearest sentence in the embedding model.
+It must not imply the globally nearest text in the embedding model.
 
 ---
 
-## 12. Chart-to-research-question map
+## 13. Insight-panel standard
+
+Under every major graphic provide four concise parts.
+
+### Research question
+
+What substantive question does the graphic address?
+
+### Observation
+
+What does the alpha data numerically show?
+
+### Interpretation
+
+What narrow benchmark-relative meaning is justified?
+
+### Limitation
+
+Why is this not yet a validated theological conclusion?
+
+Use language such as:
+
+- “within this generated benchmark”;
+- “relative to the predefined reference fields”;
+- “the alpha data show”;
+- “this pattern is consistent with”;
+- “this does not establish”;
+- and “requires source-grounded beta validation.”
+
+---
+
+## 14. Chart-to-research-question map
 
 | Research question | Principal graphic |
 |---|---|
@@ -723,17 +752,88 @@ It must not imply the globally nearest sentence in the embedding model.
 | Joint accessibility | \(S_C\)-versus-\(S_R\) scatter |
 | Theological content without labels | Label-free condition and concept explorer |
 | Context-resistant register pull | Component comparison across contexts |
-| Framing–content divergence | Label-free/explicit comparison plus component shifts |
+| Framing–content divergence | Label-free/explicit comparison and component shifts |
 | Genuine versus apparent recovery | Shift decomposition |
-| Critical-context behaviour | Eight-concept critical plot |
+| Critical-context behaviour | Critical-context dumbbell plot |
 | Robustness | Reference and paraphrase sensitivity |
-| Local vector neighbourhoods | Three exploratory UMAP views |
+| Exploratory vector neighbourhoods | Three views of one 3D UMAP |
 
 ---
 
-## 13. Mathematical and statistical standards
+## 15. Visual-design direction
 
-The dashboard must preserve:
+### Overall style
+
+Use:
+
+- white primary background;
+- warm-white or pale-grey section backgrounds;
+- maximum content width around 1,200–1,280 pixels;
+- generous whitespace;
+- fine neutral borders;
+- subtle shadows;
+- strong heading hierarchy;
+- responsive layouts;
+- and restrained animation.
+
+The design should resemble a polished academic research publication rather than a commercial business dashboard.
+
+### Typography
+
+Use no more than two font families:
+
+- restrained serif for major headings;
+- clean sans-serif for body text, chart labels, controls, tables, and tooltips.
+
+### Colour system
+
+| Meaning | Suggested colour |
+|---|---|
+| Catholic similarity, \(S_C\) | Deep navy or academic blue |
+| Comparison similarity, \(S_R\) | Muted ochre or amber |
+| CAS | Purple or dark slate |
+| Integrative context | Teal |
+| Critical context | Burgundy |
+| Natural or neutral context | Cool grey |
+| Uncertainty intervals | Pale neutral grey |
+
+Do not use red versus green to imply success and failure.
+
+Negative CAS must not be visually coded as theological failure.
+
+### Chart standards
+
+Each principal graphic should include:
+
+- plain-language title;
+- technical subtitle;
+- sample size;
+- exact axis labels;
+- zero or diagonal reference line where appropriate;
+- accessible legend;
+- useful tooltip;
+- downloadable source data;
+- consistent decimal precision;
+- insight panel;
+- and limitation.
+
+Avoid:
+
+- gauges suggesting a universal Catholic score;
+- three-dimensional bar charts;
+- unexplained acronyms;
+- excessive gradients;
+- sensational animations;
+- decorative ecclesial imagery;
+- or verdict language.
+
+The three-dimensional treatment is reserved for exploratory UMAP.
+
+---
+
+## 16. Mathematical and statistical standards
+
+Preserve:
 
 $$
 S_C(q)=\frac{1}{|C|}\sum_{c\in C}\cos(e(q),e(c))
@@ -753,101 +853,90 @@ $$
 \Delta CAS=\Delta S_C-\Delta S_R
 $$
 
-Statistical standards:
+Statistical rules:
 
 - the principal unit is the concept;
 - paraphrases are repeated measurements, not independent concepts;
 - confidence intervals must state their resampling unit;
 - critical-context results contain only eight audits;
 - near-zero CAS values should not be overinterpreted;
-- raw cosine values are not universal calibrated probabilities;
-- and p-values from generated contrasts must not dominate the interpretation.
+- raw cosine values are not calibrated probabilities;
+- and p-values from generated contrasts must not dominate interpretation.
 
 ---
 
-## 14. Topics to defer from the first release
+## 17. Accessibility requirements
 
-Do not prioritise:
-
-- exhaustive 100-row heatmaps;
-- every validation passage;
-- every omitted-reference result;
-- every p-value;
-- all historical v2 comparisons;
-- cross-provider comparisons;
-- raw-vector downloads;
-- complex UMAP controls;
-- large animated transitions;
-- or a universal behaviour classification.
-
-These can be added later if they answer a clear research question.
-
----
-
-## 15. Accessibility and responsive requirements
-
-The dashboard must include:
+Include:
 
 - keyboard-accessible controls;
 - visible focus indicators;
 - sufficient colour contrast;
-- non-colour encodings where possible;
-- text alternatives for major graphics;
+- marker shapes in addition to colour;
+- text summaries for major graphics;
+- table alternatives for primary numerical charts;
 - responsive chart resizing;
 - readable mobile tooltips;
 - loading and error messages;
 - reduced-motion support;
-- and table alternatives for central charts.
+- and camera-reset controls for 3D views.
+
+Three-dimensional UMAP cannot be the only way to access any substantive result.
 
 ---
 
-## 16. Implementation principles
+## 18. Topics to defer
 
-Use:
+Do not prioritise:
 
-- semantic HTML5;
-- responsive CSS;
-- CSS variables;
-- minimal JavaScript;
-- a static chart library such as Plotly.js;
-- CSV parsing in the browser where practical;
-- and no build step.
+- exhaustive 100-row heatmaps;
+- every individual validation passage;
+- every omitted-reference result;
+- every p-value;
+- historical v2 comparison;
+- cross-provider comparison;
+- raw-vector downloads;
+- complex UMAP parameter controls;
+- large animations;
+- or a universal behaviour classification.
 
-The site should work with:
-
-    python3 -m http.server 8000
-
-Then open:
-
-    http://localhost:8000/dashboards/v3_5_alpha/
-
-Do not fetch data from local absolute paths.
-
-Use repository-relative paths.
+These may be added later only when they answer a clear research question.
 
 ---
 
-## 17. Required first response from the dashboard AI
+## 19. Required first response from the dashboard AI
 
-Before writing implementation code, the next AI should provide a concise plan containing:
+Before writing dashboard implementation code, provide a concise plan containing:
 
 1. page architecture;
 2. chart-to-research-question mapping;
-3. exact source file and column mapping;
+3. exact source-file and column mapping;
 4. direct-fetch data strategy;
-5. UMAP preprocessing plan;
+5. 3D UMAP preprocessing plan;
 6. sanitisation plan;
 7. accessibility approach;
 8. local validation plan;
 9. GitHub Pages deployment plan;
-10. explicit confirmation that raw vectors and caches will not be published.
+10. confirmation that raw vectors and caches will not be published.
 
-Only after that review should it provide the implementation command.
+Only after review should implementation begin.
 
 ---
 
-## 18. New-thread instruction
+## 20. Final instruction
 
-Tell the next AI:
+Build a white-background, academically styled, research-question-driven static dashboard.
 
-> Read this design README and the CTSB v3.5-alpha dashboard context before proposing changes. Build a white-background, academically styled, research-question-driven static dashboard. Use the existing committed output files directly where practical. Add three views of one reproducible UMAP projection, but keep UMAP explicitly exploratory. Make shift decomposition the central analytical graphic. Preserve the non-evidential alpha warning and distinguish \(S_C\), \(S_R\), CAS, \(\Delta S_C\), \(\Delta S_R\), and \(\Delta CAS\) throughout.
+Use the committed result CSV files directly.
+
+Create one reproducible three-dimensional UMAP from the local raw vectors, publish only the derived coordinates and metadata, and reuse the coordinates for:
+
+1. global semantic atlas;
+2. Catholic-versus-comparison reference-field map;
+3. selected-concept constellation.
+
+Keep UMAP explicitly exploratory.
+
+Make shift decomposition the central analytical graphic.
+
+Preserve the non-evidential warning and distinguish \(S_C\), \(S_R\), CAS, \(\Delta S_C\), \(\Delta S_R\), and \(\Delta CAS\) throughout.

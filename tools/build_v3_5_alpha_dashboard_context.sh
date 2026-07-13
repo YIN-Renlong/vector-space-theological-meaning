@@ -41,22 +41,34 @@ Options:
 Default behaviour:
   Creates a lean dashboard-development bundle containing:
 
-  - the dedicated dashboard prompt;
+  - the dedicated dashboard prompt and controlling design README;
   - current methodology and alpha-status documentation;
   - the complete 100-audit comparison registry;
   - complete aggregate condition and shift statistics;
   - complete validation metrics;
   - sanitised run metadata;
   - data schemas, row counts, hashes, categories, and sample records;
-  - alpha report and Azure diagnostic text with local paths sanitised.
+  - alpha report and Azure diagnostic text with local paths sanitised;
+  - public GitHub and GitHub Pages result locations;
+  - local raw-vector file size, hash, array count, and dimensions;
+  - and the complete research-first three-dimensional UMAP specification.
 
-  The default bundle does not include raw vectors, caches, secrets, complete
-  detailed result tables, backups, or unrelated archived materials.
+  The default bundle does not include raw-vector contents, caches, secrets,
+  complete detailed result tables, backups, or unrelated archived materials.
 
 Important:
-  GitHub Pages cannot read ignored local files from outputs/. The dashboard
-  implementation must create curated public data under
-  dashboards/v3_5_alpha/data/.
+  The selected CTSB v3.5-alpha result CSV files are already committed and can
+  be read directly through GitHub Pages.
+
+  The dashboard should fetch those result files from their current output
+  paths rather than duplicate them unnecessarily.
+
+  Raw vectors remain local. The dashboard implementation should use
+  embeddings.npz locally to create one reproducible three-dimensional UMAP
+  coordinate file. It should reuse those coordinates for three interactive
+  views and publish only the coordinates and non-sensitive metadata.
+
+  Do not calculate UMAP in the browser.
 USAGE
 }
 
@@ -128,9 +140,16 @@ fi
 
 BENCHMARK_DIR="$PROJECT/data/benchmarks/v3_5_alpha/generated_100"
 PROMPT_FILE="$PROJECT/docs/CTSB_V3_5_ALPHA_DASHBOARD_PROMPT.md"
+DESIGN_FILE="$RUN_DIR/DASHBOARD_DESIGN_README.md"
+EMBEDDINGS_FILE="$RUN_DIR/embeddings.npz"
+EMBEDDING_INDEX_FILE="$RUN_DIR/embedding_index.csv"
+RUN_NAME="$(basename "$RUN_DIR")"
+RUN_REL="outputs/v3_5_alpha/runs/$RUN_NAME"
+PUBLIC_RESULTS_BASE="https://yin-renlong.github.io/vector-space-theological-meaning/$RUN_REL"
 
 REQUIRED_PROJECT_FILES=(
   "$PROMPT_FILE"
+  "$DESIGN_FILE"
   "$PROJECT/README.md"
   "$PROJECT/VERSION"
   "$PROJECT/docs/CTSB_V3_5_ALPHA_PROTOCOL.md"
@@ -142,6 +161,8 @@ REQUIRED_PROJECT_FILES=(
 )
 
 REQUIRED_RESULT_FILES=(
+  "$RUN_DIR/embeddings.npz"
+  "$RUN_DIR/embedding_index.csv"
   "$RUN_DIR/run_manifest.json"
   "$RUN_DIR/alpha_run_report.md"
   "$RUN_DIR/azure_diagnostic_report.txt"
@@ -170,7 +191,7 @@ LATEST="$OUT_DIR/ctsb_v3_5_alpha_dashboard_context_latest.txt"
 mkdir -p "$OUT_DIR"
 cd "$PROJECT"
 
-export PROJECT RUN_DIR BENCHMARK_DIR SAMPLE_ROWS
+export PROJECT RUN_DIR BENCHMARK_DIR SAMPLE_ROWS DESIGN_FILE EMBEDDINGS_FILE EMBEDDING_INDEX_FILE RUN_REL PUBLIC_RESULTS_BASE
 
 emit_project_file() {
   local relative_path="$1"
@@ -210,8 +231,13 @@ Build a professional static GitHub Pages dashboard for:
 
   CTSB v3.5-alpha — Generated Exploratory 100-Concept Results
 
-Read docs/CTSB_V3_5_ALPHA_DASHBOARD_PROMPT.md first and follow it as the
-controlling dashboard specification.
+Read both controlling specifications before proposing changes:
+
+1. docs/CTSB_V3_5_ALPHA_DASHBOARD_PROMPT.md
+2. $RUN_REL/DASHBOARD_DESIGN_README.md
+
+The design README controls the research-first visual architecture and the
+three-dimensional UMAP plan.
 
 CONTEXT PROFILE: $PROFILE
 DETAILED SAMPLE ROWS PER TABLE: $SAMPLE_ROWS
@@ -223,17 +249,25 @@ CRITICAL STATUS
 - Positive Delta CAS alone is not theological recovery.
 - The perfect alpha development-validation score is not independent validation.
 - Do not infer machine belief, consciousness, hostility, or deception.
-- Do not expose secrets, local paths, endpoints, raw vectors, or caches.
+- Do not expose secrets, endpoints, raw-vector contents, or caches.
+- Do not publish local absolute paths in the dashboard.
 - Do not replace the root v2 compatibility dashboard.
 - Build the alpha dashboard at dashboards/v3_5_alpha/.
-- GitHub Pages cannot read ignored files from outputs/.
-- Create deterministic curated public data under dashboards/v3_5_alpha/data/.
-- Do not publish embeddings.npz or the embedding cache.
+- The selected alpha result CSVs are committed and may be fetched directly.
+- Do not duplicate complete result tables unnecessarily.
+- Use local embeddings.npz only to generate one reproducible 3D UMAP.
+- Publish only UMAP coordinates and non-sensitive preprocessing metadata.
+- Reuse one UMAP fit for three interactive 3D views.
+- Keep every UMAP explicitly exploratory.
+- Numerical high-dimensional cosine analysis remains primary.
 
-The lean bundle contains complete aggregate tables plus schemas and samples of
-detailed tables. The complete detailed data do not need to be inserted into an
-AI prompt when the implementation code can read the local files directly.
+The lean bundle contains complete aggregate tables, data schemas, samples,
+public paths, complete visual-design instructions, and safe local vector
+metadata.
 
+Complete detailed tables and raw vectors do not need to be inserted into the
+AI prompt. The implementation script can read the complete local or committed
+files directly.
 HEADER
 
   echo ""
@@ -250,9 +284,25 @@ HEADER
   git status --short 2>/dev/null || true
 
   echo ""
+  echo "PUBLIC RESULT LOCATIONS"
+  echo "======================="
+  echo "Committed run path:"
+  echo "  $RUN_REL"
+  echo ""
+  echo "GitHub result folder:"
+  echo "  https://github.com/YIN-Renlong/vector-space-theological-meaning/tree/main/$RUN_REL"
+  echo ""
+  echo "GitHub Pages result-data base:"
+  echo "  $PUBLIC_RESULTS_BASE"
+  echo ""
+  echo "Expected dashboard URL:"
+  echo "  https://yin-renlong.github.io/vector-space-theological-meaning/dashboards/v3_5_alpha/"
+
+  echo ""
   echo "DASHBOARD CONTROLLING DOCUMENTS"
   echo "==============================="
   emit_project_file "docs/CTSB_V3_5_ALPHA_DASHBOARD_PROMPT.md"
+  emit_result_file "DASHBOARD_DESIGN_README.md"
   emit_project_file "README.md"
   emit_project_file "VERSION"
   emit_project_file "docs/CTSB_V3_5_ALPHA_PROTOCOL.md"
@@ -273,6 +323,80 @@ HEADER
   emit_result_file "alpha_condition_statistics.csv"
   emit_result_file "alpha_shift_statistics.csv"
   emit_result_file "validation_metrics.csv"
+
+  echo ""
+  echo "LOCAL RAW-VECTOR METADATA FOR 3D UMAP PREPROCESSING"
+  echo "==================================================="
+
+  "$PYTHON" <<'PY_VECTOR_METADATA'
+from pathlib import Path
+import hashlib
+import json
+import os
+
+import numpy as np
+import pandas as pd
+
+embeddings_file = Path(os.environ["EMBEDDINGS_FILE"])
+embedding_index_file = Path(os.environ["EMBEDDING_INDEX_FILE"])
+run_rel = os.environ["RUN_REL"]
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+with np.load(embeddings_file, allow_pickle=False) as archive:
+    array_names = list(archive.files)
+
+index = pd.read_csv(embedding_index_file)
+
+dimensions = (
+    sorted(
+        {
+            int(value)
+            for value in index["dimensions"].dropna().tolist()
+        }
+    )
+    if "dimensions" in index.columns
+    else []
+)
+
+metadata = {
+    "raw_vectors_available_locally": True,
+    "raw_vectors_included_in_context_bundle": False,
+    "raw_vectors_intended_for_dashboard_runtime": False,
+    "source_relative_path": f"{run_rel}/embeddings.npz",
+    "filename": embeddings_file.name,
+    "bytes": embeddings_file.stat().st_size,
+    "sha256": sha256_file(embeddings_file),
+    "npz_array_count": len(array_names),
+    "embedding_index_rows": len(index),
+    "reported_dimensions": dimensions,
+    "required_umap_components": 3,
+    "required_umap_views": 3,
+    "required_umap_metric": "cosine",
+    "recommended_n_neighbors": 30,
+    "recommended_min_dist": 0.15,
+    "required_random_seed": 42,
+    "coordinate_publication_target": (
+        f"{run_rel}/umap_3d_coordinates.csv"
+    ),
+    "optional_manifest_target": (
+        f"{run_rel}/umap_3d_manifest.json"
+    ),
+    "instruction": (
+        "Use embeddings.npz locally to compute one reproducible "
+        "three-dimensional UMAP. Publish only embedding_id, umap_x, "
+        "umap_y, umap_z, and non-sensitive preprocessing metadata. "
+        "Reuse the same coordinates for all three interactive views."
+    ),
+}
+
+print(json.dumps(metadata, ensure_ascii=False, indent=2))
+PY_VECTOR_METADATA
 
   echo ""
   echo "SANITISED RUN METADATA"
@@ -379,6 +503,10 @@ files = [
         benchmark_dir / "validation.csv",
     ),
     (
+        "results/embedding_index.csv",
+        run_dir / "embedding_index.csv",
+    ),
+    (
         "results/query_scores.csv",
         run_dir / "query_scores.csv",
     ),
@@ -425,6 +553,7 @@ category_columns = {
     "target_class",
     "top_reference_group",
     "life_death_module",
+    "roles",
 }
 
 def sha256_file(path: Path) -> str:
@@ -531,6 +660,7 @@ PY
     done
 
     FULL_RESULT_FILES=(
+      "embedding_index.csv"
       "query_scores.csv"
       "shifts.csv"
       "condition_summary.csv"
@@ -547,15 +677,27 @@ PY
   fi
 
   echo ""
-  echo "EXPLICITLY EXCLUDED FILES"
-  echo "========================="
+  echo "PUBLICATION AND EXCLUSION POLICY"
+  echo "================================"
+  echo "Already committed and directly readable through GitHub Pages:"
+  echo "- selected alpha aggregate, query, shift, validation, and robustness tables"
+  echo "- embedding_index.csv"
+  echo "- DASHBOARD_DESIGN_README.md"
+  echo ""
+  echo "Available locally for preprocessing but not inserted into this bundle:"
   echo "- embeddings.npz"
-  echo "- embedding_index.csv by default"
+  echo ""
+  echo "Derived files to create and publish:"
+  echo "- umap_3d_coordinates.csv"
+  echo "- optional umap_3d_manifest.json"
+  echo ""
+  echo "Explicitly excluded:"
+  echo "- raw contents of embeddings.npz"
   echo "- embedding_cache.json"
   echo "- .env"
   echo "- API credentials and endpoints"
   echo "- local backups"
-  echo "- raw output directories as a whole"
+  echo "- unrelated output runs"
   echo "- archived v2 data and dashboards"
 
   echo ""
@@ -604,6 +746,16 @@ echo ""
 echo "Source run:"
 echo "  ${RUN_DIR#"$PROJECT/"}"
 echo ""
+echo "Committed public result base:"
+echo "  $PUBLIC_RESULTS_BASE"
+echo ""
+echo "Controlling dashboard design:"
+echo "  ${DESIGN_FILE#"$PROJECT/"}"
+echo ""
+echo "3D UMAP preprocessing:"
+echo "  embeddings.npz is available locally but not copied into the context."
+echo "  Generate one umap_3d_coordinates.csv and reuse it for all three views."
+echo ""
 echo "Size:"
 echo "  $BYTES bytes"
 echo "  $LINES lines"
@@ -623,8 +775,15 @@ else
   echo "  no — schemas, hashes, categories, and samples only"
 fi
 echo ""
-echo "Raw vectors, caches, and secrets included:"
+echo "Raw vector contents, caches, and secrets included:"
 echo "  no"
+echo ""
+echo "Local raw-vector metadata included:"
+echo "  yes — filename, size, hash, array count, and dimensions only"
+echo ""
+echo "Three-dimensional dashboard design included:"
+echo "  yes"
 echo ""
 echo "New-thread instruction:"
 echo "  Paste the latest dashboard context into a new AI thread."
+echo "  Ask the AI to provide architecture and data mapping before code."

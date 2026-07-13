@@ -509,3 +509,111 @@ Before writing dashboard code:
 6. then provide the implementation command.
 
 Do not request raw vectors or secrets.
+
+<!-- BEGIN RESEARCH_FIRST_3D_DESIGN_AMENDMENT -->
+## Research-first three-dimensional UMAP design amendment
+
+This amendment supersedes any earlier dashboard instruction that requests:
+
+- two-dimensional UMAP;
+- three unrelated UMAP fits;
+- duplication of committed result tables;
+- or browser-side processing of raw NumPy vectors.
+
+The controlling visual specification is:
+
+`outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/DASHBOARD_DESIGN_README.md`
+
+### Required analytical priorities
+
+The first dashboard release must prioritise:
+
+1. semantic foregrounding through separate \(S_C\), \(S_R\), and CAS displays;
+2. shift decomposition through \(\Delta S_C\), \(\Delta S_R\), and \(\Delta CAS\);
+3. joint accessibility through an \(S_R\)-versus-\(S_C\) scatter;
+4. critical-context component comparison;
+5. reference and paraphrase sensitivity;
+6. construction-leakage and validation limitations.
+
+Matched shift decomposition is the central analytical graphic.
+
+The dashboard must explicitly demonstrate that positive \(\Delta CAS\) may occur while \(\Delta S_C<0\).
+
+### Required UMAP approach
+
+Create one reproducible global UMAP with:
+
+- all 3,032 vectors;
+- cosine metric;
+- three components;
+- fixed random seed;
+- recorded parameters and software version.
+
+Reuse the same coordinates for three interactive 3D Plotly views:
+
+1. global semantic atlas;
+2. Catholic-versus-comparison reference-field map;
+3. selected-concept constellation.
+
+Use local `embeddings.npz` only during preprocessing.
+
+Publish only:
+
+- `embedding_id`;
+- `umap_x`;
+- `umap_y`;
+- `umap_z`;
+- and a non-sensitive UMAP manifest.
+
+Do not make the browser read `.npz` or calculate UMAP.
+
+Do not commit raw vectors or embedding caches.
+
+UMAP remains exploratory. Substantive interpretation must come from cosine similarities in the original 3,072-dimensional space.
+
+### Existing public result files
+
+The selected alpha result files are already committed under:
+
+`outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/`
+
+The dashboard should fetch those files directly through repository-relative paths.
+
+Do not duplicate the complete result tables under the dashboard unless a derived dataset is genuinely necessary.
+
+### Required visual character
+
+Use:
+
+- white background;
+- restrained academic typography;
+- deep navy for \(S_C\);
+- muted amber for \(S_R\);
+- purple or dark slate for CAS;
+- teal for integrative contexts;
+- burgundy for critical contexts;
+- colour-blind-aware markers and contrasts;
+- concise insight panels;
+- responsive layouts;
+- accessible controls;
+- and no red/green success framing.
+
+The main page should be concise enough for a professor to understand in one sitting.
+
+The detailed 100-concept explorer should be collapsible, tabbed, or secondary.
+
+### Required first response
+
+Before writing dashboard code, provide:
+
+1. page architecture;
+2. chart-to-research-question mapping;
+3. exact source-file and column mapping;
+4. direct-fetch strategy;
+5. 3D UMAP preprocessing plan;
+6. accessibility plan;
+7. validation and security plan;
+8. GitHub Pages deployment plan.
+
+Do not request secrets or raw-vector uploads.
+<!-- END RESEARCH_FIRST_3D_DESIGN_AMENDMENT -->
