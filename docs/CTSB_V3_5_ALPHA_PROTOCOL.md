@@ -1,5 +1,7 @@
 # CTSB v3.5-alpha Protocol
 
+> **Milestone status — 13 July 2026:** The generated alpha implementation, mock run, automated tests, and Azure run are complete. This protocol remains the alpha record. The next design phase is [CTSB v3.5-beta](CTSB_V3_5_BETA_PLAN.md).
+
 ## Status
 
 CTSB v3.5-alpha is a **generated exploratory 100-concept expansion** of the CTSB v3.4 mathematical instrument.

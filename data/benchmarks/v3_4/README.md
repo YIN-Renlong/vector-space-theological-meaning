@@ -143,3 +143,16 @@ The active generated exploratory 100-concept expansion is documented at:
 
 It inherits the CTSB v3.4 instrument but remains unreviewed and non-evidential.
 <!-- END V3_5_ALPHA_POINTER -->
+
+<!-- BEGIN V3_5_BETA_POINTER -->
+## Current continuation
+
+CTSB v3.5-alpha has completed its generated 100-concept development experiment.
+
+The next planned phase is documented in:
+
+- [`../../../docs/AI_HANDOFF_V3_5_BETA.md`](../../../docs/AI_HANDOFF_V3_5_BETA.md)
+- [`../../../docs/CTSB_V3_5_BETA_PLAN.md`](../../../docs/CTSB_V3_5_BETA_PLAN.md)
+
+CTSB v3.4 remains the mathematical foundation.
+<!-- END V3_5_BETA_POINTER -->

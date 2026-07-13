@@ -1,5 +1,7 @@
 # AI Handoff: CTSB v3.5-alpha
 
+> **Completion notice — 13 July 2026:** CTSB v3.5-alpha is complete as a generated, non-evidential 100-concept development experiment. The successful Azure run and analysis are recorded in `DEVELOPMENT_LOG.md`. The active continuation document is [AI_HANDOFF_V3_5_BETA.md](AI_HANDOFF_V3_5_BETA.md). This alpha handoff is retained as a milestone record.
+
 ## Continuation instruction
 
 You are continuing the project **Vector Space and Theological Meaning**.

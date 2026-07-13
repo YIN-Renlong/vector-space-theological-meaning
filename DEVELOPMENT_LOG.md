@@ -657,3 +657,623 @@ Before evidential use, the project still requires exact source verification, rev
 
 Generated vectors, caches, and run outputs remain local and excluded from Git.
 <!-- END V3_5_ALPHA_GENERATED_100_20260713 -->
+
+<!-- BEGIN V3_5_ALPHA_COMPLETE_20260713 -->
+## CTSB v3.5-alpha generated 100-concept experiment — 13 July 2026
+
+### Milestone status
+
+CTSB v3.5-alpha completed:
+
+- generated 100-concept benchmark construction;
+- structural validation;
+- deterministic mock analysis;
+- expanded sensitivity analysis;
+- documentation safeguards;
+- five new automated tests;
+- successful Azure/OpenAI integration;
+- component-level and robustness analysis;
+- and preparation of the CTSB v3.5-beta handoff.
+
+The alpha is technically complete but remains **generated, unreviewed, and non-evidential**.
+
+The next planned phase is CTSB v3.5-beta.
+
+---
+
+### 1. User-led research-question clarification
+
+During the alpha iteration, the research purpose was clarified substantially.
+
+The central research contribution is not the predictable observation that adding Catholic or theological vocabulary increases proximity to Catholic references.
+
+The user emphasised two deeper concerns.
+
+#### 1.1 Theological adequacy under ambiguity
+
+The project must examine concepts whose theological significance is implicit, morally contested, pastorally vulnerable, or semantically shared with other disciplines.
+
+The important questions are:
+
+- which register the model foregrounds under natural ambiguity;
+- whether Catholic theological meaning remains accessible without an overt label;
+- whether valid proximate meanings and theological meaning remain jointly accessible;
+- and whether crisis wording reorganises the semantic field.
+
+#### 1.2 Theological framing–content divergence
+
+The user also identified a possible discrepancy between Catholic surface framing and substantive theological representation.
+
+A system may use Catholic terminology or appear contextually Catholic while its underlying semantic organisation remains:
+
+- autonomy-centred;
+- biological;
+- psychological;
+- clinical;
+- legal;
+- affective;
+- generic-religious;
+- or otherwise theologically reduced or off-target.
+
+This could create a downstream **illusion of theological adequacy**.
+
+The project avoids attributing consciousness, a subconscious, belief, hostility, or intentional deception to an embedding model.
+
+The adopted scientific terms include:
+
+- default semantic tendency;
+- latent representational prior;
+- context-resistant register pull;
+- residual comparison-register dominance;
+- surface contextualisation without substantive recovery;
+- and theological framing–content divergence.
+
+The complete revised research questions are maintained in section 4 of `README.md`.
+
+---
+
+### 2. Decision to create CTSB v3.5-alpha
+
+Exact source review and independent human review could not be completed during this development period.
+
+The project therefore did not misrepresent generated statements as verified sources.
+
+Instead, it created:
+
+> **CTSB v3.5-alpha — a generated exploratory 100-concept benchmark**
+
+The alpha was designed to test expanded implementation, Azure integration, component decomposition, and robustness analysis.
+
+Every generated reference remained marked:
+
+- `generated_unreviewed`;
+- `human_review_pending`;
+- candidate source only;
+- not a quotation;
+- not a verified paraphrase;
+- not a verified summary;
+- and non-evidential.
+
+Generated validation passages were explicitly described as development validation rather than independent held-out validation.
+
+---
+
+### 3. Benchmark expansion
+
+The alpha retained the CTSB v3.4 mathematical instrument and expanded from five audits to 100.
+
+#### 3.1 Four theological loci
+
+The generated benchmark contains 25 audits in each locus:
+
+1. Freedom, Truth, and Moral Teleology;
+2. Human Dignity and Theological Anthropology;
+3. Love, Communion, and Sacramentality;
+4. Sin, Grace, and Redemption.
+
+#### 3.2 Relationship distribution
+
+| Relationship type | Audits |
+|---|---:|
+| Valid but partial | 56 |
+| Alternative lexical senses | 16 |
+| Complementary levels | 14 |
+| Generic religious versus Catholic-specific | 11 |
+| Normatively conflicting | 3 |
+
+This distribution is not statistically balanced. It reflects the generated development registry and must not be described as a representative sampling of all theological relationships.
+
+#### 3.3 Retained v3.4 audits
+
+The five original v3.4 audits were integrated into the 100-audit structure:
+
+- `death_biological`;
+- `grief_psychological`;
+- `euthanasia_assisted_dying`;
+- `grace_lexical`;
+- `judgment_after_death_generic`.
+
+#### 3.4 Generated data counts
+
+| Table | Rows |
+|---|---:|
+| Comparisons | 100 |
+| References | 600 |
+| Queries | 1,624 |
+| Validation passages | 808 |
+| Clear-register validation passages | 600 |
+| Critical-context audits | 8 |
+
+Each audit received:
+
+- three Catholic references;
+- three comparison references;
+- three natural paraphrases for major conditions;
+- strict label-free/explicit-Catholic pairs;
+- three generated Catholic validation passages;
+- three generated comparison validation passages;
+- two generated integrative passages;
+- and a critical passage where applicable.
+
+The broad v2 secular/common-language category was not restored.
+
+---
+
+### 4. Implementation-delivery iteration and recovery
+
+The initial long terminal patch was interrupted while the 100-concept registry and alpha script were being delivered.
+
+No partial shell block had executed before the interruption.
+
+The continuation resumed from the interrupted registry line rather than regenerating the completed portion. The user merged the continuation into the saved command.
+
+The completed script was then:
+
+- written to `scripts/ctsb_v3_5_alpha.py`;
+- marked executable;
+- syntax checked with `py_compile`;
+- used to generate all four alpha CSV tables;
+- structurally validated;
+- and run through the deterministic mock backend.
+
+This delivery issue affected only transmission of the patch. It did not affect the generated benchmark or analysis results.
+
+---
+
+### 5. Alpha analysis implementation
+
+The alpha script reused the v3.4 engine and added:
+
+- deterministic 100-audit data generation;
+- strict 100-audit and four-locus validation;
+- preservation of source and review warnings;
+- exact label-pair validation;
+- concept-level condition summaries;
+- bootstrap intervals over concepts;
+- paired sign-flip diagnostics;
+- leave-one-reference-out scoring;
+- leave-one-reference-out sign stability;
+- paraphrase-condition sensitivity;
+- paraphrase leave-one-out summaries;
+- paraphrase shift sensitivity;
+- alpha-specific manifests;
+- and non-evidential run reports.
+
+The active script continued to export:
+
+- raw vectors;
+- embedding indexes;
+- complete reference-level similarities;
+- query scores;
+- validation scores;
+- nearest references;
+- matched shifts;
+- condition summaries;
+- and validation metrics.
+
+Raw vectors, caches, and generated runs remained local.
+
+---
+
+### 6. Initial Git-ignore problem and safeguard correction
+
+After the first mock run, Git status showed:
+
+- the new alpha benchmark;
+- the new alpha script;
+- and `outputs/` as untracked.
+
+The generated outputs were not yet protected by the active `.gitignore`.
+
+This was corrected before any commit.
+
+The repository safeguards now exclude:
+
+- `.env`;
+- `.venv/`;
+- Python bytecode;
+- `outputs/`;
+- `ai_context/`;
+- `_patch_backups/`;
+- and local operating-system artifacts.
+
+A direct `git check-ignore` verification confirmed that alpha run manifests and generated outputs were ignored.
+
+No vectors, caches, result directories, backups, context bundles, or secrets were committed.
+
+---
+
+### 7. Automated testing
+
+Five existing CTSB v3.4 regression tests passed.
+
+Five new CTSB v3.5-alpha tests passed:
+
+1. registry balance and retention of the five v3.4 audits;
+2. generated table counts and structural validation;
+3. preservation of non-evidential source and review markers;
+4. exact label-free/explicit-Catholic minimal pairs;
+5. complete mock pipeline, manifest, CAS reconstruction, decomposition, similarity counts, and leave-one-reference-out outputs.
+
+The alpha test suite completed in approximately seven seconds during the documented run.
+
+The completed alpha benchmark, script, documentation, and tests were committed and pushed as:
+
+- commit: `3d8c92d`;
+- message: `Add CTSB v3.5-alpha generated 100-concept benchmark`.
+
+---
+
+### 8. Deterministic mock run
+
+Local mock run ID:
+
+`v3_5_alpha_mock_20260713-004555`
+
+The mock backend used 256-dimensional lexical-hashing vectors.
+
+#### 8.1 Integrity checks
+
+- audits: 100;
+- query scores: 1,624;
+- matched shifts: 1,524;
+- validation scores: 808;
+- reference-level similarities: 14,592;
+- maximum CAS reconstruction error: approximately $1.67\times10^{-16}$;
+- maximum decomposition error: approximately $2.22\times10^{-16}$;
+- all query scores finite;
+- cosine range: -0.1618 to 0.9561;
+- manifest hashes verified.
+
+#### 8.2 Mock aggregate results
+
+| Condition | Mean $S_C$ | Mean $S_R$ | Mean CAS |
+|---|---:|---:|---:|
+| Bare | 0.2287 | 0.2430 | -0.0143 |
+| Natural general | 0.1699 | 0.7066 | -0.5367 |
+| Natural ambiguous | 0.1236 | 0.1222 | +0.0015 |
+| Label-free theological | 0.8094 | 0.1872 | +0.6222 |
+| Explicit Catholic | 0.7840 | 0.1849 | +0.5991 |
+| Integrative | 0.6142 | 0.5267 | +0.0875 |
+| Critical | 0.1125 | 0.1281 | -0.0156 |
+
+The mock output largely reflected lexical construction and was not interpreted as semantic evidence.
+
+#### 8.3 Mock sensitivity
+
+- 1,491 of 1,624 queries were sign-stable under every reference omission;
+- mean leave-one-reference-out sign stability: 0.9755;
+- largest absolute leave-one-reference-out CAS change: 0.1137;
+- 97 of 508 audit-condition groups had mixed CAS signs across paraphrases;
+- nine audit-contrast groups had mixed $\Delta CAS$ signs;
+- maximum condition CAS standard deviation: 0.1990.
+
+The mock confirmed that the sensitivity code paths worked.
+
+---
+
+### 9. Azure run
+
+Azure run ID:
+
+`v3_5_alpha_azure_20260713-010232`
+
+Run Git commit:
+
+`3d8c92dfe0807363d8e424202ece7a42bc60b28c`
+
+#### 9.1 Azure integration details
+
+- provider: Azure OpenAI;
+- requested model: `text-embedding-3-large`;
+- deployment: `text-embedding-3-large-prova1`;
+- Azure-reported model: `text-embedding-3-large`;
+- dimensions: 3,072;
+- unique texts: 3,032;
+- new embeddings: 3,032;
+- cached embeddings: 0;
+- batches: 48;
+- batch size: 64.
+
+No API key, endpoint, token, or secret value was printed.
+
+#### 9.2 Azure output integrity
+
+- audits: 100;
+- query scores: 1,624;
+- matched shifts: 1,524;
+- validation scores: 808;
+- reference-level similarities: 14,592;
+- maximum CAS reconstruction error: approximately $2.22\times10^{-16}$;
+- maximum decomposition error: approximately $5.55\times10^{-17}$;
+- all query scores finite;
+- cosine range: 0.1522 to 0.9747;
+- manifest hashes verified;
+- core Azure integration check passed.
+
+---
+
+### 10. Azure condition-level results
+
+| Condition | Concepts | Mean $S_C$ | Mean $S_R$ | Mean CAS | Median CAS | Positive CAS |
+|---|---:|---:|---:|---:|---:|---:|
+| Bare | 100 | 0.4679 | 0.5021 | -0.0342 | -0.0372 | 25% |
+| Natural general | 100 | 0.5166 | 0.7600 | -0.2434 | -0.2474 | 0% |
+| Natural ambiguous | 100 | 0.4900 | 0.4963 | -0.0063 | -0.0086 | 42% |
+| Label-free theological | 100 | 0.8067 | 0.5224 | +0.2843 | +0.2774 | 100% |
+| Explicit Catholic | 100 | 0.8919 | 0.4694 | +0.4226 | +0.4220 | 100% |
+| Integrative | 100 | 0.7094 | 0.6757 | +0.0338 | +0.0322 | 70% |
+| Critical | 8 | 0.3966 | 0.4198 | -0.0232 | -0.0305 | 37.5% |
+
+The critical-context bootstrap interval crossed zero.
+
+These values describe the generated alpha benchmark only.
+
+---
+
+### 11. Azure matched shifts
+
+| Contrast | Concepts | Mean $\Delta S_C$ | Mean $\Delta S_R$ | Mean $\Delta CAS$ | Positive $\Delta CAS$ |
+|---|---:|---:|---:|---:|---:|
+| Bare to general | 100 | +0.0487 | +0.2579 | -0.2092 | 0% |
+| General to ambiguous | 100 | -0.0267 | -0.2637 | +0.2370 | 100% |
+| General to label-free theological | 100 | +0.2901 | -0.2376 | +0.5277 | 100% |
+| Label-free to explicit Catholic | 100 | +0.0852 | -0.0531 | +0.1383 | 100% |
+| General to integrative | 100 | +0.1928 | -0.0844 | +0.2772 | 100% |
+| General to critical | 8 | -0.0752 | -0.3302 | +0.2550 | 100% |
+
+The sign-flip diagnostics were small for all generated contrasts. They are not treated as independent scientific evidence because the shift directions were strongly influenced by shared construction templates.
+
+---
+
+### 12. Central decomposition insight
+
+The alpha gave a clear demonstration of why CAS must be decomposed.
+
+For general to ambiguous:
+
+- Catholic similarity declined by 0.0267;
+- comparison similarity declined by 0.2637;
+- CAS increased by 0.2370.
+
+For general to critical:
+
+- Catholic similarity declined by 0.0752;
+- comparison similarity declined by 0.3302;
+- CAS increased by 0.2550.
+
+In both cases, a positive relative shift could be misreported as theological recovery.
+
+The component scores show that Catholic-reference proximity actually declined.
+
+This is a successful methodological demonstration of:
+
+> apparent recovery without theological association gain.
+
+---
+
+### 13. Critical-context results
+
+| Audit | Mean $S_C$ | Mean $S_R$ | Mean CAS |
+|---|---:|---:|---:|
+| Death | 0.3295 | 0.3693 | -0.0397 |
+| Dying | 0.4954 | 0.4441 | +0.0513 |
+| Euthanasia | 0.4192 | 0.5243 | -0.1051 |
+| Grief | 0.3884 | 0.4138 | -0.0253 |
+| Illness | 0.3429 | 0.3124 | +0.0306 |
+| Palliative care | 0.4775 | 0.4734 | +0.0040 |
+| Suffering | 0.3554 | 0.3911 | -0.0357 |
+| Suicide | 0.3644 | 0.4303 | -0.0658 |
+
+The most comparison-oriented generated critical cases were euthanasia and suicide.
+
+These values do not establish pastoral inadequacy.
+
+For suicide, mental-health salience may be clinically necessary and safety-relevant.
+
+Several critical paraphrases crossed zero, showing that wording remained consequential.
+
+---
+
+### 14. Azure robustness results
+
+#### 14.1 Leave-one-reference-out
+
+- 1,461 of 1,624 queries retained the same CAS sign under every individual reference omission;
+- 163 queries changed sign under at least one omission;
+- mean sign stability: 0.9710;
+- minimum sign stability: 0.3333;
+- largest absolute CAS change: 0.0936.
+
+Approximately 90% of queries were fully sign-stable, but borderline cases remained reference-sensitive.
+
+#### 14.2 Paraphrase sensitivity
+
+- 137 of 508 audit-condition groups had mixed CAS signs across paraphrases;
+- no audit-contrast group had mixed $\Delta CAS$ direction;
+- median condition CAS standard deviation: 0.0324;
+- maximum condition CAS standard deviation: 0.1339;
+- median shift $\Delta CAS$ standard deviation: 0.0313;
+- maximum shift $\Delta CAS$ standard deviation: 0.1323.
+
+Approximately 27% of audit-condition groups crossed the CAS zero boundary across paraphrases.
+
+This shows that absolute near-zero classifications were less stable than the generated shift directions.
+
+---
+
+### 15. Generated validation result and construction leakage
+
+Generated clear-register validation produced:
+
+- balanced accuracy: 1.0;
+- Catholic recall: 1.0;
+- comparison recall: 1.0;
+- macro F1: 1.0.
+
+This is not evidence of independent instrument validity.
+
+References and validation passages were generated from the same concept fields and used related templates.
+
+The alpha therefore contains:
+
+- phrase reuse;
+- concept-field reuse;
+- predictable register wording;
+- repeated Catholic identifiers;
+- and condition-specific construction effects.
+
+The perfect validation result demonstrates that the pipeline can separate deliberately constructed fields. It does not establish performance on independently authored natural texts.
+
+---
+
+### 16. Interpretation of the explicit Catholic effect
+
+Moving from label-free theological content to explicit Catholic framing produced:
+
+- mean $\Delta S_C=+0.0852$;
+- mean $\Delta S_R=-0.0531$;
+- mean $\Delta CAS=+0.1383$;
+- positive $\Delta CAS$ in all 100 audits.
+
+This is a measurable generated-benchmark-relative label effect.
+
+It is not yet evidence of general model label dependence because the Catholic reference anchors repeatedly contain Catholic-identifying language.
+
+Beta must reduce this confound by separating provenance metadata from anchor wording and balancing label frequency.
+
+---
+
+### 17. Interpretation of integrative contexts
+
+Integrative queries had:
+
+- mean $S_C=0.7094$;
+- mean $S_R=0.6757$;
+- mean CAS $=+0.0338$.
+
+The relatively high component similarities suggest that the analysis can detect proximity to both fields.
+
+However, raw cosine values do not yet provide a calibrated universal threshold for joint accessibility.
+
+Beta should interpret component scores relative to independently validated Catholic, comparison, and integrative distributions.
+
+---
+
+### 18. What the alpha established
+
+The alpha supports the following implementation claims:
+
+- the 100-audit data model works;
+- the v3.4 mathematics scale to 100 audits;
+- Azure integration works for 3,032 unique texts;
+- the endpoint returns the expected model family and dimensions;
+- full reference-level scoring works;
+- component shifts reconstruct correctly;
+- leave-one-reference-out analysis works;
+- paraphrase analysis works;
+- statistical summaries work;
+- local run manifests and hashes work;
+- and the instrument can distinguish theological gain from comparison suppression.
+
+---
+
+### 19. What the alpha did not establish
+
+The alpha does not support final claims about:
+
+- Catholic theological legibility;
+- persistent theological attenuation;
+- context-resistant anti-theological bias;
+- Catholic pastoral adequacy or inadequacy;
+- doctrinal specificity;
+- theological framing–content divergence in natural language;
+- retrieval quality;
+- generated-answer correctness;
+- user deception;
+- or user trust.
+
+The generated design currently demonstrates the instrument more strongly than it measures natural model behaviour.
+
+---
+
+### 20. Revised research contribution
+
+The project’s intended contribution is now stated more precisely:
+
+> The project asks whether an embedding model can appear appropriately Catholic through vocabulary and framing while its substantive semantic organisation remains reduced, generic, context-resistant, or dominated by another register.
+
+The intended final product is a theological calibration map showing:
+
+- where theological meaning is stable;
+- where it is accessible without labels;
+- where it is jointly accessible with valid proximate meanings;
+- where it is recovered through substantive content;
+- where it depends on explicit labels;
+- where apparent recovery is caused by displacement;
+- where Catholic specificity is replaced by generic religion;
+- and where theological meaning remains fragile.
+
+---
+
+### 21. CTSB v3.5-beta decision
+
+The next phase is CTSB v3.5-beta.
+
+Beta should not begin by regenerating all 100 audits or rerunning Azure.
+
+The immediate beta task is a focused construction pilot designed to reduce alpha leakage.
+
+Required beta priorities are:
+
+1. natural queries not copied from reference fields;
+2. separate authoring streams for references, queries, and validation;
+3. reduced repeated Catholic labels in anchor bodies;
+4. provenance stored in metadata rather than semantic labels;
+5. lexical and n-gram overlap diagnostics;
+6. label-frequency checks;
+7. independently authored development validation;
+8. validation-based calibration of $S_C$ and $S_R$;
+9. predeclared framing–content divergence indicators;
+10. ethical and disciplinary safeguards for critical contexts;
+11. benchmark freeze before another Azure run;
+12. continued non-evidential labelling if source and human review remain deferred.
+
+A focused beta pilot of approximately 12 strategically chosen concepts is preferred before deciding whether to revise all 100.
+
+---
+
+### 22. Dashboard and evidence policy
+
+Dashboard work remains deferred.
+
+Numerical high-dimensional analysis remains primary.
+
+No local alpha vectors, caches, run directories, diagnostic reports, backups, secrets, or context bundles are to be committed.
+
+The alpha Azure outputs remain locally available under:
+
+`outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/`
+
+The standard AI context bundle should contain the active handoff, current research questions, beta plan, active code, and tests while omitting local generated runs and unnecessary historical data.
+<!-- END V3_5_ALPHA_COMPLETE_20260713 -->

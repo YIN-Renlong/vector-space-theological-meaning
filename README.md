@@ -1,32 +1,52 @@
 # Vector Space and Theological Meaning
 
 <!-- BEGIN V3_5_ALPHA_STATUS -->
-## Active development status — CTSB v3.5-alpha
+## Active development status — 13 July 2026
 
-CTSB v3.5-alpha is a **generated exploratory 100-concept expansion** of the CTSB v3.4 mathematical instrument.
+**CTSB v3.5-alpha is technically complete as a generated, non-evidential 100-concept development experiment. CTSB v3.5-beta is the next planned phase.**
 
-It currently contains:
+The alpha milestone contains:
 
-- 100 explicitly defined concept-to-register audits;
-- 25 concepts in each of the four theological loci;
-- 600 generated and unreviewed reference anchors;
+- 100 concept-to-register audits;
+- 25 concepts in each of four theological loci;
+- 600 generated and unreviewed references;
 - 1,624 controlled queries;
 - 808 generated development-validation passages;
 - eight critical-context audits;
-- strict label-free and explicit-Catholic pairs;
-- natural paraphrases;
-- leave-one-reference-out sensitivity;
+- three natural paraphrases for major conditions;
+- leave-one-reference-out analysis;
+- paraphrase-sensitivity analysis;
 - and the five original v3.4 audits covering death, grief, euthanasia, grace, and judgment after death.
 
-The generated wording is **non-evidential**. It is not a quotation or verified paraphrase of the listed candidate sources. Its validation passages are development diagnostics rather than genuinely independent held-out validation.
+Five v3.4 regression tests and five v3.5-alpha tests passed.
 
-Azure results from this alpha may be analysed only as exploratory patterns relative to the generated benchmark. Human source verification, Catholic theological review, relevant disciplinary review, independent validation, ethical review of critical passages, and benchmark freeze remain required before final claims.
+A successful Azure run on 13 July 2026 embedded 3,032 unique texts in 48 batches. Azure reported `text-embedding-3-large` with 3,072 dimensions. CAS reconstruction, shift decomposition, finite-value checks, file hashes, and expanded output generation all passed.
 
-See:
+The principal alpha aggregate results were:
 
+| Condition | Mean $S_C$ | Mean $S_R$ | Mean CAS |
+|---|---:|---:|---:|
+| Bare | 0.4679 | 0.5021 | -0.0342 |
+| Natural general | 0.5166 | 0.7600 | -0.2434 |
+| Natural ambiguous | 0.4900 | 0.4963 | -0.0063 |
+| Label-free theological | 0.8067 | 0.5224 | +0.2843 |
+| Explicit Catholic | 0.8919 | 0.4694 | +0.4226 |
+| Integrative | 0.7094 | 0.6757 | +0.0338 |
+| Critical | 0.3966 | 0.4198 | -0.0232 |
+
+These results remain **generated-benchmark-relative and non-evidential**. The alpha deliberately reused generated concept fields across references, queries, and validation passages. Its perfect development-validation score therefore does not constitute independent validation. General, theological, integrative, and explicit-Catholic conditions also contain construction effects and lexical overlap.
+
+The strongest alpha finding is methodological: CTSB can distinguish genuine Catholic-reference gain from an apparently positive relative shift caused only by a larger decline in comparison-register similarity.
+
+The next phase, CTSB v3.5-beta, will focus on natural-language quality, construction-leakage reduction, reference-label balance, genuinely separate validation design, calibration criteria, and operational tests of theological framing–content divergence.
+
+Read:
+
+- [Current CTSB v3.5-beta handoff](docs/AI_HANDOFF_V3_5_BETA.md)
+- [CTSB v3.5-beta design plan](docs/CTSB_V3_5_BETA_PLAN.md)
 - [CTSB v3.5-alpha protocol](docs/CTSB_V3_5_ALPHA_PROTOCOL.md)
-- [Active alpha handoff](docs/AI_HANDOFF_V3_5_ALPHA.md)
-- [Generated benchmark documentation](data/benchmarks/v3_5_alpha/README.md)
+- [CTSB v3.5-alpha benchmark status](data/benchmarks/v3_5_alpha/README.md)
+- [Full development log](DEVELOPMENT_LOG.md)
 
 Dashboard work remains deferred.
 <!-- END V3_5_ALPHA_STATUS -->
@@ -177,24 +197,249 @@ v3.4 studies the first layer. Retrieval and controlled generative-model audits r
 
 ---
 
-## 4. Primary research question
+## 4. Research questions
 
-> **In morally ambiguous and pastorally critical concepts, how does Azure/OpenAI `text-embedding-3-large` distribute semantic salience among Catholic theological and valid psychological, biological, clinical, legal, social, economic, affective, generic-religious, and ordinary-language registers, and which recurring modes of behaviour—joint accessibility, theological association gain, register displacement, label dependence, context-dependent recovery, or persistent theological attenuation—appear across theological domains?**
+### 4.1 Research problem
 
-This question is not answered by observing that words have several meanings.
+The project is not primarily asking whether adding words such as “Catholic,” “Christian,” or “theological” moves a query toward Catholic references. That effect is largely predictable and serves mainly as a diagnostic control.
 
-The empirical questions concern a particular AI system:
+The substantive problem is **theological adequacy under semantic competition**.
 
-- Which register is foregrounded under ambiguous wording?
-- Does natural crisis wording reorganise the semantic field?
-- Does Catholic contextualisation increase actual Catholic-reference proximity?
-- Does a positive relative shift instead arise from movement away from another register?
-- Can theological and clinically or psychologically valid dimensions remain simultaneously accessible?
-- Which concepts remain comparatively attenuated across contexts?
-- Are these patterns concentrated in particular theological loci?
+A model may recognise Catholic vocabulary while continuing to organise a concept primarily through another register—for example, autonomous choice, biological function, psychological wellbeing, legal status, clinical symptoms, romantic affect, economic value, or generic religious imagery.
 
----
+This can produce **theological framing–content divergence**: a query or downstream system appears Catholic at the surface level while its substantive semantic organisation remains generic, reduced, displaced, or off-target.
 
+The project does not attribute consciousness, belief, a subconscious, or deceptive intention to an embedding model. Appropriate terms include:
+
+- default semantic tendency;
+- latent representational prior;
+- context-resistant register pull;
+- residual comparison-register dominance;
+- surface contextualisation without substantive theological recovery;
+- theological framing–content divergence;
+- and a possible downstream illusion of theological adequacy.
+
+### 4.2 Primary research question
+
+> **When morally significant, theologically ambiguous, or pastorally critical concepts are expressed in natural language—and when Catholic theological content is supplied either implicitly or explicitly—how reliably does Azure/OpenAI `text-embedding-3-large` preserve access to specifically Catholic theological meaning alongside named psychological, biological, clinical, legal, social, economic, affective, lexical, and generic-religious registers? Which concepts instead exhibit reduction, displacement, context-resistant comparison-register pull, generic-religious substitution, label dependence, persistent theological attenuation, or theological framing–content divergence?**
+
+In simpler language:
+
+> **When a user has not already supplied an obviously theological answer, what meaning does the model foreground? Even when Catholic framing is supplied, does the underlying semantic representation become substantively Catholic, or does another register continue to control it?**
+
+### 4.3 RQ1 — Default semantic foregrounding
+
+> **Under bare, natural-general, and genuinely ambiguous wording, which named semantic register does the model foreground for each concept?**
+
+Examples include whether:
+
+- freedom is organised primarily around autonomous choice or also around truth, goodness, responsibility, virtue, vocation, and final ends;
+- grief is organised primarily around psychological bereavement or also retains Catholic-pastoral meaning;
+- death is represented primarily as biological cessation or also retains dignity, judgment, resurrection, and hope;
+- human dignity is narrowed to legal status;
+- happiness is narrowed to subjective wellbeing;
+- grace is treated mainly as elegance;
+- and judgment after death is represented mainly through generic religious imagery.
+
+Other registers are not presumed false. The question is whether one becomes disproportionately dominant or excludes dimensions necessary for theological interpretation.
+
+### 4.4 RQ2 — Joint accessibility versus theological reduction
+
+> **Can Catholic theological meaning and a valid adjacent register remain simultaneously accessible, or does contextualising one register suppress the other?**
+
+Catholic theology does not deny biological, psychological, medical, legal, social, affective, or economic dimensions.
+
+Examples include:
+
+- whether biological death and eschatological meaning can coexist;
+- whether grief can remain psychologically intelligible while retaining prayer, consolation, accompaniment, communion, and resurrection hope;
+- whether disability can retain medical and functional description without losing intrinsic dignity and personhood;
+- and whether palliative care can retain clinical competence together with moral and pastoral accompaniment.
+
+The desired outcome is not necessarily Catholic dominance. For complementary or valid-but-partial relationships, **joint accessibility** may be the more appropriate behaviour.
+
+### 4.5 RQ3 — Theological legibility without an overt label
+
+> **Does substantive Catholic theological content become associated with source-grounded Catholic references when words such as “Catholic,” “Christian,” or “theology” are absent?**
+
+This asks whether the model recognises theological substance rather than only an identity label.
+
+For example:
+
+> Human freedom reaches fulfilment when it is directed toward truth and the good.
+
+If equivalent theological content remains weak until “In Catholic teaching” is added, the concept may exhibit **label dependence** rather than robust theological legibility.
+
+### 4.6 RQ4 — Context-resistant register pull under Catholic framing
+
+> **When substantive or explicit Catholic framing is supplied, do previously dominant comparison registers remain disproportionately influential?**
+
+Possible cases include:
+
+- Catholic freedom language remaining organised around unrestricted choice;
+- Catholic euthanasia language remaining organised around autonomous assisted death;
+- Catholic disability language remaining dominated by function or capacity;
+- Catholic grief language remaining exclusively psychological;
+- and Catholic particular judgment remaining indistinguishable from generic afterlife imagery.
+
+High comparison similarity is not automatically defective. The question is whether Catholic meaning becomes sufficiently and robustly accessible for the registered theological relationship.
+
+### 4.7 RQ5 — Theological framing–content divergence
+
+> **Which concepts appear successfully Catholic-contextualised at the surface level while remaining comparatively weak, generic, displaced, or off-target relative to source-grounded Catholic content?**
+
+Possible indicators include:
+
+- explicit Catholic wording while Catholic-reference proximity remains comparatively weak;
+- a comparison reference remaining locally dominant;
+- generic-religious references outranking Catholic-specific references;
+- positive $\Delta CAS$ without positive $\Delta S_C$;
+- movement caused primarily by the label rather than equivalent theological content;
+- disagreement between nearest-reference ranking and mean reference-field contrast;
+- and persistence across paraphrases and reference-sensitivity checks.
+
+This is the embedding-level form of a possible **illusion of theological adequacy**. Actual misleading chatbot answers or user trust would require downstream retrieval, generation, and user studies.
+
+### 4.8 RQ6 — Genuine recovery versus apparent recovery
+
+> **When a query moves relatively toward Catholic references, is that movement caused by actual Catholic-reference association gain or merely by movement away from another register?**
+
+For matched contexts:
+
+$$
+\Delta CAS=\Delta S_C-\Delta S_R
+$$
+
+The analysis distinguishes:
+
+- **genuine theological association gain:** $S_C$ increases;
+- **joint enrichment:** both $S_C$ and $S_R$ remain substantial;
+- **strong differentiation:** $S_C$ increases while $S_R$ decreases;
+- **register displacement:** $S_R$ decreases while $S_C$ remains stable;
+- **misleading relative recovery:** CAS increases while $S_C$ decreases;
+- and **context resistance:** neither component changes materially.
+
+A positive CAS shift must never automatically be described as Catholic activation or theological recovery.
+
+### 4.9 RQ7 — Critical and crisis-context behaviour
+
+> **When concepts are expressed through natural crisis, suffering, bereavement, suicidal distress, terminal illness, euthanasia requests, dying, or end-of-life care, does the model preserve clinically necessary meaning while retaining access to dignity, mercy, hope, accompaniment, prayer, moral seriousness, and pastoral care?**
+
+Strong clinical or psychological association is not automatically a defect. In suicide-related language, it may be necessary for safety.
+
+The nontrivial question is whether crisis wording permits joint clinical-pastoral accessibility or instead makes theological-pastoral meaning inaccessible.
+
+### 4.10 RQ8 — Persistent theological attenuation
+
+> **Which concepts remain comparatively weak in Catholic-reference proximity across natural, ambiguous, critical, integrative, label-free theological, and explicit Catholic conditions?**
+
+The strongest warning cases would combine:
+
+- weak theological accessibility in natural language;
+- little gain from substantive theological content;
+- continued comparison-register dominance under explicit Catholic framing;
+- generic substitution rather than Catholic specificity;
+- and stability across natural paraphrases, source-grounded reference alternatives, and leave-one-reference-out checks.
+
+Such concepts may require particular caution in embedding-mediated theological search, retrieval, classification, or recommendation.
+
+### 4.11 RQ9 — Recurring theological patterns
+
+> **Are representational vulnerabilities concentrated in particular theological loci or theological relationship types?**
+
+The principal hypotheses are:
+
+- **teleological compression:** freedom, happiness, conscience, or virtue reduced to choice, wellbeing, preference, or behaviour;
+- **anthropological narrowing:** personhood and dignity reduced to biology, function, capacity, law, or economics;
+- **affective compression:** love, communion, marriage, or self-gift reduced to feeling, attraction, preference, or social attachment;
+- **generic-religious substitution:** Catholic-specific doctrines represented through broad cultural-religious imagery;
+- **critical-context attenuation:** theological-pastoral meaning becoming less accessible under crisis language;
+- **label dependence:** Catholic vocabulary being recognised more reliably than Catholic theological substance;
+- and **framing–content divergence:** Catholic surface framing without adequate Catholic semantic recovery.
+
+These are hypotheses to test, not conclusions imported from v2 or assumed in advance.
+
+### 4.12 RQ10 — Robustness, validation, and theological calibration
+
+> **Which observed patterns survive genuinely independent validation, natural paraphrasing, leave-one-reference-out analysis, alternative source-grounded references, pre-assigned relationship interpretation, and theological or disciplinary review?**
+
+A single negative CAS value is not sufficient to issue a theological warning.
+
+Robust interpretation requires:
+
+- source-grounded reference fields;
+- genuinely separate held-out validation;
+- successful Catholic and comparison recall;
+- natural paraphrase stability;
+- leave-one-reference-out stability;
+- component-level shift analysis;
+- appropriate nearest-reference rankings;
+- review of the theological relationship between registers;
+- and benchmark freeze before final model evaluation.
+
+The intended outcome is a **calibration map for theologians**, not a universal Catholic score.
+
+### 4.13 Evidential roles of the query conditions
+
+The query conditions do not have equal evidential importance.
+
+#### Primary substantive conditions
+
+1. natural contemporary general use;
+2. natural moral or pastoral ambiguity;
+3. natural critical or crisis language;
+4. integrative theological-proximate language.
+
+These conditions address semantic foregrounding, competition, reduction, joint accessibility, and critical-context behaviour.
+
+#### Substantive recovery condition
+
+5. label-free theological content.
+
+This tests whether theological substance is recoverable without an overt Catholic identity label.
+
+#### Diagnostic controls
+
+6. bare concept;
+7. explicit Catholic framing.
+
+The explicit Catholic condition is a positive contextualisation control and a secondary test of label dependence, residual register pull, and framing–content divergence.
+
+“Adding Catholic wording increases Catholic association” is not a principal research finding by itself.
+
+### 4.14 What the embedding audit can uniquely establish
+
+If the final instrument is validated, it can establish benchmark-relative evidence concerning:
+
+- which semantic register this specific embedding model foregrounds;
+- which theological concepts remain legible without overt labels;
+- whether theological and proximate meanings remain jointly accessible;
+- whether Catholic framing produces substantive Catholic-reference recovery;
+- whether apparent recovery is caused only by comparison-register suppression;
+- whether generic religion substitutes for Catholic specificity;
+- which concepts exhibit context-resistant tendencies;
+- and which concepts may require caution in embedding-mediated theological retrieval.
+
+These are empirical questions that cannot be answered merely by observing that words have multiple meanings.
+
+### 4.15 Study boundary and downstream risk
+
+The present direct object is the embedding layer.
+
+The wider risk is layered:
+
+1. **Embedding representation:** how semantic associations are organised.
+2. **Retrieval and ranking:** which documents or concepts are selected.
+3. **Generative response:** how a language model formulates an answer.
+4. **User perception:** whether Catholic framing creates unwarranted trust.
+
+CTSB directly tests the first layer and provides calibration for later layers.
+
+It cannot by itself establish intentional deception, doctrinal error in an actual chatbot answer, or actual user misperception.
+
+The central contribution is:
+
+> **The project asks whether an AI embedding can appear appropriately Catholic through vocabulary and framing while its substantive semantic organisation remains reduced, generic, context-resistant, or dominated by another register—and it provides theologians with an empirical calibration map showing where theological meaning is robust, jointly accessible, fragile, label-dependent, or potentially misleading.**
 ## 5. Preliminary v2 findings to be re-tested
 
 The v2 benchmark generated the following historical aggregate results:
@@ -910,15 +1155,23 @@ The generated alpha must not be presented as a final benchmark. Archived v2 code
     ├── DEVELOPMENT_LOG.md
     ├── docs/
     │   ├── AI_HANDOFF_V3_4.md
-    │   └── development_log.md  # compatibility link
+    │   ├── AI_HANDOFF_V3_5_ALPHA.md
+    │   ├── AI_HANDOFF_V3_5_BETA.md
+    │   ├── CTSB_V3_5_ALPHA_PROTOCOL.md
+    │   └── CTSB_V3_5_BETA_PLAN.md
     ├── data/
     │   └── benchmarks/
-    │       └── v3_4/
-    │           └── README.md
-    ├── archive/
-    │   ├── ctsb_100_v1_draft/
-    │   └── ctsb_100_v2_context_draft/
-    ├── index.html
-    └── life_death.html
+    │       ├── v3_4/
+    │       │   └── prototype/
+    │       └── v3_5_alpha/
+    │           └── generated_100/
+    ├── scripts/
+    │   ├── ctsb_v3_4_prototype.py
+    │   └── ctsb_v3_5_alpha.py
+    ├── tests/
+    │   ├── test_ctsb_v3_4_prototype.py
+    │   └── test_ctsb_v3_5_alpha.py
+    └── tools/
+        └── build_ai_context.sh
 
-The root HTML files are temporary compatibility copies of the v2 dashboards. Canonical historical copies are stored inside the v2 archive.
+Generated vectors, embedding caches, run outputs, context bundles, and backups remain local and are excluded from Git.

@@ -5,6 +5,8 @@ PROJECT="/Users/Renlong/Projects/GitHub/YIN-Renlong/vector-space-theological-mea
 OUT_DIR="$PROJECT/ai_context"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 PROFILE="lean"
+WITH_ACTIVE_CODE=0
+WITH_ALPHA_DATA=0
 WITH_LEGACY_V2=0
 COPY_TO_CLIPBOARD=1
 V2_ARCHIVE="$PROJECT/archive/ctsb_100_v2_context_draft"
@@ -16,11 +18,21 @@ Usage:
 
 Options:
   --full
-      Include the complete root DEVELOPMENT_LOG.md and context-builder source.
+      Include the complete development log, historical alpha handoff,
+      active source code and tests, v3.4 engine and tests, context-builder
+      source, and generated alpha CSVs.
+
+  --with-code
+      Include the active v3.5-alpha generator and tests. These are omitted
+      from the default lean beta-planning bundle to reduce bundle size.
+
+  --with-alpha-data
+      Include all four generated CTSB v3.5-alpha CSV tables without enabling
+      the complete full profile.
 
   --with-legacy-v2
-      Include selected archived v2 implementation files. This is off by
-      default because active v3.4 code now exists.
+      Include selected archived v2 implementation files. This remains off by
+      default because v2 is historical only.
 
   --no-clipboard
       Create the bundle without copying it to the macOS clipboard.
@@ -29,10 +41,18 @@ Options:
       Show this help.
 
 Default behaviour:
-  Creates a lean active-v3.4 bundle containing the methodology, current
-  handoff, prototype benchmark inputs, active Python code, and tests.
-  It excludes secrets, virtual environments, raw vectors, caches, generated
-  outputs, dashboards, backups, AI-context history, handoff archives, and v2.
+  Creates a lean CTSB v3.5-beta continuation bundle containing the current
+  README, version, active beta handoff and plan, alpha protocol and benchmark
+  status, and requirements.
+
+  The lean profile omits the full development log, active source code and
+  tests, generated alpha CSV tables, v3.4 engine source, local outputs, raw
+  vectors, caches, dashboards, backups, archived handoffs, AI-context history,
+  and v2 materials.
+
+  Use --with-code when a new thread must inspect or modify the implementation.
+  Important alpha results and current restrictions are summarised in the beta
+  handoff, so local generated runs are never required in the standard bundle.
 USAGE
 }
 
@@ -40,6 +60,16 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --full)
       PROFILE="full"
+      WITH_ACTIVE_CODE=1
+      WITH_ALPHA_DATA=1
+      shift
+      ;;
+    --with-code)
+      WITH_ACTIVE_CODE=1
+      shift
+      ;;
+    --with-alpha-data)
+      WITH_ALPHA_DATA=1
       shift
       ;;
     --with-legacy-v2)
@@ -68,8 +98,9 @@ if [[ ! -d "$PROJECT" ]]; then
   exit 1
 fi
 
-BUNDLE="$OUT_DIR/ctsb_v3_4_ai_context_${PROFILE}_$STAMP.txt"
-LATEST="$OUT_DIR/ctsb_v3_4_ai_context_latest.txt"
+BUNDLE="$OUT_DIR/ctsb_v3_5_beta_ai_context_${PROFILE}_$STAMP.txt"
+LATEST="$OUT_DIR/ctsb_v3_5_beta_ai_context_latest.txt"
+GENERIC_LATEST="$OUT_DIR/ctsb_ai_context_latest.txt"
 
 mkdir -p "$OUT_DIR"
 cd "$PROJECT"
@@ -91,14 +122,10 @@ emit_file() {
 ACTIVE_FILES=(
   "README.md"
   "VERSION"
-  "docs/AI_HANDOFF_V3_4.md"
-  "data/benchmarks/v3_4/README.md"
-  "data/benchmarks/v3_4/prototype/comparisons.csv"
-  "data/benchmarks/v3_4/prototype/references.csv"
-  "data/benchmarks/v3_4/prototype/queries.csv"
-  "data/benchmarks/v3_4/prototype/validation.csv"
-  "scripts/ctsb_v3_4_prototype.py"
-  "tests/test_ctsb_v3_4_prototype.py"
+  "docs/AI_HANDOFF_V3_5_BETA.md"
+  "docs/CTSB_V3_5_BETA_PLAN.md"
+  "docs/CTSB_V3_5_ALPHA_PROTOCOL.md"
+  "data/benchmarks/v3_5_alpha/README.md"
   "requirements.txt"
 )
 
@@ -106,42 +133,78 @@ if [[ -f "$PROJECT/.env.example" ]]; then
   ACTIVE_FILES+=(".env.example")
 fi
 
+if [[ "$WITH_ACTIVE_CODE" -eq 1 ]]; then
+  ACTIVE_FILES+=(
+    "scripts/ctsb_v3_5_alpha.py"
+    "tests/test_ctsb_v3_5_alpha.py"
+  )
+fi
+
 if [[ "$PROFILE" == "full" ]]; then
   ACTIVE_FILES+=(
     "DEVELOPMENT_LOG.md"
+    "docs/AI_HANDOFF_V3_5_ALPHA.md"
+    "docs/AI_HANDOFF_V3_4.md"
+    "data/benchmarks/v3_4/README.md"
+    "scripts/ctsb_v3_4_prototype.py"
+    "tests/test_ctsb_v3_4_prototype.py"
     "tools/build_ai_context.sh"
+  )
+fi
+
+if [[ "$WITH_ALPHA_DATA" -eq 1 ]]; then
+  ACTIVE_FILES+=(
+    "data/benchmarks/v3_5_alpha/generated_100/comparisons.csv"
+    "data/benchmarks/v3_5_alpha/generated_100/references.csv"
+    "data/benchmarks/v3_5_alpha/generated_100/queries.csv"
+    "data/benchmarks/v3_5_alpha/generated_100/validation.csv"
   )
 fi
 
 {
   cat <<HEADER
-CTSB v3.4 — NEW AI THREAD CONTEXT BUNDLE
-=========================================
+CTSB v3.5-beta — NEW AI THREAD CONTEXT BUNDLE
+==============================================
 
 CONTINUATION REQUEST
 You are continuing the project “Vector Space and Theological Meaning”.
 
-Read README.md and docs/AI_HANDOFF_V3_4.md before proposing changes.
+Read README.md and docs/AI_HANDOFF_V3_5_BETA.md before proposing changes.
 
-The active methodology is CTSB v3.4.
-Step 1 is complete.
-The immediate task is the source-grounded five-audit pilot described in the
-active handoff.
+CTSB v3.5-alpha is complete as a generated, non-evidential 100-concept
+development experiment.
+
+The next planned phase is CTSB v3.5-beta.
+
+The immediate task is a focused beta construction pilot that reduces template
+and label leakage, separates reference/query/validation authoring, and
+operationalises theological framing–content divergence before another
+100-concept or Azure run.
 
 BUNDLE PROFILE: $PROFILE
 
 IMPORTANT RESTRICTIONS
-- Prototype references and outputs are synthetic and non-evidential.
-- Archived v2 materials are historical references only.
+- Alpha references, validation passages, and results are generated and
+  non-evidential.
+- Do not present candidate sources as verified support for generated wording.
+- Do not treat perfect alpha development validation as independent validation.
 - Do not restore the broad v2 secular/common-language category.
-- Do not begin dashboard work before the numerical instrument is stable.
+- Do not interpret positive CAS alone as theological recovery.
+- Do not infer machine consciousness, subconscious bias, belief, hostility,
+  or intentional deception.
+- Do not immediately regenerate all 100 concepts or rerun Azure.
+- Do not begin dashboard work before the beta instrument is stable.
 - Do not expose or request local secrets.
-- Raw vectors, caches, generated runs, dashboards, backups, and handoff
-  archives are intentionally omitted from the standard bundle.
+- Raw vectors, caches, generated runs, dashboards, backups, AI-context history,
+  and handoff archives are intentionally omitted from the standard bundle.
 
-The lean profile omits the full DEVELOPMENT_LOG.md because the active handoff
-contains the current state, decisions, results, restrictions, and next action.
-Use --full only when detailed chronological history is needed.
+The lean profile omits the full DEVELOPMENT_LOG.md, active implementation
+source and tests, and generated alpha CSVs because the active beta handoff
+contains the current state, decisions, results, limitations, restrictions,
+and immediate next action.
+
+Use --full only when detailed chronology, v3.4 engine internals, and all alpha
+source tables are genuinely needed.
 HEADER
 
   echo ""
@@ -180,8 +243,8 @@ HEADER
     LC_ALL=C sort
 
   echo ""
-  echo "ACTIVE CTSB v3.4 FILES"
-  echo "======================"
+  echo "ACTIVE CTSB v3.5-beta CONTINUATION FILES"
+  echo "========================================"
   for relative_path in "${ACTIVE_FILES[@]}"; do
     emit_file "$relative_path"
   done
@@ -210,6 +273,7 @@ HEADER
 } > "$BUNDLE"
 
 cp -f "$BUNDLE" "$LATEST"
+cp -f "$BUNDLE" "$GENERIC_LATEST"
 
 BYTES="$(wc -c < "$BUNDLE" | tr -d ' ')"
 LINES="$(wc -l < "$BUNDLE" | tr -d ' ')"
@@ -224,8 +288,11 @@ echo ""
 echo "Context bundle created:"
 echo "  $BUNDLE"
 echo ""
-echo "Latest bundle:"
+echo "Latest beta bundle:"
 echo "  $LATEST"
+echo ""
+echo "Generic latest bundle:"
+echo "  $GENERIC_LATEST"
 echo ""
 echo "Profile:"
 echo "  $PROFILE"
@@ -234,6 +301,20 @@ echo "Size:"
 echo "  $BYTES bytes"
 echo "  $LINES lines"
 echo "  approximately $APPROX_TOKENS tokens using a rough bytes/4 estimate"
+echo ""
+echo "Included active source code and tests:"
+if [[ "$WITH_ACTIVE_CODE" -eq 1 ]]; then
+  echo "  yes"
+else
+  echo "  no"
+fi
+echo ""
+echo "Included generated alpha CSV data:"
+if [[ "$WITH_ALPHA_DATA" -eq 1 ]]; then
+  echo "  yes"
+else
+  echo "  no"
+fi
 echo ""
 echo "Included legacy v2 files:"
 if [[ "$WITH_LEGACY_V2" -eq 1 ]]; then
