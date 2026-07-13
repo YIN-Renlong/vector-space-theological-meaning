@@ -48,7 +48,7 @@ Read:
 - [CTSB v3.5-alpha benchmark status](data/benchmarks/v3_5_alpha/README.md)
 - [Full development log](DEVELOPMENT_LOG.md)
 
-Dashboard work remains deferred.
+The [CTSB v3.5-alpha exploratory dashboard](https://yin-renlong.github.io/vector-space-theological-meaning/dashboards/v3_5_alpha/) is available on GitHub Pages.
 <!-- END V3_5_ALPHA_STATUS -->
 
 ## CTSB v3.4 Methodology Design

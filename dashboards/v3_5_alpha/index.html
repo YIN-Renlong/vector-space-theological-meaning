@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta
+    name="description"
+    content="Research-first visualisation of CTSB v3.5-alpha generated exploratory embedding-audit results."
+  >
+  <meta name="theme-color" content="#ffffff">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' https://cdn.plot.ly https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:"
+  >
+  <title>CTSB v3.5-alpha · Exploratory Results Dashboard</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script defer src="assets/js/dashboard.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="CTSB v3.5-alpha dashboard home">
+        <span class="brand-mark" aria-hidden="true">CTSB</span>
+        <span class="brand-copy">
+          <strong>Vector Space and Theological Meaning</strong>
+          <small>v3.5-alpha research dashboard</small>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Dashboard sections">
+        <a href="#foregrounding">Foregrounding</a>
+        <a href="#shifts">Shift decomposition</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#robustness">Robustness</a>
+        <a href="#explorer">Explorer</a>
+        <a href="#methodology">Method</a>
+      </nav>
+
+      <a class="header-action" href="#limitations">Limitations</a>
+    </div>
+  </header>
+
+  <div
+    id="app-status"
+    class="app-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    Preparing dashboard…
+  </div>
+
+  <main id="main-content">
+    <section id="top" class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">CTSB v3.5-alpha · 100-concept development run</p>
+          <h1>When does theological meaning remain accessible under semantic competition?</h1>
+          <p class="hero-lede">
+            A component-level embedding audit of semantic foregrounding,
+            joint accessibility, critical language, and the difference between
+            genuine Catholic-reference gain and merely relative movement.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#shifts">View the central analysis</a>
+            <a class="button button-secondary" href="#atlas">Explore the semantic atlas</a>
+          </div>
+        </div>
+
+        <aside class="research-question-card" aria-labelledby="research-question-title">
+          <p class="card-label">Central research question</p>
+          <h2 id="research-question-title">
+            Does Catholic theological meaning remain accessible under ambiguity,
+            and can apparent recovery be distinguished from actual association gain?
+          </h2>
+          <p>
+            The principal evidence comes from cosine similarities in the original
+            3,072-dimensional space—not from the visual projection.
+          </p>
+        </aside>
+      </div>
+
+      <div class="shell">
+        <aside class="evidence-banner" id="limitations">
+          <div class="evidence-icon" aria-hidden="true">i</div>
+          <div>
+            <strong>Generated exploratory alpha — non-evidential.</strong>
+            References, queries, and validation passages were generated for
+            instrument development and have not received exact-source,
+            theological, disciplinary, or independent validation review.
+            Results are relative to predefined generated reference fields and
+            do not establish theological truth, model belief, bias, hostility,
+            pastoral adequacy, or behaviour of AI systems generally.
+          </div>
+        </aside>
+
+        <dl class="metric-strip" aria-label="Run metadata">
+          <div>
+            <dt>Audits</dt>
+            <dd>100</dd>
+          </div>
+          <div>
+            <dt>Embedded texts</dt>
+            <dd>3,032</dd>
+          </div>
+          <div>
+            <dt>Dimensions</dt>
+            <dd>3,072</dd>
+          </div>
+          <div>
+            <dt>Reference anchors</dt>
+            <dd>600</dd>
+          </div>
+          <div>
+            <dt>Model family</dt>
+            <dd class="metric-text">text-embedding-3-large</dd>
+          </div>
+          <div>
+            <dt>Run ID</dt>
+            <dd class="metric-code">20260713-010232</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="executive-section">
+      <div class="shell">
+        <div class="section-heading compact">
+          <div>
+            <p class="section-kicker">Executive reading</p>
+            <h2>Three observations orient the dashboard</h2>
+          </div>
+        </div>
+
+        <div class="observation-grid">
+          <article class="observation-card">
+            <span class="observation-number">01</span>
+            <h3>Aggregate balance is not low similarity</h3>
+            <p>
+              Integrative wording placed both components relatively high:
+              mean <span class="metric-catholic">S<sub>C</sub> = 0.709</span>
+              and <span class="metric-comparison">S<sub>R</sub> = 0.676</span>,
+              with mean CAS near balance at +0.034.
+            </p>
+          </article>
+
+          <article class="observation-card featured">
+            <span class="observation-number">02</span>
+            <h3>Positive ΔCAS can conceal declining S<sub>C</sub></h3>
+            <p>
+              Under ambiguous and critical wording, CAS became more positive
+              even though Catholic-reference similarity declined. Component
+              decomposition changes the interpretation.
+            </p>
+          </article>
+
+          <article class="observation-card">
+            <span class="observation-number">03</span>
+            <h3>Borderline signs require robustness checks</h3>
+            <p>
+              1,461 of 1,624 queries were sign-stable under every reference
+              omission, while 137 of 508 paraphrase groups crossed CAS zero.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="atlas" class="dashboard-section section-tinted">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Exploratory orientation</p>
+            <h2>Global three-dimensional semantic atlas</h2>
+            <p class="section-subtitle">
+              One reproducible projection of all 3,032 embedded texts, filtered
+              by role and theological locus.
+            </p>
+          </div>
+          <div class="section-meta">
+            <span class="meta-chip">3,032 texts</span>
+            <span class="meta-chip">One shared UMAP fit</span>
+          </div>
+        </div>
+
+        <div class="chart-card chart-card-large">
+          <div class="chart-toolbar" aria-label="Global atlas controls">
+            <div class="control-group">
+              <label for="atlas-role-filter">Text role</label>
+              <select id="atlas-role-filter">
+                <option value="all">All roles</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="atlas-locus-filter">Theological locus</label>
+              <select id="atlas-locus-filter">
+                <option value="all">All loci</option>
+              </select>
+            </div>
+
+            <div class="toolbar-spacer"></div>
+
+            <span id="atlas-count" class="visible-count" aria-live="polite">
+              Loading points…
+            </span>
+            <button class="button button-small button-secondary" id="atlas-reset-camera" type="button">
+              Reset camera
+            </button>
+          </div>
+
+          <div
+            id="atlas-chart"
+            class="plot plot-3d"
+            role="img"
+            aria-label="Interactive three-dimensional UMAP of all embedded texts"
+          >
+            <div class="chart-loading">Loading the semantic atlas…</div>
+          </div>
+
+          <p id="atlas-summary" class="chart-summary" aria-live="polite">
+            The atlas is loading.
+          </p>
+
+          <aside class="projection-note">
+            <strong>Exploratory projection only.</strong>
+            Camera angle, occlusion, UMAP parameters, and dimensionality reduction
+            can change visual impressions. Apparent distance or clustering here
+            is not substantive evidence; numerical high-dimensional analysis is primary.
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="foregrounding" class="dashboard-section">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Research question 1</p>
+            <h2>Which semantic register is foregrounded by condition?</h2>
+            <p class="section-subtitle">
+              Component proximity and relative contrast are shown separately.
+              Cosine similarity is not a calibrated probability.
+            </p>
+          </div>
+          <a
+            class="data-link"
+            href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/alpha_condition_statistics.csv"
+            download
+          >
+            Download chart data
+          </a>
+        </div>
+
+        <div class="chart-grid chart-grid-two">
+          <article class="chart-card">
+            <div class="chart-title-row">
+              <div>
+                <h3>Component proximity</h3>
+                <p>Mean S<sub>C</sub> and S<sub>R</sub> by condition</p>
+              </div>
+              <span class="sample-label">n = 100 concepts; critical n = 8</span>
+            </div>
+            <div
+              id="condition-components-chart"
+              class="plot"
+              role="img"
+              aria-label="Dumbbell plot of mean Catholic and comparison reference similarity by condition"
+            >
+              <div class="chart-loading">Loading component scores…</div>
+            </div>
+            <p id="condition-components-summary" class="chart-summary">
+              Component score summary will appear here.
+            </p>
+          </article>
+
+          <article class="chart-card">
+            <div class="chart-title-row">
+              <div>
+                <h3>Relative association contrast</h3>
+                <p>Mean CAS with concept-bootstrap 95% intervals</p>
+              </div>
+              <span class="sample-label">CAS = S<sub>C</sub> − S<sub>R</sub></span>
+            </div>
+            <div
+              id="condition-cas-chart"
+              class="plot"
+              role="img"
+              aria-label="Interval plot of mean Catholic Association Contrast by condition"
+            >
+              <div class="chart-loading">Loading CAS intervals…</div>
+            </div>
+            <p id="condition-cas-summary" class="chart-summary">
+              CAS interval summary will appear here.
+            </p>
+          </article>
+        </div>
+
+        <div class="insight-panel">
+          <div>
+            <span class="insight-label">Question</span>
+            <p>Which reference field is closer under each generated query condition?</p>
+          </div>
+          <div>
+            <span class="insight-label">Observation</span>
+            <p>
+              Natural-general wording had mean S<sub>R</sub> 0.760 versus
+              S<sub>C</sub> 0.517. Ambiguous wording was near aggregate CAS
+              balance, while integrative wording retained high proximity to both fields.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Interpretation</span>
+            <p>
+              Within this benchmark, the conditions induce different patterns
+              of component accessibility rather than one universal theological score.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Limitation</span>
+            <p>
+              Strong general, theological, and explicit-Catholic separation is
+              affected by generated templates, lexical overlap, and shared construction fields.
+            </p>
+          </div>
+        </div>
+
+        <details class="table-alternative">
+          <summary>Accessible table: condition statistics</summary>
+          <div class="table-scroll">
+            <table>
+              <caption>Mean component and CAS statistics by query condition</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Condition</th>
+                  <th scope="col">Concepts</th>
+                  <th scope="col">S<sub>C</sub></th>
+                  <th scope="col">S<sub>R</sub></th>
+                  <th scope="col">CAS</th>
+                  <th scope="col">CAS 95% interval</th>
+                  <th scope="col">Positive CAS</th>
+                </tr>
+              </thead>
+              <tbody id="condition-table-body"></tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="shifts" class="dashboard-section section-emphasis">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Central methodological analysis</p>
+            <h2>Did Catholic-reference similarity actually increase?</h2>
+            <p class="section-subtitle">
+              Matched shifts decompose relative CAS movement into changes in
+              Catholic-reference and comparison-reference proximity.
+            </p>
+          </div>
+          <a
+            class="data-link"
+            href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/alpha_shift_statistics.csv"
+            download
+          >
+            Download chart data
+          </a>
+        </div>
+
+        <div class="equation-row" aria-label="Shift decomposition formula">
+          <span>ΔCAS</span>
+          <span aria-hidden="true">=</span>
+          <span>ΔS<sub>C</sub></span>
+          <span aria-hidden="true">−</span>
+          <span>ΔS<sub>R</sub></span>
+        </div>
+
+        <div class="chart-card principal-chart">
+          <div class="chart-title-row">
+            <div>
+              <h3>Matched component shift decomposition</h3>
+              <p>
+                Exact mean changes by contrast; zero denotes no mean component movement
+              </p>
+            </div>
+            <span class="sample-label">Concept is the principal unit</span>
+          </div>
+
+          <div
+            id="shift-chart"
+            class="plot plot-tall"
+            role="img"
+            aria-label="Diverging chart of delta Catholic similarity, delta comparison similarity, and delta CAS"
+          >
+            <div class="chart-loading">Loading matched shifts…</div>
+          </div>
+
+          <p id="shift-summary" class="chart-summary">
+            Shift decomposition summary will appear here.
+          </p>
+
+          <div class="method-callout">
+            <div class="method-callout-mark" aria-hidden="true">Δ</div>
+            <div>
+              <strong>Why the components change the conclusion</strong>
+              <p>
+                General-to-ambiguous produced ΔCAS +0.237 while ΔS<sub>C</sub>
+                was −0.027. General-to-critical produced ΔCAS +0.255 while
+                ΔS<sub>C</sub> was −0.075. In both cases, the relative movement
+                was caused by a much larger decline in S<sub>R</sub>, not by
+                Catholic-reference association gain.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-panel insight-panel-dark">
+          <div>
+            <span class="insight-label">Question</span>
+            <p>Does a more positive CAS represent genuine Catholic-reference gain?</p>
+          </div>
+          <div>
+            <span class="insight-label">Observation</span>
+            <p>
+              ΔCAS was positive for ambiguous and critical contrasts even though
+              mean S<sub>C</sub> declined.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Interpretation</span>
+            <p>
+              Relative recovery and component gain are empirically distinct.
+              Positive ΔCAS alone is insufficient to describe theological recovery.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Limitation</span>
+            <p>
+              These are generated-condition effects and require source-grounded
+              beta validation before substantive theological interpretation.
+            </p>
+          </div>
+        </div>
+
+        <details class="table-alternative table-alternative-dark">
+          <summary>Accessible table: matched shift statistics</summary>
+          <div class="table-scroll">
+            <table>
+              <caption>Mean component changes by matched query contrast</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Contrast</th>
+                  <th scope="col">Concepts</th>
+                  <th scope="col">ΔS<sub>C</sub></th>
+                  <th scope="col">ΔS<sub>R</sub></th>
+                  <th scope="col">ΔCAS</th>
+                  <th scope="col">ΔCAS 95% interval</th>
+                  <th scope="col">Positive ΔCAS</th>
+                </tr>
+              </thead>
+              <tbody id="shift-table-body"></tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="accessibility" class="dashboard-section">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Research question 2</p>
+            <h2>Can both reference fields remain jointly accessible?</h2>
+            <p class="section-subtitle">
+              Each point is a concept-level condition mean. The diagonal denotes
+              CAS = 0, not a success threshold.
+            </p>
+          </div>
+          <a
+            class="data-link"
+            href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/condition_summary.csv"
+            download
+          >
+            Download chart data
+          </a>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-toolbar">
+            <div class="control-group">
+              <label for="accessibility-condition">Query condition</label>
+              <select id="accessibility-condition">
+                <option value="integrative" selected>Integrative</option>
+                <option value="natural_ambiguous">Natural ambiguous</option>
+                <option value="critical">Critical</option>
+                <option value="label_free_theological">Label-free theological</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="accessibility-locus">Theological locus</label>
+              <select id="accessibility-locus">
+                <option value="all">All loci</option>
+              </select>
+            </div>
+
+            <div class="toolbar-spacer"></div>
+            <span id="accessibility-count" class="visible-count" aria-live="polite"></span>
+          </div>
+
+          <div
+            id="accessibility-chart"
+            class="plot plot-large"
+            role="img"
+            aria-label="Scatter plot of comparison-reference similarity against Catholic-reference similarity"
+          >
+            <div class="chart-loading">Loading component accessibility…</div>
+          </div>
+
+          <p id="accessibility-summary" class="chart-summary" aria-live="polite">
+            Accessibility summary will appear here.
+          </p>
+        </div>
+
+        <div class="insight-panel">
+          <div>
+            <span class="insight-label">Question</span>
+            <p>Can valid adjacent meaning coexist with Catholic-reference proximity?</p>
+          </div>
+          <div>
+            <span class="insight-label">Observation</span>
+            <p>
+              Integrative wording averaged S<sub>C</sub> 0.709 and
+              S<sub>R</sub> 0.676, with CAS +0.034.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Interpretation</span>
+            <p>
+              The two-dimensional component view shows relative accessibility
+              without requiring Catholic dominance over a valid comparison register.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Limitation</span>
+            <p>
+              No independently calibrated threshold defines “successful integration,”
+              and high cosine scores do not prove theological integration.
+            </p>
+          </div>
+        </div>
+
+        <details class="table-alternative">
+          <summary>Accessible table: visible accessibility points</summary>
+          <div class="table-scroll">
+            <table>
+              <caption>Concept-level component accessibility for the selected condition</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Concept</th>
+                  <th scope="col">Locus</th>
+                  <th scope="col">Comparison register</th>
+                  <th scope="col">S<sub>C</sub></th>
+                  <th scope="col">S<sub>R</sub></th>
+                  <th scope="col">CAS</th>
+                </tr>
+              </thead>
+              <tbody id="accessibility-table-body"></tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="critical" class="dashboard-section section-tinted">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Critical-context module</p>
+            <h2>What changes under crisis, illness, dying, and bereavement language?</h2>
+            <p class="section-subtitle">
+              Component means and paraphrase ranges for the eight critical audits.
+            </p>
+          </div>
+          <span class="meta-chip meta-chip-critical">8 critical audits</span>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-title-row">
+            <div>
+              <h3>Critical-context component comparison</h3>
+              <p>
+                Dumbbells show mean S<sub>C</sub> and S<sub>R</sub>;
+                pale ranges show minimum-to-maximum paraphrase CAS
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="critical-chart"
+            class="plot plot-tall"
+            role="img"
+            aria-label="Component dumbbell plot for eight critical-context concepts"
+          >
+            <div class="chart-loading">Loading critical-context results…</div>
+          </div>
+
+          <p id="critical-summary" class="chart-summary">
+            Critical-context summary will appear here.
+          </p>
+        </div>
+
+        <div class="insight-panel">
+          <div>
+            <span class="insight-label">Question</span>
+            <p>Which components remain accessible under critical wording?</p>
+          </div>
+          <div>
+            <span class="insight-label">Observation</span>
+            <p>
+              Mean critical CAS ranged from −0.105 for euthanasia to +0.051
+              for dying; several paraphrase ranges crossed zero.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Interpretation</span>
+            <p>
+              Clinical, biological, and psychological salience may be valid or
+              safety-relevant. The issue is whether theological-pastoral meaning
+              remains jointly accessible.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Limitation</span>
+            <p>
+              This module contains only eight generated audits and cannot support
+              claims about pastoral adequacy or clinical behaviour.
+            </p>
+          </div>
+        </div>
+
+        <details class="table-alternative">
+          <summary>Accessible table: critical-context statistics</summary>
+          <div class="table-scroll">
+            <table>
+              <caption>Critical-context component scores and paraphrase ranges</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Concept</th>
+                  <th scope="col">S<sub>C</sub></th>
+                  <th scope="col">S<sub>R</sub></th>
+                  <th scope="col">CAS</th>
+                  <th scope="col">Paraphrase CAS range</th>
+                  <th scope="col">Crosses zero</th>
+                </tr>
+              </thead>
+              <tbody id="critical-table-body"></tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="label-effect" class="dashboard-section">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Secondary diagnostic</p>
+            <h2>Content without a label versus explicit Catholic framing</h2>
+            <p class="section-subtitle">
+              The component changes matter more than the predictable direction of CAS.
+            </p>
+          </div>
+        </div>
+
+        <div class="chart-grid chart-grid-asymmetric">
+          <article class="chart-card">
+            <div class="chart-title-row">
+              <div>
+                <h3>Aggregate component change</h3>
+                <p>Label-free theological to explicit Catholic wording</p>
+              </div>
+            </div>
+
+            <div
+              id="label-effect-chart"
+              class="plot"
+              role="img"
+              aria-label="Paired component chart comparing label-free theological and explicit Catholic wording"
+            >
+              <div class="chart-loading">Loading label comparison…</div>
+            </div>
+
+            <p id="label-effect-summary" class="chart-summary">
+              Label comparison summary will appear here.
+            </p>
+          </article>
+
+          <aside class="interpretation-card">
+            <p class="card-label">Interpretive boundary</p>
+            <h3>Do not mistake a construction-sensitive label effect for the main discovery.</h3>
+            <p>
+              The generated Catholic anchors repeatedly contain Catholic-identifying
+              language. Explicit wording therefore shares lexical signals with the
+              reference field.
+            </p>
+            <dl class="component-change-list">
+              <div>
+                <dt>ΔS<sub>C</sub></dt>
+                <dd class="metric-catholic">+0.085</dd>
+              </div>
+              <div>
+                <dt>ΔS<sub>R</sub></dt>
+                <dd class="metric-comparison">−0.053</dd>
+              </div>
+              <div>
+                <dt>ΔCAS</dt>
+                <dd class="metric-cas">+0.138</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+
+        <div class="insight-panel">
+          <div>
+            <span class="insight-label">Question</span>
+            <p>What changes when explicit Catholic identity language is added?</p>
+          </div>
+          <div>
+            <span class="insight-label">Observation</span>
+            <p>
+              Mean S<sub>C</sub> increased by 0.085 while S<sub>R</sub>
+              declined by 0.053.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Interpretation</span>
+            <p>
+              Both component movements contributed to the relative label effect
+              within this generated benchmark.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Limitation</span>
+            <p>
+              Repeated Catholic-identifying language in generated references
+              confounds substantive recovery with lexical and template overlap.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="robustness" class="dashboard-section section-tinted">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Robustness and construction leakage</p>
+            <h2>Which observations survive wording and reference changes?</h2>
+            <p class="section-subtitle">
+              Reference omission, paraphrase dispersion, and generated validation
+              address different forms of uncertainty.
+            </p>
+          </div>
+        </div>
+
+        <div class="headline-stat-grid">
+          <article>
+            <span class="headline-stat" id="stable-query-count">1,461 / 1,624</span>
+            <p>Queries sign-stable under every individual reference omission</p>
+          </article>
+          <article>
+            <span class="headline-stat" id="mixed-paraphrase-count">137 / 508</span>
+            <p>Audit-condition groups with mixed CAS signs across paraphrases</p>
+          </article>
+          <article>
+            <span class="headline-stat" id="max-reference-change">0.0936</span>
+            <p>Largest absolute CAS change after omitting one reference</p>
+          </article>
+        </div>
+
+        <div class="chart-grid chart-grid-two">
+          <article class="chart-card">
+            <div class="chart-title-row">
+              <div>
+                <h3>Reference-omission sensitivity</h3>
+                <p>Queries grouped by CAS sign-stability proportion</p>
+              </div>
+            </div>
+            <div
+              id="robustness-stability-chart"
+              class="plot"
+              role="img"
+              aria-label="Distribution of leave-one-reference-out sign stability"
+            >
+              <div class="chart-loading">Loading reference sensitivity…</div>
+            </div>
+            <p id="robustness-stability-summary" class="chart-summary">
+              Reference sensitivity summary will appear here.
+            </p>
+          </article>
+
+          <article class="chart-card">
+            <div class="chart-title-row">
+              <div>
+                <h3>Paraphrase sensitivity by condition</h3>
+                <p>CAS standard-deviation distributions</p>
+              </div>
+            </div>
+            <div
+              id="robustness-paraphrase-chart"
+              class="plot"
+              role="img"
+              aria-label="Distribution of paraphrase CAS standard deviation by condition"
+            >
+              <div class="chart-loading">Loading paraphrase sensitivity…</div>
+            </div>
+            <p id="robustness-paraphrase-summary" class="chart-summary">
+              Paraphrase sensitivity summary will appear here.
+            </p>
+          </article>
+        </div>
+
+        <div class="ranked-grid">
+          <article class="ranked-card">
+            <div class="ranked-card-heading">
+              <h3>Most reference-sensitive queries</h3>
+              <span>Maximum absolute CAS change</span>
+            </div>
+            <ol id="reference-sensitive-list" class="ranked-list">
+              <li>Loading…</li>
+            </ol>
+          </article>
+
+          <article class="ranked-card">
+            <div class="ranked-card-heading">
+              <h3>Most wording-sensitive groups</h3>
+              <span>Paraphrase CAS standard deviation</span>
+            </div>
+            <ol id="wording-sensitive-list" class="ranked-list">
+              <li>Loading…</li>
+            </ol>
+          </article>
+
+          <article class="validation-card">
+            <p class="card-label">Generated development validation</p>
+            <div class="validation-value-row">
+              <span id="validation-balanced" class="validation-value">1.000</span>
+              <span>balanced accuracy</span>
+            </div>
+            <dl class="validation-details">
+              <div>
+                <dt>Catholic recall</dt>
+                <dd id="validation-catholic-recall">1.000</dd>
+              </div>
+              <div>
+                <dt>Comparison recall</dt>
+                <dd id="validation-comparison-recall">1.000</dd>
+              </div>
+              <div>
+                <dt>Macro F1</dt>
+                <dd id="validation-macro-f1">1.000</dd>
+              </div>
+            </dl>
+            <p>
+              References and validation passages share generated conceptual fields
+              and related templates. Perfect classification demonstrates pipeline
+              separability, not independent held-out validation.
+            </p>
+          </article>
+        </div>
+
+        <div class="insight-panel">
+          <div>
+            <span class="insight-label">Question</span>
+            <p>How dependent are results on wording and individual anchors?</p>
+          </div>
+          <div>
+            <span class="insight-label">Observation</span>
+            <p>
+              Most query signs survived every single-reference omission, but
+              paraphrase groups frequently crossed the CAS-zero boundary.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Interpretation</span>
+            <p>
+              Deliberately constructed shift directions were more stable than
+              absolute near-zero classifications.
+            </p>
+          </div>
+          <div>
+            <span class="insight-label">Limitation</span>
+            <p>
+              Robustness to generated variants does not substitute for reviewed
+              references, natural-language validation, or independent calibration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vector-views" class="dashboard-section">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Exploratory vector-space views</p>
+            <h2>Inspect generated anchor fields and concept constellations</h2>
+            <p class="section-subtitle">
+              Both views reuse the exact same coordinates as the global atlas.
+            </p>
+          </div>
+        </div>
+
+        <article class="chart-card chart-card-large">
+          <div class="chart-title-row">
+            <div>
+              <h3>Catholic and comparison reference fields</h3>
+              <p>All 600 generated anchors; colour encodes reference field</p>
+            </div>
+            <span id="reference-map-count" class="visible-count">600 anchors</span>
+          </div>
+
+          <div class="chart-toolbar">
+            <div class="control-group">
+              <label for="reference-locus-filter">Theological locus</label>
+              <select id="reference-locus-filter">
+                <option value="all">All loci</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="reference-relationship-filter">Relationship type</label>
+              <select id="reference-relationship-filter">
+                <option value="all">All relationships</option>
+              </select>
+            </div>
+
+            <div class="toolbar-spacer"></div>
+
+            <button class="button button-small button-secondary" id="reference-reset-camera" type="button">
+              Reset camera
+            </button>
+          </div>
+
+          <div
+            id="reference-map-chart"
+            class="plot plot-3d"
+            role="img"
+            aria-label="Interactive three-dimensional UMAP of Catholic and comparison references"
+          >
+            <div class="chart-loading">Loading reference fields…</div>
+          </div>
+
+          <p id="reference-map-summary" class="chart-summary" aria-live="polite">
+            Reference-field summary will appear here.
+          </p>
+
+          <aside class="projection-note">
+            <strong>Exploratory projection only.</strong>
+            Visible separation may reflect repeated templates, Catholic-identifying
+            language, and benchmark construction. It does not establish natural
+            theological separation in the embedding model.
+          </aside>
+        </article>
+
+        <article class="chart-card chart-card-large concept-constellation-card">
+          <div class="chart-title-row">
+            <div>
+              <h3>Selected-concept constellation</h3>
+              <p>Highlight one audit while retaining the full atlas as context</p>
+            </div>
+          </div>
+
+          <div class="chart-toolbar">
+            <div class="control-group control-group-wide">
+              <label for="constellation-concept">Concept</label>
+              <select id="constellation-concept">
+                <option value="">Loading concepts…</option>
+              </select>
+            </div>
+
+            <div class="toolbar-spacer"></div>
+
+            <button class="button button-small button-secondary" id="constellation-reset-camera" type="button">
+              Reset camera
+            </button>
+          </div>
+
+          <div
+            id="constellation-chart"
+            class="plot plot-3d"
+            role="img"
+            aria-label="Interactive three-dimensional UMAP highlighting a selected concept"
+          >
+            <div class="chart-loading">Loading concept constellation…</div>
+          </div>
+
+          <p id="constellation-summary" class="chart-summary" aria-live="polite">
+            Concept constellation summary will appear here.
+          </p>
+
+          <aside class="projection-note">
+            <strong>Exploratory projection only.</strong>
+            Highlighting identifies benchmark membership, not a high-dimensional
+            semantic trajectory. No nearest-neighbour claim is inferred from UMAP distance.
+          </aside>
+        </article>
+      </div>
+    </section>
+
+    <section id="explorer" class="dashboard-section section-tinted">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Detailed audit explorer</p>
+            <h2>Inspect one concept, query, and matched result at a time</h2>
+            <p class="section-subtitle">
+              “Nearest reference” always means nearest among the six predefined
+              references for that audit.
+            </p>
+          </div>
+          <a
+            class="data-link"
+            href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/query_scores.csv"
+            download
+          >
+            Download query scores
+          </a>
+        </div>
+
+        <div class="explorer-layout">
+          <aside class="filter-panel" aria-labelledby="filter-panel-title">
+            <div class="filter-panel-heading">
+              <h3 id="filter-panel-title">Filter audits</h3>
+              <button id="explorer-reset-filters" class="text-button" type="button">
+                Reset
+              </button>
+            </div>
+
+            <div class="control-group">
+              <label for="explorer-locus-filter">Theological locus</label>
+              <select id="explorer-locus-filter">
+                <option value="all">All loci</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="explorer-register-filter">Comparison register</label>
+              <select id="explorer-register-filter">
+                <option value="all">All registers</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="explorer-relationship-filter">Relationship type</label>
+              <select id="explorer-relationship-filter">
+                <option value="all">All relationships</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="explorer-life-death-filter">Life and Death module</label>
+              <select id="explorer-life-death-filter">
+                <option value="all">All audits</option>
+                <option value="true">Included</option>
+                <option value="false">Not included</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="explorer-critical-filter">Critical context</label>
+              <select id="explorer-critical-filter">
+                <option value="all">All audits</option>
+                <option value="true">Applicable</option>
+                <option value="false">Not applicable</option>
+              </select>
+            </div>
+
+            <div class="filter-divider"></div>
+
+            <div class="control-group">
+              <label for="explorer-concept-filter">Concept</label>
+              <select id="explorer-concept-filter">
+                <option value="">Loading concepts…</option>
+              </select>
+            </div>
+
+            <p id="explorer-filter-count" class="filter-count" aria-live="polite"></p>
+          </aside>
+
+          <div class="explorer-content">
+            <article class="concept-header-card">
+              <div>
+                <p class="card-label">Selected audit</p>
+                <h3 id="explorer-concept-title">Loading…</h3>
+                <p id="explorer-register" class="concept-register"></p>
+              </div>
+
+              <div class="concept-tags" id="explorer-tags"></div>
+            </article>
+
+            <div class="query-selector-card">
+              <div class="control-group">
+                <label for="explorer-condition-filter">Query condition</label>
+                <select id="explorer-condition-filter">
+                  <option value="bare">Bare</option>
+                  <option value="natural_general">Natural general</option>
+                  <option value="natural_ambiguous">Natural ambiguous</option>
+                  <option value="label_free_theological">Label-free theological</option>
+                  <option value="explicit_catholic">Explicit Catholic</option>
+                  <option value="integrative">Integrative</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </div>
+
+              <div class="control-group control-group-wide">
+                <label for="explorer-query-filter">Query / paraphrase</label>
+                <select id="explorer-query-filter">
+                  <option value="">Loading queries…</option>
+                </select>
+              </div>
+            </div>
+
+            <article class="query-text-card">
+              <p class="card-label">Exact generated query wording</p>
+              <blockquote id="explorer-query-text">Loading query text…</blockquote>
+              <p id="explorer-review-status" class="review-status"></p>
+            </article>
+
+            <dl class="score-grid">
+              <div class="score-card score-catholic">
+                <dt>S<sub>C</sub></dt>
+                <dd id="explorer-s-c">—</dd>
+                <span>Catholic-reference mean similarity</span>
+              </div>
+              <div class="score-card score-comparison">
+                <dt>S<sub>R</sub></dt>
+                <dd id="explorer-s-r">—</dd>
+                <span>Comparison-reference mean similarity</span>
+              </div>
+              <div class="score-card score-cas">
+                <dt>CAS</dt>
+                <dd id="explorer-cas">—</dd>
+                <span>S<sub>C</sub> − S<sub>R</sub></span>
+              </div>
+            </dl>
+
+            <div class="reference-grid">
+              <article class="reference-card reference-catholic">
+                <p class="card-label">Nearest Catholic reference</p>
+                <p id="explorer-nearest-catholic">—</p>
+                <span id="explorer-nearest-catholic-score"></span>
+              </article>
+
+              <article class="reference-card reference-comparison">
+                <p class="card-label">Nearest comparison reference</p>
+                <p id="explorer-nearest-comparison">—</p>
+                <span id="explorer-nearest-comparison-score"></span>
+              </article>
+
+              <article class="reference-card reference-overall">
+                <p class="card-label">Overall nearest predefined reference</p>
+                <p id="explorer-nearest-overall">—</p>
+                <span id="explorer-nearest-overall-score"></span>
+              </article>
+            </div>
+
+            <div class="explorer-detail-grid">
+              <article class="detail-card">
+                <div class="detail-card-heading">
+                  <h4>Matched component shifts</h4>
+                  <span>Selected audit</span>
+                </div>
+                <div class="table-scroll compact-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">Contrast</th>
+                        <th scope="col">ΔS<sub>C</sub></th>
+                        <th scope="col">ΔS<sub>R</sub></th>
+                        <th scope="col">ΔCAS</th>
+                      </tr>
+                    </thead>
+                    <tbody id="explorer-shift-table-body"></tbody>
+                  </table>
+                </div>
+              </article>
+
+              <article class="detail-card">
+                <div class="detail-card-heading">
+                  <h4>Robustness for selected query</h4>
+                  <span>Reference and wording sensitivity</span>
+                </div>
+                <dl class="robustness-detail-list">
+                  <div>
+                    <dt>Reference-omission sign stability</dt>
+                    <dd id="explorer-sign-stability">—</dd>
+                  </div>
+                  <div>
+                    <dt>Maximum CAS change</dt>
+                    <dd id="explorer-max-change">—</dd>
+                  </div>
+                  <div>
+                    <dt>Paraphrase CAS range</dt>
+                    <dd id="explorer-paraphrase-range">—</dd>
+                  </div>
+                  <div>
+                    <dt>Paraphrase CAS SD</dt>
+                    <dd id="explorer-paraphrase-sd">—</dd>
+                  </div>
+                </dl>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="methodology" class="dashboard-section">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Methodology and reproducibility</p>
+            <h2>How to read and reproduce the dashboard</h2>
+            <p class="section-subtitle">
+              Component-level cosine analysis in the original embedding space
+              remains the evidential basis of every numerical result.
+            </p>
+          </div>
+          <a
+            class="data-link"
+            href="../../docs/CTSB_V3_5_ALPHA_PROTOCOL.md"
+          >
+            Read the protocol
+          </a>
+        </div>
+
+        <div class="method-grid">
+          <article class="method-card">
+            <span class="method-index">01</span>
+            <h3>Component scores</h3>
+
+            <div class="formula-block">
+              <p>
+                S<sub>C</sub>(q) =
+                <span class="fraction">
+                  <span>1</span>
+                  <span>|C|</span>
+                </span>
+                Σ<sub>c∈C</sub> cos(e(q), e(c))
+              </p>
+
+              <p>
+                S<sub>R</sub>(q) =
+                <span class="fraction">
+                  <span>1</span>
+                  <span>|R|</span>
+                </span>
+                Σ<sub>r∈R</sub> cos(e(q), e(r))
+              </p>
+
+              <p>
+                CAS(q) = S<sub>C</sub>(q) − S<sub>R</sub>(q)
+              </p>
+            </div>
+
+            <p>
+              S<sub>C</sub> is mean cosine similarity to the three predefined
+              Catholic references for an audit. S<sub>R</sub> is mean cosine
+              similarity to the three predefined comparison-register references.
+            </p>
+          </article>
+
+          <article class="method-card">
+            <span class="method-index">02</span>
+            <h3>Matched shift decomposition</h3>
+
+            <div class="formula-block formula-block-large">
+              <p>
+                ΔCAS = ΔS<sub>C</sub> − ΔS<sub>R</sub>
+              </p>
+            </div>
+
+            <p>
+              A positive ΔCAS describes relative movement between the two
+              predefined reference fields. It does not identify its cause.
+              Positive ΔS<sub>C</sub> must be inspected separately before
+              describing Catholic-reference association gain.
+            </p>
+          </article>
+
+          <article class="method-card">
+            <span class="method-index">03</span>
+            <h3>Statistical unit</h3>
+
+            <ul class="method-list">
+              <li>The concept is the principal analytical unit.</li>
+              <li>Paraphrases are repeated measurements, not independent concepts.</li>
+              <li>Condition confidence intervals resample concepts.</li>
+              <li>Critical-context aggregates contain eight audits.</li>
+              <li>Near-zero CAS values require sensitivity inspection.</li>
+              <li>Cosine similarities are not calibrated probabilities.</li>
+            </ul>
+          </article>
+
+          <article class="method-card">
+            <span class="method-index">04</span>
+            <h3>Nearest predefined references</h3>
+
+            <p>
+              Reference rankings are calculated only among the six generated
+              benchmark references assigned to the selected audit: three Catholic
+              references and three comparison references.
+            </p>
+
+            <p>
+              They are not claims about the globally nearest possible text in the
+              embedding model's semantic space.
+            </p>
+          </article>
+
+          <article class="method-card">
+            <span class="method-index">05</span>
+            <h3>Robustness analysis</h3>
+
+            <ul class="method-list">
+              <li>
+                Leave-one-reference-out analysis omits each of the six audit
+                references in turn.
+              </li>
+              <li>
+                Sign stability records whether CAS retains its original sign.
+              </li>
+              <li>
+                Maximum absolute CAS change measures anchor sensitivity.
+              </li>
+              <li>
+                Paraphrase ranges and standard deviations measure wording sensitivity.
+              </li>
+            </ul>
+          </article>
+
+          <article class="method-card">
+            <span class="method-index">06</span>
+            <h3>Exploratory UMAP</h3>
+
+            <p>
+              One global three-dimensional UMAP was calculated locally from all
+              3,032 vectors using cosine distance. Its coordinates are reused for
+              the atlas, reference-field map, and selected-concept constellation.
+            </p>
+
+            <dl class="parameter-list">
+              <div>
+                <dt>Components</dt>
+                <dd>3</dd>
+              </div>
+              <div>
+                <dt>Neighbours</dt>
+                <dd>30</dd>
+              </div>
+              <div>
+                <dt>Minimum distance</dt>
+                <dd>0.15</dd>
+              </div>
+              <div>
+                <dt>Metric</dt>
+                <dd>Cosine</dd>
+              </div>
+              <div>
+                <dt>Random seed</dt>
+                <dd>42</dd>
+              </div>
+              <div>
+                <dt>Raw dimensions</dt>
+                <dd>3,072</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+
+        <div class="reproducibility-grid">
+          <article class="reproducibility-card">
+            <p class="card-label">Analysis run</p>
+            <h3>v3_5_alpha_azure_20260713-010232</h3>
+
+            <dl class="metadata-list">
+              <div>
+                <dt>Model</dt>
+                <dd>text-embedding-3-large</dd>
+              </div>
+              <div>
+                <dt>Provider</dt>
+                <dd>Azure OpenAI</dd>
+              </div>
+              <div>
+                <dt>Dimensions</dt>
+                <dd>3,072</dd>
+              </div>
+              <div>
+                <dt>Analysis-run Git commit</dt>
+                <dd>
+                  <code>3d8c92dfe0807363d8e424202ece7a42bc60b28c</code>
+                </dd>
+              </div>
+              <div>
+                <dt>Unique embedded texts</dt>
+                <dd>3,032</dd>
+              </div>
+              <div>
+                <dt>Query scores</dt>
+                <dd>1,624</dd>
+              </div>
+              <div>
+                <dt>Matched shifts</dt>
+                <dd>1,524</dd>
+              </div>
+              <div>
+                <dt>Reference anchors</dt>
+                <dd>600</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="reproducibility-card">
+            <p class="card-label">UMAP preprocessing record</p>
+            <h3>One fit, three coordinated views</h3>
+
+            <dl class="metadata-list">
+              <div>
+                <dt>Source-vector SHA-256</dt>
+                <dd>
+                  <code id="umap-source-hash">
+                    f66fea014d64213fe874f61ca1545d36f4ab37664401824944a101bd7080abf6
+                  </code>
+                </dd>
+              </div>
+              <div>
+                <dt>Coordinate SHA-256</dt>
+                <dd>
+                  <code id="umap-coordinate-hash">Loading manifest…</code>
+                </dd>
+              </div>
+              <div>
+                <dt>umap-learn version</dt>
+                <dd id="umap-version">Loading manifest…</dd>
+              </div>
+              <div>
+                <dt>Generated</dt>
+                <dd id="umap-generated">Loading manifest…</dd>
+              </div>
+              <div>
+                <dt>Published coordinate fields</dt>
+                <dd>
+                  <code>embedding_id</code>,
+                  <code>umap_x</code>,
+                  <code>umap_y</code>,
+                  <code>umap_z</code>
+                </dd>
+              </div>
+            </dl>
+
+            <p class="privacy-note">
+              Raw vectors remain local. The browser receives only derived UMAP
+              coordinates and the already committed embedding index.
+            </p>
+          </article>
+        </div>
+
+        <div class="interpretive-boundaries">
+          <article>
+            <p class="card-label">What the dashboard can show</p>
+            <h3>Benchmark-relative representational patterns</h3>
+            <ul class="boundary-list boundary-list-positive">
+              <li>
+                Which predefined reference field is closer under a generated condition
+              </li>
+              <li>
+                Whether S<sub>C</sub>, S<sub>R</sub>, and CAS move together or diverge
+              </li>
+              <li>
+                Whether two component similarities remain jointly substantial
+              </li>
+              <li>
+                Which observations are sensitive to wording or exact anchor selection
+              </li>
+              <li>
+                How critical wording changes component proximity within this benchmark
+              </li>
+            </ul>
+          </article>
+
+          <article>
+            <p class="card-label">What the dashboard cannot establish</p>
+            <h3>Theological, psychological, or system-wide conclusions</h3>
+            <ul class="boundary-list">
+              <li>The truth or falsity of Catholic theology</li>
+              <li>Machine belief, intention, consciousness, hostility, or deception</li>
+              <li>Doctrinal correctness of a generated chatbot response</li>
+              <li>Pastoral or clinical adequacy of an AI system</li>
+              <li>Behaviour of all embedding models or all OpenAI systems</li>
+              <li>Independent validation from the perfect development score</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="data-download-section">
+          <div class="data-download-heading">
+            <div>
+              <p class="section-kicker">Public research files</p>
+              <h3>Download the numerical data behind the dashboard</h3>
+            </div>
+            <p>
+              Complete committed result tables are fetched directly rather than
+              duplicated inside the dashboard directory.
+            </p>
+          </div>
+
+          <div class="download-grid">
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/alpha_condition_statistics.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Condition statistics</strong>
+                <small>Aggregate S<sub>C</sub>, S<sub>R</sub>, CAS, and intervals</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/alpha_shift_statistics.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Shift statistics</strong>
+                <small>Aggregate ΔS<sub>C</sub>, ΔS<sub>R</sub>, and ΔCAS</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/condition_summary.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Concept-condition summary</strong>
+                <small>Concept-level means across generated conditions</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/query_scores.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Query scores</strong>
+                <small>Exact queries, components, CAS, and predefined references</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/shifts.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Matched shifts</strong>
+                <small>Query-level component decomposition</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/leave_one_reference_out_summary.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Reference sensitivity</strong>
+                <small>Sign stability and maximum CAS change</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/paraphrase_condition_sensitivity.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Paraphrase sensitivity</strong>
+                <small>Condition ranges, dispersion, and mixed signs</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/validation_metrics.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Development validation</strong>
+                <small>Generated clear-register pipeline diagnostics</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/umap_3d_coordinates.csv"
+              download
+            >
+              <span class="download-type">CSV</span>
+              <span>
+                <strong>Derived UMAP coordinates</strong>
+                <small>Three-dimensional coordinates without raw vectors</small>
+              </span>
+            </a>
+
+            <a
+              class="download-card"
+              href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/umap_3d_manifest.json"
+              download
+            >
+              <span class="download-type">JSON</span>
+              <span>
+                <strong>UMAP manifest</strong>
+                <small>Parameters, versions, source hash, and coordinate hash</small>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="method-links">
+          <a href="../../README.md">
+            <span>Project overview</span>
+            <strong>README.md</strong>
+          </a>
+
+          <a href="../../docs/CTSB_V3_5_ALPHA_PROTOCOL.md">
+            <span>Research design</span>
+            <strong>Alpha protocol</strong>
+          </a>
+
+          <a href="../../data/benchmarks/v3_5_alpha/README.md">
+            <span>Benchmark status</span>
+            <strong>Data documentation</strong>
+          </a>
+
+          <a href="../../outputs/v3_5_alpha/runs/v3_5_alpha_azure_20260713-010232/DASHBOARD_DESIGN_README.md">
+            <span>Visual specification</span>
+            <strong>Dashboard design</strong>
+          </a>
+
+          <a href="https://github.com/YIN-Renlong/vector-space-theological-meaning">
+            <span>Source repository</span>
+            <strong>GitHub</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="conclusion-section">
+      <div class="shell conclusion-grid">
+        <div>
+          <p class="section-kicker">Principal methodological conclusion</p>
+          <h2>Relative movement and substantive component gain are not equivalent.</h2>
+        </div>
+
+        <div class="conclusion-copy">
+          <p>
+            CTSB's most informative alpha result is not that generated Catholic
+            wording moves toward generated Catholic references. It is that
+            component decomposition can distinguish Catholic-reference gain from
+            a positive relative shift caused by a larger decline in another
+            reference field.
+          </p>
+
+          <a class="button button-primary" href="#shifts">
+            Return to shift decomposition
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">CTSB</span>
+          <span class="brand-copy">
+            <strong>Vector Space and Theological Meaning</strong>
+            <small>CTSB v3.5-alpha dashboard</small>
+          </span>
+        </a>
+
+        <p class="footer-note">
+          Static research dashboard hosted through GitHub Pages.
+          Numerical analysis uses the committed CTSB v3.5-alpha Azure run.
+        </p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#foregrounding">Foregrounding</a>
+        <a href="#shifts">Shift decomposition</a>
+        <a href="#critical">Critical contexts</a>
+        <a href="#robustness">Robustness</a>
+        <a href="#explorer">Concept explorer</a>
+        <a href="#methodology">Methodology</a>
+      </nav>
+
+      <div class="footer-meta">
+        <span>Run: v3_5_alpha_azure_20260713-010232</span>
+        <span>Model: text-embedding-3-large</span>
+        <a href="https://github.com/YIN-Renlong/vector-space-theological-meaning">
+          View source on GitHub
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    <div class="noscript-message">
+      This dashboard requires JavaScript to load the committed result tables and
+      render its interactive charts. Downloadable CSV files remain available
+      through the methodology section.
+    </div>
+  </noscript>
+</body>
+</html>
