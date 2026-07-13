@@ -1,6 +1,9 @@
 # Vector Space and Theological Meaning
 
+**Dashboard demo:** https://yin-renlong.github.io/vector-space-theological-meaning/dashboards/v3_5_alpha/
+
 <!-- BEGIN V3_5_ALPHA_STATUS -->
+
 ## Active development status - CTSB v3.5-alpha - 13 July 2026
 
 **CTSB v3.5-alpha is technically complete as a generated, non-evidential 100-concept development experiment. CTSB v3.5-beta is the next planned phase.**
