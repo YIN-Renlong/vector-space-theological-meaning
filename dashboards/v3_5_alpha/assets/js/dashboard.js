@@ -929,7 +929,7 @@
         ...baseLayout().xaxis,
         title: "Mean Catholic Association Contrast (CAS)",
         range: [-0.32, 0.52],
-        tickformat: "+.2f",
+        tickformat: ".2f",
         zeroline: true,
         zerolinewidth: 2
       },
@@ -1111,7 +1111,7 @@
         ...darkLayout().xaxis,
         title: "Mean matched change",
         range: [-0.4, 0.65],
-        tickformat: "+.2f",
+        tickformat: ".2f",
         zeroline: true,
         zerolinewidth: 2
       },
@@ -1533,7 +1533,7 @@
         zeroline: true,
         zerolinecolor: "#9ba5b1",
         zerolinewidth: 2,
-        tickformat: "+.2f",
+        tickformat: ".2f",
         tickfont: {
           size: 11,
           color: COLORS.ink
@@ -4047,6 +4047,13 @@
       );
 
       initialiseExplorer();
+
+      document
+        .querySelectorAll(".chart-loading")
+        .forEach(element => {
+          element.hidden = true;
+          element.setAttribute("aria-hidden", "true");
+        });
 
       document.documentElement.dataset.dashboardState =
         "ready";

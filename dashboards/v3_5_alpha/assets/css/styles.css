@@ -2468,3 +2468,71 @@ tbody tr:hover td {
     text-decoration: none;
   }
 }
+
+/* Author credit and rendered-chart loading-state fix
+   ---------------------------------------------------------- */
+
+.author-credit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: -0.1rem 0 1.25rem;
+  color: var(--ink-soft);
+  gap: 0.35rem 0.65rem;
+}
+
+.author-credit .author-role {
+  color: var(--muted);
+  font-size: 0.73rem;
+  font-weight: 750;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.author-credit strong {
+  color: var(--navy-dark);
+  font-family: var(--font-heading);
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.author-credit .author-affiliations {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.footer-author {
+  display: grid;
+  margin: 1rem 0 0;
+  gap: 0.08rem;
+}
+
+.footer-author strong {
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+}
+
+.footer-author span {
+  color: var(--muted);
+  font-size: 0.73rem;
+}
+
+/*
+Plotly renders into the existing chart element rather than removing the
+accessible pre-render placeholder. Hide that placeholder as soon as Plotly
+initialises the container, and hide all remaining placeholders after the
+application reaches its ready state.
+*/
+.js-plotly-plot > .chart-loading,
+html[data-dashboard-state="ready"] .chart-loading {
+  display: none !important;
+}
+
+@media (max-width: 42rem) {
+  .author-credit {
+    display: grid;
+    align-items: start;
+    gap: 0.1rem;
+  }
+}
