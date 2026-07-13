@@ -1,7 +1,7 @@
 # Vector Space and Theological Meaning
 
 <!-- BEGIN V3_5_ALPHA_STATUS -->
-## Active development status — 13 July 2026
+## Active development status - CTSB v3.5-alpha - 13 July 2026
 
 **CTSB v3.5-alpha is technically complete as a generated, non-evidential 100-concept development experiment. CTSB v3.5-beta is the next planned phase.**
 
