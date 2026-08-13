@@ -1127,6 +1127,13 @@ https://aclanthology.org/N19-1063/
 Tsirtsis, S., Rawal, K., Russell, C., Mittelstadt, B., and Wachter, S. (2026). “AI-Mediated Communication Can Steer Collective Opinion.” arXiv:2605.16245. Accepted for presentation at the AI4Good and Technical AI Governance Research workshops at ICML 2026.  
 https://arxiv.org/abs/2605.16245
 
+### Corpus-scale text mining and human validation
+
+Boussalis, C., and Coan, T. G. (2016). “Text-mining the signals of climate change doubt.” *Global Environmental Change*, 36, 89–100.
+
+https://doi.org/10.1016/j.gloenvcha.2015.12.001
+
+
 ---
 
 ## 24. Current implementation status
@@ -1149,6 +1156,7 @@ The repository does not yet contain:
 - or a v3.5 dashboard.
 
 The generated alpha must not be presented as a final benchmark. Archived v2 code and categories remain historical only.
+
 ## 25. Repository layout
 
     vector-space-theological-meaning/
@@ -1177,3 +1185,175 @@ The generated alpha must not be presented as a final benchmark. Archived v2 code
         └── build_ai_context.sh
 
 Generated vectors, embedding caches, run outputs, context bundles, and backups remain local and are excluded from Git.
+
+---
+
+## 26. Methodological direction fixed on 13 August 2026
+
+### 26.1 Core decision
+
+CTSB will remain a relatively independent, source-grounded infrastructure for evaluating theological-semantic representation. It will not be defined by one audience, educational setting, textbook, or AI application.
+
+At the same time, the benchmark should be sensitive to distortions that become especially important when AI systems explain, simplify, retrieve, summarise, translate, or adapt theological material. AI-mediated theological pedagogy will therefore serve as the flagship application and a later empirical validation setting, rather than as the definition of CTSB-Core.
+
+The governing principle is:
+
+> Do not optimise CTSB so that it declares pedagogical texts successful. Optimise it so that it is especially sensitive to the kinds of theological distortion that occur in AI-mediated teaching.
+
+Here, “optimise” means improving construct coverage, source grounding, robustness, and sensitivity to pre-specified distortions. It does not mean adjusting the benchmark after seeing results so that preferred pedagogical outputs receive favourable scores.
+
+### 26.2 Three evidential roles for cases
+
+Future development will distinguish three kinds of case. They must not be treated as evidentially interchangeable.
+
+#### A. Core calibration cases
+
+Narrow, controlled theological cases will be used to construct and validate CTSB-Core. Candidate domains include:
+
+- death, suffering, hope, and resurrection;
+- personhood, dignity, and autonomy;
+- prayer, divine agency, and relationship;
+- Scripture, revelation, and authority;
+- grace, salvation, sin, and human transformation.
+
+These cases should test whether the benchmark can identify:
+
+- genuine theological-reference gain;
+- apparent relative gain caused only by comparison-field decline;
+- preserved relations;
+- displaced or weakened relations;
+- added but unsupported associations;
+- framing–content divergence;
+- and reduction of complementary theological and non-theological registers into a false opposition.
+
+The purpose of concentration is methodological control. A large number of striking examples cannot substitute for validated constructs, stable reference fields, and replicated effects.
+
+#### B. General robustness applications
+
+After the core method is validated, it may be applied to a small set of other AI-mediated theological tasks, such as:
+
+- summarisation;
+- translation;
+- theological question answering;
+- retrieval and ranking;
+- sermon or devotional generation;
+- audience-level simplification;
+- and interdenominational explanation.
+
+These are portability and robustness demonstrations. Unless independently validated for each setting, they must not be presented as evidence that CTSB works universally.
+
+#### C. Flagship theological-pedagogy application
+
+The most developed application profile will examine AI-mediated computational inculturation: the use of computational and computer-science language to introduce Christianity to technically trained learners.
+
+Candidate analogies include:
+
+- the Bible as an API;
+- sin as a bug or corrupted state;
+- grace as a patch;
+- prayer as an API call;
+- the Church as a distributed system;
+- and tradition as version control.
+
+These are not proposed as doctrinal identities. Each analogy is a testable pedagogical intervention whose explanatory value and failure conditions must both be made explicit.
+
+The central applied question is:
+
+> How can a source-grounded CTSB framework identify and reduce doctrinal distortions when AI uses computational analogies to introduce Christianity to technically trained learners?
+
+### 26.3 Modular architecture
+
+The intended relationship is:
+
+    CTSB-Core
+    ├── controlled calibration cases
+    ├── source-grounded theological and comparison fields
+    ├── cross-template, cross-prompt, and cross-model robustness tests
+    ├── general theological application examples
+    └── domain-specific application profiles
+        └── AI-mediated theological pedagogy
+            └── computational inculturation for technically trained learners
+
+The pedagogy profile may add domain-specific test materials, anticipated misconception categories, learner-facing outputs, and human-evaluation measures. It must not silently redefine the core construct or scoring rule.
+
+### 26.4 Evaluation pipeline
+
+The planned evaluation sequence is:
+
+    Source-grounded theological account
+                    ↓
+          CTSB relational baseline
+                    ↓
+       AI retrieval, generation, or adaptation
+                    ↓
+       CTSB analysis of preservation, gain,
+          displacement, attenuation, and reduction
+                    ↓
+           Theological expert assessment
+                    ↓
+       Learner comprehension and misconception study
+
+The embedding analysis concerns textual representations and relations. It does not directly establish what learners understand, believe, retain, or transfer. Human evaluation is therefore required before making pedagogical-effectiveness claims.
+
+### 26.5 Multidimensional pedagogical evaluation
+
+The pedagogy application should not collapse all outcomes into one “good explanation” score. At minimum, later studies should distinguish:
+
+1. **Doctrinal fidelity** — whether central theological relations are preserved.
+2. **Pedagogical clarity** — whether an introductory learner can understand the explanation.
+3. **Analogy usefulness** — whether the computational analogy illuminates a relevant relation.
+4. **Misconception risk** — which false inferences the analogy invites.
+5. **Boundary adequacy** — whether the AI explains where and why the analogy fails.
+6. **Transfer potential** — whether the learner can move from the analogy to non-computational theological language.
+
+This separation is necessary because an explanation may be accessible but reductive, faithful but inaccessible, memorable but misleading, or technically elegant while theologically distorting.
+
+### 26.6 Optimisation boundary and anti-circularity rule
+
+The AI teaching system may later be improved against pre-registered CTSB constraints. CTSB-Core itself must not be repeatedly modified to make that system appear successful.
+
+To reduce circularity:
+
+- benchmark construction, system development, and final evaluation should use separated data or cases;
+- the core scoring specification should be frozen before final application testing;
+- pedagogical prompts and safeguards should be developed without access to held-out final cases;
+- expert judgments should be collected independently of system preference where feasible;
+- and negative or null findings must be retained and reported.
+
+Pedagogical findings may provide evidence about the benchmark’s construct or predictive validity. For example, a CTSB-detected displacement of divine agency may predict a learner misconception in which God is understood as a deterministic service endpoint. Such evidence may justify a future, explicitly versioned benchmark revision, but it must not retroactively change the result of the study being evaluated.
+
+### 26.7 Confessional scope
+
+The present CTSB design operationalises Catholic reference fields. A future pedagogical application must therefore do one of two things:
+
+- state explicitly that it evaluates Catholic theological representation; or
+- construct separately sourced and separately validated reference fields for additional Christian traditions.
+
+A Catholic reference field must not be silently treated as a universal proxy for all Christian theology.
+
+### 26.8 Methodological synthesis from the four guiding studies
+
+The four guiding studies contribute different parts of this design:
+
+- **Caliskan et al. (2017):** differential association can reveal recoverable relations in embedding space, but association is not belief, cognition, or theological truth.
+- **May et al. (2019):** sentence-level findings may depend on words, templates, pooling, similarity measures, and models; positive results are specific, while null results do not demonstrate the absence of distortion.
+- **Boussalis and Coan (2016):** large-scale computational categories require human-coded validation, interpretable topic construction, attention to source effects, and distinction between reliable broad classifications and more fragile fine-grained ones.
+- **Tsirtsis et al. (2026):** AI-mediated communication introduces a dynamic transformation problem, making it necessary to compare source material, generated or revised outputs, prompt conditions, and apparent representational steering.
+
+Together, they motivate a CTSB that is source-grounded, differential, context-sensitive, human-validated, source-aware, and cautious about external validity.
+
+### 26.9 Development sequence
+
+The fixed sequence is:
+
+> **Measure → stress-test → demonstrate portability → apply to pedagogy → validate with learners.**
+
+Accordingly:
+
+1. concentrated cases will first establish whether CTSB measures its intended theological-semantic constructs;
+2. cross-wording, cross-template, cross-prompt, and cross-model tests will examine robustness;
+3. limited general applications will test portability without claiming universality;
+4. AI-mediated computational pedagogy will provide the flagship applied case;
+5. expert and learner studies will test whether detected distortions correspond to doctrinal judgments and actual misconceptions.
+
+This direction does not convert the generated v3.5-alpha dataset into evidential material. The source-grounded beta benchmark must still be independently constructed, reviewed, validated, and frozen before substantive claims are made.
